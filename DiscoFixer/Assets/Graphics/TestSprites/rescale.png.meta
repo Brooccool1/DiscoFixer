@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -294,6 +295,15 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 948fb2bf49a9a834b870d9778739262b, type: 3}
       name: NormalMap
+    nameFileIdTable:
+      rescale_5: 1721955491158928184
+      rescale_3: 2787019416573780290
+      rescale_0: -8922317501677205662
+      rescale_7: 5843932133631122672
+      rescale_4: -8340767236812748969
+      rescale_2: 2189700692212312866
+      rescale_1: -464066630168192730
+      rescale_6: 3621880733394353798
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
