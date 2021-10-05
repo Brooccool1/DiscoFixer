@@ -18,7 +18,7 @@ public class BeatTracker : MonoBehaviour
     private float _lastBeat = 0;
 
     private AudioSource _audioPlayer;
-    
+    // test
     private void Start()
     {
         _beat = (60 * 100 / _bpm * 100) * 0.0001f;
