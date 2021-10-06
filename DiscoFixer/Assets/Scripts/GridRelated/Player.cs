@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public static Vector2 position = new Vector2(0, 0);
     public GameObject[,] gridSize;
     public static bool alreadyPressed = false;
-    public static Vector3 transformPos = new Vector3();
+    
+    private Vector3 _goalPos = new Vector3(0, 0);
 
 
     // Couldn't always set grid in Start
@@ -25,7 +26,6 @@ public class Player : MonoBehaviour
     
     private void Start()
     {
-        transformPos = GetComponent<Transform>().position;
         GameEvents.beat.onBeat += Move;
     }
 
@@ -43,7 +43,20 @@ public class Player : MonoBehaviour
         {
             _setGrid();
         }
-        
+        _controlls();
+
+        // lerp = smooth
+        // Slerp = nice bounce but buggy
+        Vector3 _currentPosition = Vector3.zero;
+        _currentPosition.x = Mathf.Lerp(transform.position.x, _goalPos.x, 0.03f);
+        _currentPosition.y = Mathf.Lerp(transform.position.y, _goalPos.y, 0.03f);
+
+        transform.position = _currentPosition;
+        // transform.position = Vector3.Slerp(transform.position, _goalPos, 0.03f);
+    }
+
+    private void _controlls()
+    {
         if (Input.anyKey && !alreadyPressed)
         {
             alreadyPressed = true;
@@ -75,7 +88,7 @@ public class Player : MonoBehaviour
 
         
         position += direction;
-        transform.position = Grid.grid[(int)position.x, (int)position.y].transform.position;
+        _goalPos = Grid.grid[(int)position.x, (int)position.y].transform.position;
         
         alreadyPressed = false;
         CheckAndFixTile();
