@@ -33,12 +33,12 @@ using UnityEngine;
         {
             if (isBreaking)
             {
-                GetComponent<SpriteRenderer>().color = Color.red;
+                GetComponent<SpriteRenderer>().material.color = Color.red;
             }
 
             if (isBroken)
             {
-                GetComponent<SpriteRenderer>().color = Color.black;
+                GetComponent<SpriteRenderer>().material.color = Color.black;
             }
         }
     }
