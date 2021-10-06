@@ -18,17 +18,32 @@ public class Player : MonoBehaviour
     public GameObject[,] gridSize;
     public static bool alreadyPressed = false;
     public static Vector3 transformPos = new Vector3();
+
+
+    // Couldn't always set grid in Start
+    private bool _lateStart = false;
     
     private void Start()
     {
-        gridSize = Grid.grid;
-        position = new Vector2(gridSize.GetLength(0) / 2, gridSize.GetLength(1) / 2);
         transformPos = GetComponent<Transform>().position;
         GameEvents.beat.onBeat += Move;
     }
 
+    private void _setGrid()
+    {
+        gridSize = Grid.grid;
+        position = new Vector2(gridSize.GetLength(0) / 2, gridSize.GetLength(1) / 2);
+        _lateStart = true;
+    }
+    
     private void Update()
     {
+        // Runs in the first time update runs
+        if (!_lateStart)
+        {
+            _setGrid();
+        }
+        
         if (Input.anyKey && !alreadyPressed)
         {
             alreadyPressed = true;

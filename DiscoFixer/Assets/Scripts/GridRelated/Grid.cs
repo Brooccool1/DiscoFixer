@@ -32,7 +32,7 @@ public class Grid : MonoBehaviour
             {
                 var offset = new Vector2(i, j);
                 var tile = Instantiate(tilePrefab, basePos + offset, transform.rotation);
-                tile.GetComponent<SpriteRenderer>().color = tileColors[Random.Range(0, tileColors.Count)];
+                tile.GetComponent<SpriteRenderer>().material.color = tileColors[Random.Range(0, tileColors.Count)];
                 grid[i, j] = tile;
             }
         }
@@ -46,7 +46,7 @@ public class Grid : MonoBehaviour
             var tileScript = tile.GetComponent<Tile>();
             if (!tileScript.isBreaking && !tileScript.isBroken)
             {
-                tile.GetComponent<SpriteRenderer>().color = tileColors[Random.Range(0, tileColors.Count)];
+                tile.GetComponent<SpriteRenderer>().material.color = tileColors[Random.Range(0, tileColors.Count)];
             }
         }
     }
