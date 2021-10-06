@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Packages.Rider.Editor.UnitTesting;
 using UnityEngine;
 
 public class BeatTracker : MonoBehaviour
@@ -10,7 +11,7 @@ public class BeatTracker : MonoBehaviour
     
     
     // boots and pants, bpm = 144
-    private int _bpm = 144;
+    private int _bpm = 130;
     private float _beat;
     private float _songOffset = 0.17f;
     private float _songPosition;
@@ -28,8 +29,15 @@ public class BeatTracker : MonoBehaviour
         
         _audioPlayer = GetComponent<AudioSource>();
         _audioPlayer.Play();
+
+        GameEvents.beat.onBeat += onBeat;
     }
 
+    private void onBeat()
+    {
+        print("test");
+    }
+    
     void Update()
     {
         _songPosition = (float) (AudioSettings.dspTime - _dspTimeSong) * _audioPlayer.pitch - _songOffset;
@@ -37,7 +45,7 @@ public class BeatTracker : MonoBehaviour
         // What happens every beat
         if (_songPosition > _lastBeat + _beat)
         {
-            print("beat");
+            GameEvents.beat.OnBeat();
             _lastBeat += _beat * _skippedBeats;
         }
     }
