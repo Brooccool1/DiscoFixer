@@ -47,3 +47,6 @@ TagManager:
   - name: Player
     uniqueID: 4253190465
     locked: 0
+  - name: DiscoBall
+    uniqueID: 3640520467
+    locked: 0

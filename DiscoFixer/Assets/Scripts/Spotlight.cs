@@ -6,6 +6,9 @@ public class Spotlight : MonoBehaviour
 {
     private Vector2 _GoalPosition = Vector2.zero;
     
+    // Bool for axis, true = y; false = x;
+    [SerializeField] private bool _yAxis = true;
+    
     // Beats to skip
     private int _offBeat = 0;
     
@@ -27,8 +30,17 @@ public class Spotlight : MonoBehaviour
     {
         if (_offBeat <= 0)
         {
-            int rand = Random.Range(0, Grid.grid.GetLength(0));
-            _GoalPosition = new Vector2(Grid.grid.GetLength(0) / 2 - rand, Grid.grid.GetLength(1) * 0.6f);
+            if (_yAxis)
+            {
+                int rand = Random.Range(0, Grid.grid.GetLength(0));
+                _GoalPosition = new Vector2(Grid.grid.GetLength(0) / 2 - rand, Grid.grid.GetLength(1) * 0.6f);
+            }
+            else
+            {
+                int rand = Random.Range(0, Grid.grid.GetLength(1));
+                _GoalPosition = new Vector2(Grid.grid.GetLength(0) * 0.6f, Grid.grid.GetLength(1) / 2 - rand);
+            }
+
             _offBeat = 5;
         }
 
@@ -57,9 +69,19 @@ public class Spotlight : MonoBehaviour
         
     
         Vector3 _currentPos = Vector3.zero;
-        _currentPos.x = Mathf.Lerp(transform.position.x, _GoalPosition.x, 0.05f);
-        _currentPos.y = Grid.grid.GetLength(1) * 0.6f;
-        
+        if (_yAxis)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            _currentPos.x = Mathf.Lerp(transform.position.x, _GoalPosition.x, 0.05f);
+            _currentPos.y = _GoalPosition.y;
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+            _currentPos.x = _GoalPosition.x;
+            _currentPos.y = Mathf.Lerp(transform.position.y, _GoalPosition.y, 0.05f);;
+        }
+
         transform.position = _currentPos;
     }
 }
