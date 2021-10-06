@@ -7,12 +7,15 @@ using UnityEngine;
     {
         public Color color;
         public int state = 9;
-        public bool broken = false;
+        public bool isBreaking = false;
+        public bool isBroken = false;
         
         private void Break()
         {
-            broken = true;
+            isBreaking = true;
             // Unless fixed, for every beat state--
+            
+            //If state == 0 -> broken = true
         }
         
     }
