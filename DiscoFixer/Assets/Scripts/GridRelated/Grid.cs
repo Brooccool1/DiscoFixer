@@ -15,6 +15,9 @@ public class Grid : MonoBehaviour
 
     private void Start()
     {
+        
+        GameEvents.beat.onBeat += ChangeColors;
+        
         Color[] colors = { Color.cyan, Color.blue, Color.green, Color.magenta, Color.red, Color.yellow, Color.white,  };
         tileColors.AddRange(colors);
         
@@ -33,6 +36,14 @@ public class Grid : MonoBehaviour
         }
     }
 
+
+    private void ChangeColors()
+    {
+        foreach (var tile in grid)
+        {
+            tile.GetComponent<SpriteRenderer>().color = tileColors[Random.Range(0, tileColors.Count)];
+        }
+    }
 
     
 }
