@@ -11,7 +11,7 @@ public class BeatTracker : MonoBehaviour
     
     
     // boots and pants, bpm = 144
-    private int _bpm = 144;
+    private int _bpm = 130;
     private float _beat;
     private float _songOffset = 0.17f;
     private float _songPosition;
