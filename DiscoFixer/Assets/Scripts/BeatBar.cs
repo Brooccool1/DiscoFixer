@@ -64,32 +64,7 @@ public class BeatBar : MonoBehaviour
             }
         }
         
-        
-        // foreach (var beat in beatThingsL)
-        // {
-        //     if (beat.transform.position.x >= 0)
-        //     {
-        //         
-        //         Destroy(beat);
-        //     }
-        //     else
-        //     {
-        //         var newPos = new Vector2(beat.transform.position.x + 0.02f, beat.transform.position.y);
-        //         beat.transform.position = newPos;
-        //     }
-        // }
-        // foreach (var beat in beatThingsR)
-        // {
-        //     if (beat.transform.position.x <= 0)
-        //     {
-        //         Destroy(beat);
-        //     }
-        //     else
-        //     {
-        //         var newPos = new Vector2(beat.transform.position.x - 0.02f, beat.transform.position.y);
-        //         beat.transform.position = newPos;
-        //     } 
-        // }
+
     }
 }
 
