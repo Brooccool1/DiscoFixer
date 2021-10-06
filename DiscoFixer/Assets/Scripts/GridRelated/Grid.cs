@@ -12,10 +12,15 @@ public class Grid : MonoBehaviour
     [SerializeField, Range(1,13)] private int width = 11;
     public static GameObject[,] grid;
     public List<Color> tileColors;
+    public int breakFrequency = 5;
+    public int breakCountdown;
 
     private void Start()
     {
-        Color[] colors = { Color.cyan, Color.blue, Color.green, Color.magenta, Color.red, Color.yellow, Color.white,  };
+        GameEvents.beat.onBeat += ChangeColors;
+        GameEvents.beat.onBeat += tileBreaker;
+        breakCountdown = breakFrequency;
+        Color[] colors = { Color.cyan, Color.blue, Color.green, Color.magenta, Color.yellow, Color.white,  };
         tileColors.AddRange(colors);
         
         grid = new GameObject[width, height];
@@ -34,5 +39,38 @@ public class Grid : MonoBehaviour
     }
 
 
+    private void ChangeColors()
+    {
+        foreach (var tile in grid)
+        {
+            var tileScript = tile.GetComponent<Tile>();
+            if (!tileScript.isBreaking && !tileScript.isBroken)
+            {
+                tile.GetComponent<SpriteRenderer>().color = tileColors[Random.Range(0, tileColors.Count)];
+            }
+        }
+    }
+
+    private void tileBreaker()
+    {
+        if (breakCountdown > 0)
+        {
+            breakCountdown--;
+        }
+        else
+        {
+            breakCountdown = breakFrequency;
+            BreakATile();
+            
+        }
+    }
+    
+    private void BreakATile()
+    {
+        Debug.Log("BreakATile run");
+        var tile = grid[Random.Range(0, width - 1), Random.Range(0, height - 1)];
+        var tileScript = tile.GetComponent<Tile>();
+        tileScript.isBreaking = true;
+    }
     
 }

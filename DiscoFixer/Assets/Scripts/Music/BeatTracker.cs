@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Packages.Rider.Editor.UnitTesting;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BeatTracker : MonoBehaviour
@@ -30,12 +31,6 @@ public class BeatTracker : MonoBehaviour
         _audioPlayer = GetComponent<AudioSource>();
         _audioPlayer.Play();
 
-        GameEvents.beat.onBeat += onBeat;
-    }
-
-    private void onBeat()
-    {
-        print("test");
     }
     
     void Update()

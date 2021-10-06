@@ -5,17 +5,40 @@ using UnityEngine;
 
     public class Tile : MonoBehaviour
     {
-        public Color color;
+        //public Color color;
+        public int stages = 9;
         public int state = 9;
         public bool isBreaking = false;
         public bool isBroken = false;
-        
+
+        private void Start()
+        {
+            GameEvents.beat.onBeat += Break;
+        }
+
         private void Break()
         {
-            isBreaking = true;
-            // Unless fixed, for every beat state--
-            
-            //If state == 0 -> broken = true
+            if (isBreaking)
+            {
+                state--;
+            }
+
+            if (state == 0)
+            {
+                isBroken = true;
+            }
         }
-        
+
+        private void Update()
+        {
+            if (isBreaking)
+            {
+                GetComponent<SpriteRenderer>().color = Color.red;
+            }
+
+            if (isBroken)
+            {
+                GetComponent<SpriteRenderer>().color = Color.black;
+            }
+        }
     }
