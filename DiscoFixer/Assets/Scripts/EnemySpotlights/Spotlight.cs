@@ -35,7 +35,7 @@ public class Spotlight : MonoBehaviour
             if (_yAxis)
             {
                 int rand = Random.Range(0, Grid.grid.GetLength(0));
-                _GoalPosition = new Vector2(Grid.grid.GetLength(0) / 2 - rand, Grid.grid.GetLength(1) * 0.6f);
+                _GoalPosition = new Vector2(Grid.grid.GetLength(0) / 2 - rand, -Grid.grid.GetLength(1) * 0.6f);
             }
             else
             {
@@ -102,7 +102,7 @@ public class Spotlight : MonoBehaviour
         Vector3 _currentPos = Vector3.zero;
         if (_yAxis)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 180);
             _currentPos.x = Mathf.Lerp(transform.position.x, _GoalPosition.x, 0.05f);
             _currentPos.y = _GoalPosition.y;
         }
