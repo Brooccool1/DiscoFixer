@@ -13,7 +13,7 @@ public class Grid : MonoBehaviour
     public static GameObject[,] grid;
     public List<Color> tileColors = new List<Color>();
     public int breakFrequency = 5;
-    public int breakCountdown;
+    private int breakCountdown;
 
     private void Start()
     {

@@ -14,13 +14,13 @@ public class Player : MonoBehaviour
     }
 
     public TextMeshProUGUI scoreBox;
-    public static Vector2 direction;
+    private static Vector2 direction;
     public State state = State.Walking;
-    public static Vector2 position = new Vector2(0, 0);
-    public GameObject[,] gridSize;
-    public static bool alreadyPressed = false;
+    private static Vector2 position = new Vector2(0, 0);
+    private GameObject[,] gridSize;
+    private static bool alreadyPressed = false;
     public int score = 0;
-    public static int repairPoints = 10;
+    public int repairPoints = 10;
     
     private Vector3 _goalPos = new Vector3(0, 0);
 
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
     private void GetPoints()
     {
         var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
-        score += repairPoints * (10 - heat) * tile.state;
+        score += repairPoints * (10 - heat/2) * tile.state/2;
         scoreBox.text = score.ToString();
         Debug.Log(score);
     }
