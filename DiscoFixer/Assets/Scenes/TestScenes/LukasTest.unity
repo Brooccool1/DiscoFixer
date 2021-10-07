@@ -1019,6 +1019,7 @@ GameObject:
   - component: {fileID: 1097568324}
   - component: {fileID: 1097568323}
   - component: {fileID: 1097568322}
+  - component: {fileID: 1097568325}
   m_Layer: 7
   m_Name: VFX_SuccessBurst_v1 1 (2)
   m_TagString: Untagged
@@ -1121,6 +1122,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1097568325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097568321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc16a3f62bc2664ca771e1107ab2977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1208351303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,7 +1324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254157855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.99, y: -0.92, z: -9.922005}
+  m_LocalPosition: {x: -7.31, y: 2.12, z: -9.922005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1528,7 +1541,12 @@ MonoBehaviour:
   tilePrefab: {fileID: 5789761597127471099, guid: 11244e78495c24611a634761c1f24fa5, type: 3}
   height: 7
   width: 11
-  tileColors: []
+  tileColors:
+  - {r: 0.09411766, g: 0.0627451, b: 0.29411766, a: 0}
+  - {r: 0.22352943, g: 0.15294118, b: 0.34901962, a: 0}
+  - {r: 0.70980394, g: 0.10980393, b: 0.8000001, a: 0}
+  - {r: 0.854902, g: 0.3529412, b: 0.8196079, a: 0}
+  - {r: 0.86274517, g: 0.5803922, b: 0.7294118, a: 0}
   breakFrequency: 5
   breakCountdown: 0
 --- !u!4 &2001104229
