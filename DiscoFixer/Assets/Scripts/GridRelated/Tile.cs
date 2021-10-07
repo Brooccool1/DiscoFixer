@@ -50,7 +50,7 @@ public class Tile : MonoBehaviour
             if (!isBreaking && previousIsBreaking)
             {
                 
-                vfx.SetVector3("Color", new Vector3(50,1,1));
+                vfx.SetVector3("Color", new Vector3(2,159,2));
                 vfx.Play();
                 previousIsBreaking = false;
             }
