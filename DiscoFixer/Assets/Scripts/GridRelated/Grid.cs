@@ -20,8 +20,8 @@ public class Grid : MonoBehaviour
         GameEvents.beat.onBeat += ChangeColors;
         GameEvents.beat.onBeat += tileBreaker;
         breakCountdown = breakFrequency;
-        Color[] colors = { Color.cyan, Color.blue, Color.green, Color.magenta, Color.yellow, Color.white,  };
-        tileColors.AddRange(colors);
+        // Color[] colors = { Color.cyan, Color.blue, Color.green, Color.magenta, Color.yellow, Color.white,  };
+        // tileColors.AddRange(colors);
         
         grid = new GameObject[width, height];
         
