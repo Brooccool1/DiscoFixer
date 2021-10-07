@@ -61,10 +61,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _EmissionIntensity: 90
+    - _EmissionIntensity: 4
     - _EnableExternalAlpha: 0
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.41020918, a: 1}
+    - _Color: {r: 0, g: 1, b: 0.6043427, a: 1}
     - _ColorParameter: {r: 100, g: 2, b: 0, a: 0}
     - _Colr: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 0, b: 0.2, a: 0}
