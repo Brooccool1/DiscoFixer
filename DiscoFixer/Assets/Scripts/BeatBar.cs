@@ -11,7 +11,6 @@ public class BeatBar : MonoBehaviour
     private List<GameObject> beatThingsL = new List<GameObject>();
     private List<GameObject> beatThingsR = new List<GameObject>();
 
-    private Vector2 beatSpawnPos = new Vector2(0, 0);
     public float scaleChange = 0.1f;
     public Vector3 scaleVector = new Vector3(0.1f, 0.1f, 0);
 
@@ -38,7 +37,7 @@ public class BeatBar : MonoBehaviour
 
     private void CreateBeatThings()
     {
-        
+        var beatSpawnPos = background.transform.position;
         // var spawnPosL = new Vector2(background.transform.position.x - background.transform.localScale.x/2, background.transform.localPosition.y);
         // var spawnPosR = new Vector2(background.transform.position.x + background.transform.localScale.x/2, background.transform.localPosition.y);
         var beatThingL = Instantiate(beatPrefab, beatSpawnPos, transform.rotation);
@@ -50,12 +49,13 @@ public class BeatBar : MonoBehaviour
 
     private void MoveBeatThings()
     {
-        var destroyXPosL = background.transform.position.x - background.transform.localScale.x/2;
-        var destroyXPosR = background.transform.position.x + background.transform.localScale.x/2;
-
+        // var destroyXPosL = background.transform.position.x - background.transform.localScale.x/2;
+        // var destroyXPosR = background.transform.position.x + background.transform.localScale.x/2;
+        var destroyPos = background.transform.position.x + background.transform.localScale.x/2;
+        
         for (int i = 0; i < beatThingsL.Count; i++)
         {
-            if (beatThingsL[i].transform.position.x <= destroyXPosL)
+            if (beatThingsL[i].transform.position.x <= -destroyPos)
             {
                 var beat = beatThingsL[i];
                 beatThingsL.RemoveAt(i);
@@ -69,7 +69,7 @@ public class BeatBar : MonoBehaviour
         }
         for (int i = 0; i < beatThingsR.Count; i++)
         {
-            if (beatThingsR[i].transform.position.x >= destroyXPosR)
+            if (beatThingsR[i].transform.position.x >= destroyPos)
             {
                 var beat = beatThingsR[i];
                 beatThingsR.RemoveAt(i);

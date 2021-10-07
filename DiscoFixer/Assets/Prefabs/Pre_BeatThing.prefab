@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5821699680745958745}
   - component: {fileID: 435694353213340221}
   m_Layer: 0
-  m_Name: BeatThing
+  m_Name: Pre_BeatThing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7356193228685453271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.2109, y: 4.1417, z: 0}
-  m_LocalScale: {x: 0.23663057, y: 0.5229624, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
