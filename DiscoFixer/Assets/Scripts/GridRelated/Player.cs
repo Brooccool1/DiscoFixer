@@ -67,21 +67,30 @@ public class Player : MonoBehaviour
         // transform.position = Vector3.Slerp(transform.position, _goalPos, 0.03f);
     }
 
+    public static bool pressedArrows()
+    {
+        return Input.GetAxisRaw("Horizontal") > 0.2 || Input.GetAxisRaw("Horizontal") < -0.2 ||
+               (Input.GetAxisRaw("Vertical") > 0.2 || Input.GetAxisRaw("Vertical") < -0.2);
+    }
+
     private void _controlls()
     {
-        if (Input.anyKey && !alreadyPressed)
+        if (!alreadyPressed)
         {
-            alreadyPressed = true;
-            direction = Vector2.zero;
+            if (pressedArrows())
+            {
+                alreadyPressed = true;
+                direction = Vector2.zero;
+            }
         }
         
-        if (Input.GetKey(KeyCode.UpArrow)) 
+        if (Input.GetAxis("Vertical") > 0) 
         { direction.y = 1; }
-        if (Input.GetKey(KeyCode.DownArrow)) 
+        if (Input.GetAxis("Vertical") < 0) 
         { direction.y = -1; }
-        if (Input.GetKey(KeyCode.LeftArrow)) 
+        if (Input.GetAxis("Horizontal") < 0) 
         { direction.x = -1; }
-        if (Input.GetKey(KeyCode.RightArrow)) 
+        if (Input.GetAxis("Horizontal") > 0) 
         { direction.x = 1; }
     }
 

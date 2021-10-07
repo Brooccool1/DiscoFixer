@@ -10,6 +10,8 @@ public class BeatTracker : MonoBehaviour
     [SerializeField] private AudioClip _song;
     [SerializeField, Range(1, 10)] private int _skippedBeats = 1;
     
+    // Started song
+    private bool _started = false;
     
     // boots and pants, bpm = 144
     private int _bpm = 130;
@@ -23,7 +25,7 @@ public class BeatTracker : MonoBehaviour
 
     private AudioSource _audioPlayer;
     
-    private void Start()
+    private void _startSong()
     {
         _beat = (60 * 100 / _bpm * 100) * 0.0001f;
         _dspTimeSong = (float)AudioSettings.dspTime;
@@ -35,13 +37,24 @@ public class BeatTracker : MonoBehaviour
     
     void Update()
     {
-        _songPosition = (float) (AudioSettings.dspTime - _dspTimeSong) * _audioPlayer.pitch - _songOffset;
-
-        // What happens every beat
-        if (_songPosition > _lastBeat + _beat)
+        if (!_started)
         {
-            GameEvents.beat.OnBeat();
-            _lastBeat += _beat * _skippedBeats;
+            if (Player.pressedArrows())
+            {
+                _startSong();
+                _started = true;
+            }
+        }
+        else
+        {
+            _songPosition = (float) (AudioSettings.dspTime - _dspTimeSong) * _audioPlayer.pitch - _songOffset;
+
+            // What happens every beat
+            if (_songPosition > _lastBeat + _beat)
+            {
+                GameEvents.beat.OnBeat();
+                _lastBeat += _beat * _skippedBeats;
+            }
         }
     }
 }
