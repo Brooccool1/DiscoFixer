@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5821699680745958745}
   - component: {fileID: 435694353213340221}
   m_Layer: 0
-  m_Name: BeatThing
+  m_Name: Pre_BeatThing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
