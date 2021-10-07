@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.UI;
 using UnityEngine;
 
@@ -11,13 +12,14 @@ public class Player : MonoBehaviour
         Walking,
         Fixing
     }
-    
+
+    public TextMeshProUGUI scoreBox;
     public static Vector2 direction;
     public State state = State.Walking;
     public static Vector2 position = new Vector2(0, 0);
     public GameObject[,] gridSize;
     public static bool alreadyPressed = false;
-    public static  int score = 0;
+    public int score = 0;
     public static int repairPoints = 10;
     
     private Vector3 _goalPos = new Vector3(0, 0);
@@ -118,14 +120,15 @@ public class Player : MonoBehaviour
 
     }
 
-    private static void GetPoints()
+    private void GetPoints()
     {
         var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
         score += repairPoints * (10 - heat) * tile.state;
+        scoreBox.text = score.ToString();
         Debug.Log(score);
     }
 
-    private static void CheckAndFixTile()
+    private void CheckAndFixTile()
     {
         var gameObject = Grid.grid[Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)];
         var tileScript = gameObject.GetComponent<Tile>();
