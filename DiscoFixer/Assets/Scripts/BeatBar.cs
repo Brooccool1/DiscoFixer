@@ -10,12 +10,11 @@ public class BeatBar : MonoBehaviour
     [SerializeField] private GameObject discoBall;
     private List<GameObject> beatThingsL = new List<GameObject>();
     private List<GameObject> beatThingsR = new List<GameObject>();
-
-    public float scaleChange = 0.1f;
-    public Vector3 scaleVector = new Vector3(0.1f, 0.1f, 0);
+    private Transform ballTF;
 
     private void Start()
     {
+        ballTF = discoBall.transform;
         GameEvents.beat.onBeat += CreateBeatThings;
         GameEvents.beat.onBeat += PulseDiscoBall;
 
@@ -24,22 +23,20 @@ public class BeatBar : MonoBehaviour
     private void Update()
     {
         MoveBeatThings();
-        PulseDiscoBall();
+        if (ballTF.localScale.x > 1.2)
+        {
+            ballTF.localScale = Vector3.Lerp(ballTF.localScale, ballTF.localScale * -0.1f, Time.deltaTime);
+        }
     }
 
     private void PulseDiscoBall()
     {
-        var ballScale = discoBall.transform.localScale;
-        ballScale += scaleVector;
-        // ballScale.x = Mathf.Lerp(ballScale.x, ballScale.x -= scaleChange.x,0.05f);
-        // ballScale.y = Mathf.Lerp(ballScale.y, ballScale.y -= scaleChange.y,0.05f);
+        ballTF.localScale = new Vector3(2, 2, 0);
     }
 
     private void CreateBeatThings()
     {
         var beatSpawnPos = background.transform.position;
-        // var spawnPosL = new Vector2(background.transform.position.x - background.transform.localScale.x/2, background.transform.localPosition.y);
-        // var spawnPosR = new Vector2(background.transform.position.x + background.transform.localScale.x/2, background.transform.localPosition.y);
         var beatThingL = Instantiate(beatPrefab, beatSpawnPos, transform.rotation);
         var beatThingR = Instantiate(beatPrefab, beatSpawnPos, transform.rotation);
         beatThingsL.Add(beatThingL);
@@ -49,8 +46,6 @@ public class BeatBar : MonoBehaviour
 
     private void MoveBeatThings()
     {
-        // var destroyXPosL = background.transform.position.x - background.transform.localScale.x/2;
-        // var destroyXPosR = background.transform.position.x + background.transform.localScale.x/2;
         var destroyPos = background.transform.position.x + background.transform.localScale.x/2;
         
         for (int i = 0; i < beatThingsL.Count; i++)
