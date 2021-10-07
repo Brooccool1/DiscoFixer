@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public static Vector2 position = new Vector2(0, 0);
     public GameObject[,] gridSize;
     public static bool alreadyPressed = false;
+    public static  int score = 0;
+    public static int repairPoints = 10;
     
     private Vector3 _goalPos = new Vector3(0, 0);
 
@@ -55,7 +57,7 @@ public class Player : MonoBehaviour
         {
             _setGrid();
         }
-        _controlls();
+        _controls();
 
         // lerp = smooth
         // Slerp = nice bounce but buggy
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
                (Input.GetAxisRaw("Vertical") > 0.2 || Input.GetAxisRaw("Vertical") < -0.2);
     }
 
-    private void _controlls()
+    private void _controls()
     {
         if (!alreadyPressed)
         {
@@ -116,6 +118,13 @@ public class Player : MonoBehaviour
 
     }
 
+    private static void GetPoints()
+    {
+        var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
+        score += repairPoints * (10 - heat) * tile.state;
+        Debug.Log(score);
+    }
+
     private static void CheckAndFixTile()
     {
         var gameObject = Grid.grid[Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)];
@@ -123,6 +132,7 @@ public class Player : MonoBehaviour
         if (!tileScript.isBreaking) return;
         tileScript.isBreaking = false;
         tileScript.state = tileScript.stages;
+        GetPoints();
     }
 
 }
