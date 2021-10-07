@@ -256,6 +256,8 @@ MonoBehaviour:
   beatPrefab: {fileID: 7356193228685453271, guid: 2b125d635e9434cf4abf271b8bdab727, type: 3}
   background: {fileID: 611132203}
   discoBall: {fileID: 377428234}
+  scaleChange: 0.1
+  scaleVector: {x: 0.1, y: 0.1, z: 0}
 --- !u!1 &377428234
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +657,34 @@ PrefabInstance:
     - target: {fileID: 3597722282410565321, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: m_Name
       value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: tileColors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: tileColors.Array.data[0].b
+      value: 0.7203208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: tileColors.Array.data[0].g
+      value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: tileColors.Array.data[0].r
+      value: 0.049439307
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: tileColors.Array.data[1].b
+      value: 0.9529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: tileColors.Array.data[1].g
+      value: 0.050980363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: tileColors.Array.data[1].r
+      value: 0.75625014
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565367, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: m_RootOrder

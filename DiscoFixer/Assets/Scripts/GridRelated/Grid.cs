@@ -11,7 +11,7 @@ public class Grid : MonoBehaviour
     [SerializeField, Range(1,9)] private int height = 7;
     [SerializeField, Range(1,13)] private int width = 11;
     public static GameObject[,] grid;
-    public List<Color> tileColors;
+    public List<Color> tileColors = new List<Color>();
     public int breakFrequency = 5;
     public int breakCountdown;
 
