@@ -20,9 +20,19 @@ public class Player : MonoBehaviour
     
     private Vector3 _goalPos = new Vector3(0, 0);
 
+    // heat
+    public static int heat = 0;
 
     // Couldn't always set grid in Start
     private bool _lateStart = false;
+
+    // Giving access to the players world position 
+    private static Vector3 _worldPosition;
+    public static Vector3 WorldPos
+    {
+        get { return _worldPosition; }
+        private set { }
+    }
     
     private void Start()
     {
@@ -38,6 +48,8 @@ public class Player : MonoBehaviour
     
     private void Update()
     {
+        _worldPosition = transform.position;
+        
         // Runs in the first time update runs
         if (!_lateStart)
         {

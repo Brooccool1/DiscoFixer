@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spotlight : MonoBehaviour
@@ -28,6 +29,7 @@ public class Spotlight : MonoBehaviour
     
     private void _setPosition()
     {
+        // Movement
         if (_offBeat <= 0)
         {
             if (_yAxis)
@@ -53,10 +55,39 @@ public class Spotlight : MonoBehaviour
         
         GetComponent<SpriteRenderer>().color = new Color(_charge, _charge * 0.1f, _charge * 0.1f);
 
+        // Fire beam
         if (_charge <= 1)
         {
+            _warmingPlayer();
             _charge = 20;
         }
+    }
+
+    private void _warmingPlayer()
+    {
+        // Show Light
+        GetComponent<LineRenderer>().startColor += new Color(0, 0, 0, 160);
+        
+        // position difference
+        Vector3Int difference = new Vector3Int(0, 0);
+        difference.x = (int)Player.WorldPos.x - (int)transform.position.x;
+        difference.y = (int)Player.WorldPos.y - (int)transform.position.y;
+        
+        if (_yAxis)
+        {
+            if (difference.x == 0)
+            {
+                Player.heat++;
+            }
+        }
+        else
+        {
+            if (difference.y == 0)
+            {
+                Player.heat++;
+            }
+        }
+        print(Player.heat);
     }
 
     private void Update()
