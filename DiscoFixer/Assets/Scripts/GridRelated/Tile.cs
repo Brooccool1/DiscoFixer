@@ -26,7 +26,11 @@ public class Tile : MonoBehaviour
             if (isBreaking)
             {
                 state--;
+                if (!isBroken)
+                {
                 previousIsBreaking = true;
+                }
+                
             }
 
             if (state == 0)
@@ -55,6 +59,14 @@ public class Tile : MonoBehaviour
                 previousIsBreaking = false;
             }
 
+
+            if (isBroken && previousIsBreaking)
+
+            {
+                vfx.SetVector3("Color", new Vector3(160, 20, 2));
+                vfx.Play();
+                previousIsBreaking = false;
+            }
 
     }
     }
