@@ -239,6 +239,7 @@ MonoBehaviour:
   scoreBox: {fileID: 1423083789}
   state: 0
   score: 0
+  repairPoints: 10
 --- !u!4 &508907256
 Transform:
   m_ObjectHideFlags: 0
@@ -800,6 +801,10 @@ PrefabInstance:
     - target: {fileID: 3597722282410565321, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: m_Name
       value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: pickupDelay
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: tileColors.Array.size

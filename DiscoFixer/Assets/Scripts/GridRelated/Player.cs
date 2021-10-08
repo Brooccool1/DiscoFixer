@@ -182,7 +182,14 @@ public class Player : MonoBehaviour
         var tileScript = gameObject.GetComponent<Tile>();
         if (tileScript.hasWaterPickup)
         {
+            Debug.Log($"heat before: {heat}");
             heat -= tileScript.waterPickupEffect;
+            if (heat < 0)
+            {
+                heat = 0;
+            }
+               
+            Debug.Log($"heat after: {heat}");
             tileScript.hasWaterPickup = false;
         }
     }
