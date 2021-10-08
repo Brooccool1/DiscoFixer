@@ -124,9 +124,8 @@ public class Player : MonoBehaviour
     private void GetPoints()
     {
         var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
-        // Changed heat / 2 to heat / 90 (the degress) was my thought behind it anyways.
-        // and commented out tile.state/2 as I for the moment at least it is not conveyed good enough for the player to understand how it works.
-        score += repairPoints * (10 - heat / 90); //* tile.state/2; 
+        // commented out tile.state/2 as for the moment at least it is not conveyed good enough for the player to understand how it works.
+        score += repairPoints * (5 - heat / 20); //* tile.state/2; 
         scoreBox.text = score.ToString();
         Debug.Log(score);
     }

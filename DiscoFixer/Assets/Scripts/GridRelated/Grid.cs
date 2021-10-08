@@ -71,7 +71,7 @@ public class Grid : MonoBehaviour
         while (alreadyBroken)
         {
             // Get a random tile
-            var tile = grid[Random.Range(0, width - 1), Random.Range(0, height - 1)];
+            var tile = grid[Random.Range(0, width), Random.Range(0, height)];
             var tileScript = tile.GetComponent<Tile>();
             // Check if chosen tile is already breaking or broken
             if (!tileScript.isBreaking && !tileScript.isBroken)

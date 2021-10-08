@@ -75,17 +75,22 @@ public class Spotlight : MonoBehaviour
         
         if (_yAxis)
         {
-            if (difference.x == 0 && Player.heat < 10)
+            if (difference.x == 0 && Player.heat < 100)
             {
-                Player.heat++;
+                Player.heat += 10;
             }
         }
         else
         {
-            if (difference.y == 0 && Player.heat < 10)
+            if (difference.y == 0 && Player.heat < 100)
             {
-                Player.heat++;
+                Player.heat += 10;
             }
+        }
+
+        if (Player.heat > 100)
+        {
+            Player.heat = 100;
         }
         print(Player.heat);
     }
