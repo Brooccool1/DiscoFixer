@@ -14,14 +14,16 @@ public class Grid : MonoBehaviour
     public List<Color> tileColors = new List<Color>();
     public int breakFrequency = 5;
     private int breakCountdown;
+    public int pickupDelay = 10;
+    private int pickupCountdown;
 
     private void Start()
     {
         GameEvents.beat.onBeat += ChangeColors;
-        GameEvents.beat.onBeat += tileBreaker;
+        GameEvents.beat.onBeat += TileBreaker;
+        GameEvents.beat.onBeat += PickupSpawner;
         breakCountdown = breakFrequency;
-        // Color[] colors = { Color.cyan, Color.blue, Color.green, Color.magenta, Color.yellow, Color.white,  };
-        // tileColors.AddRange(colors);
+        pickupCountdown = pickupDelay;
         
         grid = new GameObject[width, height];
         
@@ -37,7 +39,22 @@ public class Grid : MonoBehaviour
             }
         }
     }
-
+    
+    private void PickupSpawner()
+    {
+        Debug.Log($"pickupCountdown: {pickupCountdown}");
+        if (pickupCountdown == 0)
+        {
+            var tile = grid[Random.Range(0, width), Random.Range(0, height)];
+            var tileScript = tile.GetComponent<Tile>();
+            tileScript.hasWaterPickup = true;
+            pickupCountdown = pickupDelay;
+        }
+        else
+        {
+            pickupCountdown--;
+        }
+    }
 
     private void ChangeColors()
     {
@@ -51,7 +68,7 @@ public class Grid : MonoBehaviour
         }
     }
 
-    private void tileBreaker()
+    private void TileBreaker()
     {
         if (breakCountdown > 0)
         {

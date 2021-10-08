@@ -11,6 +11,9 @@ public class Tile : MonoBehaviour
     public bool isBreaking = false;
     public bool isBroken = false;
     public bool previousIsBreaking = false;
+    public bool hasWaterPickup = false;
+    public int waterPickupEffect = 30;
+    //public GameObject waterPickup;
     private VisualEffect vfx;
     
 
@@ -34,20 +37,12 @@ public class Tile : MonoBehaviour
 
         if (state == 0)
         {
-            
-            
-
             isBroken = true;
-
-
         }
     }
 
     private void Update()
     {
-        
-
-
         if (isBreaking && !isBroken)
         {
             GetComponent<SpriteRenderer>().material.color = Color.red;
@@ -60,20 +55,18 @@ public class Tile : MonoBehaviour
 
         if (!isBreaking && previousIsBreaking)
         {
-            
             vfx.SetVector3("Color", new Vector3(2,159,2));
             vfx.Play();
             previousIsBreaking = false;
         }
 
+        if (isBroken && previousIsBreaking)
+        {
+            vfx.SetVector3("Color", new Vector3(160, 20, 2));
+            vfx.Play();
+            previousIsBreaking = false;
+        }
 
-         if (isBroken && previousIsBreaking)
-
-         {
-                vfx.SetVector3("Color", new Vector3(160, 20, 2));
-                vfx.Play();
-                previousIsBreaking = false;
-         }
-
+        gameObject.GetComponentInChildren<Transform>().Find("Water").GetComponent<SpriteRenderer>().enabled = hasWaterPickup;
     }
 }
