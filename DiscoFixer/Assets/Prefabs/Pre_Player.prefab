@@ -130,7 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40de10eca2384129941a2e4df1c7c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreBox: {fileID: 0}
   state: 0
+  score: 0
+  repairPoints: 10
 --- !u!114 &4176383464623190415
 MonoBehaviour:
   m_ObjectHideFlags: 0
