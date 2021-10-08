@@ -11,6 +11,8 @@ public class Tile : MonoBehaviour
     public bool isBreaking = false;
     public bool isBroken = false;
     public bool previousIsBreaking = false;
+    public bool hasWaterPickup = false;
+    public int waterPickupEffect = 30;
     [SerializeField] private VisualEffect vfxBurst;
     [SerializeField] private VisualEffect vfxBuildUp;
     [SerializeField] private float MaxSpawnRate;
@@ -43,22 +45,12 @@ public class Tile : MonoBehaviour
 
         if (state == 0)
         {
-            
-            
-
             isBroken = true;
-
-           
-
-
         }
     }
 
     private void Update()
     {
-        
-
-
         if (isBreaking && !isBroken)
         {
             GetComponent<SpriteRenderer>().material.color = Color.red;
@@ -78,18 +70,16 @@ public class Tile : MonoBehaviour
             vfxBuildUp.Stop();
             spawnrate = 0;
         }
+        
+        if (isBroken && previousIsBreaking)
+        {
+            vfxBurst.SetVector3("Color", new Vector3(160, 20, 2));
+            vfxBurst.Play();
+            previousIsBreaking = false;
+            vfxBuildUp.Stop();
 
-
-         if (isBroken && previousIsBreaking)
-
-         {
-                vfxBurst.SetVector3("Color", new Vector3(160, 20, 2));
-                vfxBurst.Play();
-                previousIsBreaking = false;
-                vfxBuildUp.Stop();
-
-                spawnrate = 0;
+            spawnrate = 0;
         }
-
+        gameObject.GetComponentInChildren<Transform>().Find("Water").GetComponent<SpriteRenderer>().enabled = hasWaterPickup;
     }
 }
