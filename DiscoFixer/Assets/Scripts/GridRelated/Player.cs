@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameEvents.beat.onBeat += Move;
+        heat = 0;
     }
 
     private void _setGrid()
