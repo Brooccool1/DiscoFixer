@@ -26,31 +26,29 @@ public class Tile : MonoBehaviour
         if (isBreaking)
         {
             state--;
-            previousIsBreaking = true;
+            if(!isBroken)
+            {
+                previousIsBreaking = true;
+            }
         }
 
         if (state == 0)
         {
-            if (isBreaking)
-            {
-                state--;
-                if (!isBroken)
-                {
-                previousIsBreaking = true;
-                }
-                
-            }
+            
+            
 
-            if (state == 0)
-            {
-                isBroken = true;
-            }
+            isBroken = true;
+
+
         }
     }
 
     private void Update()
     {
-        if (isBreaking)
+        
+
+
+        if (isBreaking && !isBroken)
         {
             GetComponent<SpriteRenderer>().material.color = Color.red;
         }
@@ -69,13 +67,13 @@ public class Tile : MonoBehaviour
         }
 
 
-            if (isBroken && previousIsBreaking)
+         if (isBroken && previousIsBreaking)
 
-            {
+         {
                 vfx.SetVector3("Color", new Vector3(160, 20, 2));
                 vfx.Play();
                 previousIsBreaking = false;
-            }
+         }
 
     }
 }
