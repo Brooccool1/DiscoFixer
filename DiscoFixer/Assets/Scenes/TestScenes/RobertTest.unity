@@ -263,6 +263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a8eb6538578aa408a4bf5243d313e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _beatSync: 0.1
+  _bloomMinMax: {x: 0, y: 0}
+  _chromaticMinMax: {x: 0, y: 0}
+  _lenDistMinMax: {x: 0, y: 0}
   volume: {fileID: 75403411}
 --- !u!114 &75403411
 MonoBehaviour:
@@ -1550,6 +1554,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pre_BeatBar
       objectReference: {fileID: 0}
+    - target: {fileID: 2132064253821129004, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 2132064254591970058, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
 --- !u!4 &755226148 stripped
@@ -1838,6 +1850,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7230499440311224751, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
 --- !u!4 &1101515955 stripped
@@ -1944,7 +1960,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290756936}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: c8130e90d524dd547984393627914bfc, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 5179695918ccf7c4a98bf7aa8d0cae36, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -2157,6 +2173,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7230499440311224751, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
 --- !u!4 &1339494048 stripped
@@ -2693,6 +2713,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1653426748}
     m_Modifications:
+    - target: {fileID: 2172875287733033405, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 2172875287973474769, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_Name
       value: Pre_HeatBar
