@@ -11,13 +11,17 @@ public class Tile : MonoBehaviour
     public bool isBreaking = false;
     public bool isBroken = false;
     public bool previousIsBreaking = false;
-    private VisualEffect vfx;
-    
+    [SerializeField] private VisualEffect vfxBurst;
+    [SerializeField] private VisualEffect vfxBuildUp;
+    [SerializeField] private float MaxSpawnRate;
+
+    private float spawnrate = 0f;
+
 
     private void Start()
     {
         GameEvents.beat.onBeat += Break;
-        vfx = GetComponentInChildren<VisualEffect>();
+        //vfx = GetComponentInChildren<VisualEffect>();
         state = stages;
     }
 
@@ -26,6 +30,11 @@ public class Tile : MonoBehaviour
         if (isBreaking)
         {
             state--;
+            
+            spawnrate = (1f - (float)state / 9f) * MaxSpawnRate;
+
+            vfxBuildUp.SetFloat("SpawnRate", spawnrate);
+
             if(!isBroken)
             {
                 previousIsBreaking = true;
@@ -38,6 +47,8 @@ public class Tile : MonoBehaviour
             
 
             isBroken = true;
+
+           
 
 
         }
@@ -61,19 +72,24 @@ public class Tile : MonoBehaviour
         if (!isBreaking && previousIsBreaking)
         {
             
-            vfx.SetVector3("Color", new Vector3(2,159,2));
-            vfx.Play();
+            vfxBurst.SetVector3("Color", new Vector3(2,159,2));
+            vfxBurst.Play();
             previousIsBreaking = false;
+            vfxBuildUp.Stop();
+            spawnrate = 0;
         }
 
 
          if (isBroken && previousIsBreaking)
 
          {
-                vfx.SetVector3("Color", new Vector3(160, 20, 2));
-                vfx.Play();
+                vfxBurst.SetVector3("Color", new Vector3(160, 20, 2));
+                vfxBurst.Play();
                 previousIsBreaking = false;
-         }
+                vfxBuildUp.Stop();
+
+                spawnrate = 0;
+        }
 
     }
 }

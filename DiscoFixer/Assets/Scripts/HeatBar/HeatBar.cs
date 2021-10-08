@@ -43,13 +43,13 @@ public class HeatBar : MonoBehaviour
             newPos += new Vector3(Mathf.Cos(radius), Mathf.Sin(radius));
             
             
-            _line.SetPosition(_oldHeat, _line.GetPosition(_oldHeat - 1) + newPos * 0.2f);
+            _line.SetPosition(_oldHeat, _line.GetPosition(_oldHeat - 1) + newPos * 0.02f);
             print(radius);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Player.heat++;
+            Player.heat+=100;
         }
     }
 }
