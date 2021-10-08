@@ -16,9 +16,13 @@ public class BeatTracker : MonoBehaviour
     // boots and pants, bpm = 144
     private int _bpm = 130;
     private float _beat;
-    private float _songOffset = 0.17f;
+    
+    // There's a tiny gap at the start of a mp3 file, this variable is from trial and error
+    private float _songOffset = 0.5f;
+    
     private float _songPosition;
 
+    // DSP at the start of the song
     private float _dspTimeSong;
     
     private float _lastBeat = 0;
@@ -47,7 +51,7 @@ public class BeatTracker : MonoBehaviour
         }
         else
         {
-            _songPosition = (float) (AudioSettings.dspTime - _dspTimeSong) * _audioPlayer.pitch - _songOffset;
+            _songPosition = (float) (AudioSettings.dspTime - _dspTimeSong) * _audioPlayer.pitch + _songOffset;
 
             // What happens every beat
             if (_songPosition > _lastBeat + _beat)

@@ -87,7 +87,6 @@ public class Spotlight : MonoBehaviour
                 Player.heat++;
             }
         }
-        print(Player.heat);
     }
 
     private void Update()
