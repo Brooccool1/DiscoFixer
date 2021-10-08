@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Spotlight : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class Spotlight : MonoBehaviour
     
     // Color will be white for a while then turn to red
     private int _charge = 20;
+
+    // Visual effect
+    [SerializeField] private VisualEffect vfxBeam;
+
 
     private void Start()
     {
@@ -60,8 +65,16 @@ public class Spotlight : MonoBehaviour
         {
             _warmingPlayer();
             _charge = 20;
+            _playEffect();
         }
     }
+
+    private void _playEffect()
+    {
+        
+        vfxBeam.Play();
+    }
+
 
     private void _warmingPlayer()
     {
@@ -118,5 +131,13 @@ public class Spotlight : MonoBehaviour
         }
 
         transform.position = _currentPos;
+
+        
+
+        
+
+       
+
+
     }
 }
