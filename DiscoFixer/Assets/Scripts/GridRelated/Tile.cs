@@ -5,28 +5,40 @@ using UnityEngine.VFX;
 
 
 public class Tile : MonoBehaviour
-    {
-        //public Color color;
-        public int stages = 9;
-        public int state = 9;
-        public bool isBreaking = false;
-        public bool isBroken = false;
-        public bool previousIsBreaking = false;
-        private VisualEffect vfx;
-        
+{
+    public int stages = 9;
+    public int state;
+    public bool isBreaking = false;
+    public bool isBroken = false;
+    public bool previousIsBreaking = false;
+    private VisualEffect vfx;
+    
 
-        private void Start()
+    private void Start()
+    {
+        GameEvents.beat.onBeat += Break;
+        vfx = GetComponentInChildren<VisualEffect>();
+        state = stages;
+    }
+
+    private void Break()
+    {
+        if (isBreaking)
         {
-            GameEvents.beat.onBeat += Break;
-           vfx = GetComponentInChildren<VisualEffect>();
+            state--;
+            previousIsBreaking = true;
         }
 
-        private void Break()
+        if (state == 0)
         {
             if (isBreaking)
             {
                 state--;
+                if (!isBroken)
+                {
                 previousIsBreaking = true;
+                }
+                
             }
 
             if (state == 0)
@@ -34,27 +46,36 @@ public class Tile : MonoBehaviour
                 isBroken = true;
             }
         }
+    }
 
-        private void Update()
+    private void Update()
+    {
+        if (isBreaking)
         {
-            if (isBreaking)
-            {
-                GetComponent<SpriteRenderer>().material.color = Color.red;
-            }
+            GetComponent<SpriteRenderer>().material.color = Color.red;
+        }
 
-            if (isBroken)
-            {
-                GetComponent<SpriteRenderer>().material.color = Color.black;
-            }
+        if (isBroken)
+        {
+            GetComponent<SpriteRenderer>().material.color = Color.black;
+        }
 
-            if (!isBreaking && previousIsBreaking)
+        if (!isBreaking && previousIsBreaking)
+        {
+            
+            vfx.SetVector3("Color", new Vector3(2,159,2));
+            vfx.Play();
+            previousIsBreaking = false;
+        }
+
+
+            if (isBroken && previousIsBreaking)
+
             {
-                
-                vfx.SetVector3("Color", new Vector3(2,159,2));
+                vfx.SetVector3("Color", new Vector3(160, 20, 2));
                 vfx.Play();
                 previousIsBreaking = false;
             }
 
-
     }
-    }
+}

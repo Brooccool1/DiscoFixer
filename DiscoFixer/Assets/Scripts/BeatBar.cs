@@ -11,7 +11,11 @@ public class BeatBar : MonoBehaviour
     private List<GameObject> beatThingsL = new List<GameObject>();
     private List<GameObject> beatThingsR = new List<GameObject>();
     private Transform ballTF;
-
+    public float minBallSizeModifier = 1;
+    public float maxBallSizeModifier = 1;
+    public float ballShrinkSpeed = 1;
+    public float beatThingSpeed = 1;
+    
     private void Start()
     {
         ballTF = discoBall.transform;
@@ -23,15 +27,15 @@ public class BeatBar : MonoBehaviour
     private void Update()
     {
         MoveBeatThings();
-        if (ballTF.localScale.x > 1.2)
+        if (ballTF.localScale.x > 1.2 * minBallSizeModifier)
         {
-            ballTF.localScale = Vector3.Lerp(ballTF.localScale, ballTF.localScale * -0.1f, Time.deltaTime);
+            ballTF.localScale = Vector3.Lerp(ballTF.localScale, ballTF.localScale * -0.1f, ballShrinkSpeed * Time.deltaTime);
         }
     }
 
     private void PulseDiscoBall()
     {
-        ballTF.localScale = new Vector3(2, 2, 0);
+        ballTF.localScale = new Vector3(2, 2, 0) * maxBallSizeModifier;
     }
 
     private void CreateBeatThings()
@@ -58,7 +62,7 @@ public class BeatBar : MonoBehaviour
             }
             else
             {
-                var newPos = new Vector2(beatThingsL[i].transform.position.x - 0.03f, beatThingsL[i].transform.position.y);
+                var newPos = new Vector2((beatThingsL[i].transform.position.x - 0.03f) * beatThingSpeed, beatThingsL[i].transform.position.y);
                 beatThingsL[i].transform.position = newPos;
             }
         }
@@ -72,7 +76,7 @@ public class BeatBar : MonoBehaviour
             }
             else
             {
-                var newPos = new Vector2(beatThingsR[i].transform.position.x + 0.03f, beatThingsR[i].transform.position.y);
+                var newPos = new Vector2((beatThingsR[i].transform.position.x + 0.03f) * beatThingSpeed, beatThingsR[i].transform.position.y);
                 beatThingsR[i].transform.position = newPos;
             }
         }
