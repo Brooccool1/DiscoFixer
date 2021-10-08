@@ -16,6 +16,9 @@ public class Grid : MonoBehaviour
     private int breakCountdown;
     public int pickupDelay = 10;
     private int pickupCountdown;
+    private int everyOther = 0;
+    private Color color1;
+    private Color color2;
     
 
     private void Start()
@@ -25,7 +28,6 @@ public class Grid : MonoBehaviour
         GameEvents.beat.onBeat += PickupSpawner;
         breakCountdown = breakFrequency;
         pickupCountdown = pickupDelay;
-        
         grid = new GameObject[width, height];
         
         var basePos = new Vector2(transform.position.x - width/2, transform.position.y - height/2);
@@ -40,6 +42,7 @@ public class Grid : MonoBehaviour
             }
         }
     }
+    
     
     private void PickupSpawner()
     {
@@ -59,6 +62,7 @@ public class Grid : MonoBehaviour
 
     private void ChangeColors()
     {
+        // Random //
         foreach (var tile in grid)
         {
             var tileScript = tile.GetComponent<Tile>();
@@ -67,6 +71,25 @@ public class Grid : MonoBehaviour
                 tile.GetComponent<SpriteRenderer>().material.color = tileColors[Random.Range(0, tileColors.Count)];
             }
         }
+        
+        
+        // Every other column //
+        // for (int i = 0; i < grid.GetLength(0); i++)
+        // {
+        //     for (int j = 0; j < grid.GetLength(1); j++)
+        //     {
+        //         if (i % 2 == 0)
+        //         {
+        //             grid[i, j].GetComponent<SpriteRenderer>().material.color = color1;
+        //         }
+        //         else
+        //         {
+        //             grid[i, j].GetComponent<SpriteRenderer>().material.color = color2;
+        //         }
+        //     } 
+        // }
+        
+        
     }
 
     private void TileBreaker()

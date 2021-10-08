@@ -182,7 +182,14 @@ public class Player : MonoBehaviour
         var tileScript = gameObject.GetComponent<Tile>();
         if (tileScript.hasWaterPickup)
         {
+            Debug.Log($"heat before: {heat}");
             heat -= tileScript.waterPickupEffect;
+            if (heat < 0)
+            {
+                heat = 0;
+            }
+               
+            Debug.Log($"heat after: {heat}");
             tileScript.hasWaterPickup = false;
         }
     }
@@ -192,6 +199,7 @@ public class Player : MonoBehaviour
         var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
         // commented out tile.state/2 as for the moment at least it is not conveyed good enough for the player to understand how it works.
         score += repairPoints * (5 - heat / 20); //* tile.state/2; 
+        if(scoreBox != null)
         scoreBox.text = score.ToString();
         Debug.Log(score);
     }

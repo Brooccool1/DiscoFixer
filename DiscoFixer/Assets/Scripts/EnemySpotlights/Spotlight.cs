@@ -19,9 +19,6 @@ public class Spotlight : MonoBehaviour
 
     // Visual effect
     [SerializeField] private VisualEffect vfxBeam;
-    [SerializeField] private float _durationFx;
-
-    private float _extention = 0f;
 
 
     private void Start()
@@ -74,10 +71,8 @@ public class Spotlight : MonoBehaviour
 
     private void _playEffect()
     {
-        // plays a particle effect along with the beam
-
-        vfxBeam.SetFloat("SpawnRate", 1);
-        _extention = 0f;
+        
+        vfxBeam.Play();
     }
 
 
@@ -137,18 +132,11 @@ public class Spotlight : MonoBehaviour
 
         transform.position = _currentPos;
 
-        // vfx update
+        
 
-        vfxBeam.SetFloat("Extention", _extention);
+        
 
-        _extention = _extention + _durationFx;
-
-        if (_extention > 1f)
-        {
-            vfxBeam.SetFloat("SpawnRate", 0);
-            _extention = 0;
-
-        }
+       
 
 
     }
