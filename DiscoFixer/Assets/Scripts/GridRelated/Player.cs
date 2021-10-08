@@ -102,7 +102,9 @@ public class Player : MonoBehaviour
     private void Move()
     {
         var targetTile = position + direction;
-        if (targetTile.x < 0 || targetTile.x > Grid.grid.GetLength(0)-1)
+        CheckTileStatus();
+
+        if (targetTile.x < 0|| targetTile.x > Grid.grid.GetLength(0)-1)
         {
             direction.x = -direction.x;
         }
@@ -112,6 +114,7 @@ public class Player : MonoBehaviour
             direction.y = -direction.y;
         }
 
+
         
         position += direction;
         _goalPos = Grid.grid[(int)position.x, (int)position.y].transform.position;
@@ -119,7 +122,58 @@ public class Player : MonoBehaviour
         alreadyPressed = false;
         CheckForPickup();
         CheckAndFixTile();
+        SetDirectionToNormal();
 
+    }
+
+    private void CheckTileStatus()
+    {
+        RaycastHit2D hitTile = Physics2D.Raycast(WorldPos + new Vector3(direction.x, direction.y, 0), direction);
+        Tile tile = null;
+
+        if (hitTile)
+        {
+            tile = hitTile.collider.GetComponent<Tile>();
+            if (tile.isBreaking && !tile.isBroken)
+            {
+                Debug.Log("Hit a breaking tile");
+                tile.isBreaking = false;
+                tile.state = tile.stages;
+                GetPoints();
+                tile = null;
+                hitTile = Physics2D.Raycast(WorldPos + new Vector3(direction.x + direction.x, direction.y + direction.y, 0), direction);
+                if (hitTile)
+                    tile = hitTile.collider.GetComponent<Tile>();
+
+                if (tile != null && !tile.isBroken)
+                {
+                    if (direction.x > 0)
+                        direction.x = 2;
+                    else if (direction.x < 0)
+                        direction.x = -2;
+                    if (direction.y > 0)
+                        direction.y = 2;
+                    else if (direction.y < 0)
+                        direction.y = -2;
+                }
+
+
+            }
+            tile = null;
+
+        }
+    }
+
+    private static void SetDirectionToNormal()
+    {
+        if (direction.x > 0)
+            direction.x = 1;
+        else if (direction.x < 0)
+            direction.x = -1;
+        if (direction.y > 0)
+            direction.y = 1;
+        else if (direction.y < 0)
+            direction.y = -1;
     }
 
     private void CheckForPickup()
@@ -146,7 +200,7 @@ public class Player : MonoBehaviour
     {
         var gameObject = Grid.grid[Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)];
         var tileScript = gameObject.GetComponent<Tile>();
-        if (!tileScript.isBreaking) return;
+        if (!tileScript.isBreaking || tileScript.isBroken) return;
         tileScript.isBreaking = false;
         tileScript.state = tileScript.stages;
         GetPoints();

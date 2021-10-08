@@ -16,6 +16,7 @@ public class Grid : MonoBehaviour
     private int breakCountdown;
     public int pickupDelay = 10;
     private int pickupCountdown;
+    
 
     private void Start()
     {
