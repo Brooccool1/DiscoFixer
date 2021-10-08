@@ -192,6 +192,7 @@ public class Player : MonoBehaviour
         var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
         // commented out tile.state/2 as for the moment at least it is not conveyed good enough for the player to understand how it works.
         score += repairPoints * (5 - heat / 20); //* tile.state/2; 
+        if(scoreBox != null)
         scoreBox.text = score.ToString();
         Debug.Log(score);
     }
