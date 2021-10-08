@@ -92,7 +92,6 @@ public class Spotlight : MonoBehaviour
         {
             Player.heat = 100;
         }
-        print(Player.heat);
     }
 
     private void Update()

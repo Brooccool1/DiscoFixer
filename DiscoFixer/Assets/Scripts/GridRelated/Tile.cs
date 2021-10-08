@@ -11,16 +11,17 @@ public class Tile : MonoBehaviour
     public bool isBreaking = false;
     public bool isBroken = false;
     public bool previousIsBreaking = false;
-    public bool hasWaterPickup = false;
-    public int waterPickupEffect = 30;
-    //public GameObject waterPickup;
-    private VisualEffect vfx;
-    
+    [SerializeField] private VisualEffect vfxBurst;
+    [SerializeField] private VisualEffect vfxBuildUp;
+    [SerializeField] private float MaxSpawnRate;
+
+    private float spawnrate = 0f;
+
 
     private void Start()
     {
         GameEvents.beat.onBeat += Break;
-        vfx = GetComponentInChildren<VisualEffect>();
+        //vfx = GetComponentInChildren<VisualEffect>();
         state = stages;
     }
 
@@ -29,6 +30,11 @@ public class Tile : MonoBehaviour
         if (isBreaking)
         {
             state--;
+            
+            spawnrate = (1f - (float)state / 9f) * MaxSpawnRate;
+
+            vfxBuildUp.SetFloat("SpawnRate", spawnrate);
+
             if(!isBroken)
             {
                 previousIsBreaking = true;
@@ -37,12 +43,22 @@ public class Tile : MonoBehaviour
 
         if (state == 0)
         {
+            
+            
+
             isBroken = true;
+
+           
+
+
         }
     }
 
     private void Update()
     {
+        
+
+
         if (isBreaking && !isBroken)
         {
             GetComponent<SpriteRenderer>().material.color = Color.red;
@@ -55,18 +71,25 @@ public class Tile : MonoBehaviour
 
         if (!isBreaking && previousIsBreaking)
         {
-            vfx.SetVector3("Color", new Vector3(2,159,2));
-            vfx.Play();
+            
+            vfxBurst.SetVector3("Color", new Vector3(2,159,2));
+            vfxBurst.Play();
             previousIsBreaking = false;
+            vfxBuildUp.Stop();
+            spawnrate = 0;
         }
 
-        if (isBroken && previousIsBreaking)
-        {
-            vfx.SetVector3("Color", new Vector3(160, 20, 2));
-            vfx.Play();
-            previousIsBreaking = false;
+
+         if (isBroken && previousIsBreaking)
+
+         {
+                vfxBurst.SetVector3("Color", new Vector3(160, 20, 2));
+                vfxBurst.Play();
+                previousIsBreaking = false;
+                vfxBuildUp.Stop();
+
+                spawnrate = 0;
         }
 
-        gameObject.GetComponentInChildren<Transform>().Find("Water").GetComponent<SpriteRenderer>().enabled = hasWaterPickup;
     }
 }
