@@ -117,8 +117,20 @@ public class Player : MonoBehaviour
         _goalPos = Grid.grid[(int)position.x, (int)position.y].transform.position;
         
         alreadyPressed = false;
+        CheckForPickup();
         CheckAndFixTile();
 
+    }
+
+    private void CheckForPickup()
+    {
+        var gameObject = Grid.grid[Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)];
+        var tileScript = gameObject.GetComponent<Tile>();
+        if (tileScript.hasWaterPickup)
+        {
+            heat -= tileScript.waterPickupEffect;
+            tileScript.hasWaterPickup = false;
+        }
     }
 
     private void GetPoints()
