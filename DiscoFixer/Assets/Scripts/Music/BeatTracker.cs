@@ -17,8 +17,9 @@ public class BeatTracker : MonoBehaviour
     private int _bpm = 130;
     private float _beat;
     
-    // There's a tiny gap at the start of a mp3 file, this variable is from trial and error
-    private float _songOffset = 0.5f;
+    // There's a tiny gap at the start of a mp3 file
+    [Header("Change to sync beat with song")]
+    [SerializeField]private float _songOffset = 0f;
     
     private float _songPosition;
 
@@ -39,7 +40,7 @@ public class BeatTracker : MonoBehaviour
 
     }
     
-    void Update()
+    void FixedUpdate()
     {
         if (!_started)
         {
