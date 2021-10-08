@@ -555,6 +555,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2172875287390532909, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: curveDegrees
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172875287390532911, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172875287390532911, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2172875287973474769, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_Name
       value: Pre_HeatBar
