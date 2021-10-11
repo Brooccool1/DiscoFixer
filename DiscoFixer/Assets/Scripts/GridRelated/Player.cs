@@ -102,16 +102,17 @@ public class Player : MonoBehaviour
     }
 
     private void FallDown()
-    { 
-        var targetScale = transform.localScale * 0.1f;
+    {
+        var sprite = transform.GetChild(0).transform;
+        var targetScale = sprite.localScale * 0.1f;
         var intermediateScale = Vector3.zero;
-        intermediateScale.x = Mathf.Lerp(transform.localScale.x, targetScale.x, 0.3f * Time.deltaTime);
-        intermediateScale.y = Mathf.Lerp(transform.localScale.y, targetScale.y, 0.3f * Time.deltaTime);
-        transform.localScale = intermediateScale;
+        intermediateScale.x = Mathf.Lerp(sprite.localScale.x, targetScale.x, 0.3f * Time.deltaTime);
+        intermediateScale.y = Mathf.Lerp(sprite.localScale.y, targetScale.y, 0.3f * Time.deltaTime);
+        sprite.localScale = intermediateScale;
 
-        transform.Rotate(0,0,10);
+        sprite.Rotate(0,0,10);
         var color = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
-        transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, color.a * 0.99f);
+        sprite.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, color.a * 0.99f);
     }
 
     public static bool pressedArrows()
