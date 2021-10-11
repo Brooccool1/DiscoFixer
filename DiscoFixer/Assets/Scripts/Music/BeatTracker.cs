@@ -40,7 +40,7 @@ public class BeatTracker : MonoBehaviour
 
     }
 
-    private void _pauseMusic()
+    private void Update()
     {
         if (_audioPlayer)
         {
@@ -59,10 +59,8 @@ public class BeatTracker : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        _pauseMusic();
-
         if (!_started)
         {
             if (Player.pressedArrows())

@@ -54,7 +54,7 @@ public class Grid : MonoBehaviour
             var tile = grid[Random.Range(0, width), Random.Range(0, height)];
             var tileScript = tile.GetComponent<Tile>();
             tileScript.hasWaterPickup = true;
-            tileScript._waterStayTime = 5;
+            tileScript._waterStayTime = 10;
             pickupCountdown = pickupDelay;
         }
         else

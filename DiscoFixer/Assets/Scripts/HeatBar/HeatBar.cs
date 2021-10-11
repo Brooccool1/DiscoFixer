@@ -48,6 +48,7 @@ public class HeatBar : MonoBehaviour
         }
         else if (_oldHeat > Player.heat)
         {
+            _currentCurve -= curveDegrees;
             _line.positionCount--;
             _oldHeat--;
         }

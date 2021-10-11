@@ -483,9 +483,17 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2899508517118259557, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3732364754092149038, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
       propertyPath: m_Name
       value: Pause menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369645847703193473, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
@@ -498,7 +506,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2172875287390532909, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: curveDegrees
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2172875287390532911, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1003,6 +1011,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 393731347739636578, guid: 9e7ea0d9703fb9544a6783aa83db2b87, type: 3}
+      propertyPath: _song
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ac1303f2bc0e674fad65d5f3a49ad70, type: 3}
+    - target: {fileID: 393731347739636578, guid: 9e7ea0d9703fb9544a6783aa83db2b87, type: 3}
       propertyPath: _skippedBeats
       value: 2
       objectReference: {fileID: 0}
@@ -1201,7 +1213,7 @@ MonoBehaviour:
   _beatSync: 10
   _bloomMinMax: {x: 3, y: 10}
   _chromaticMinMax: {x: 0.1, y: 1}
-  _lenDistMinMax: {x: 0.1, y: 1}
+  _lenDistMinMax: {x: 0.1, y: 0.2}
   volume: {fileID: 0}
 --- !u!1001 &1829554956
 PrefabInstance:
