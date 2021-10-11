@@ -96,7 +96,6 @@ public class Player : MonoBehaviour
         transform.position = intermediatePos;
         
         falling = true;
-        Debug.Log("Falling");
     }
 
     private void FallDown()
@@ -108,7 +107,8 @@ public class Player : MonoBehaviour
         transform.localScale = intermediateScale;
 
         transform.Rotate(0,0,10);
-
+        var color = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, color.a * 0.99f);
     }
 
     public static bool pressedArrows()
@@ -119,6 +119,8 @@ public class Player : MonoBehaviour
 
     private void _controls()
     {
+        if (!alive) return;
+        
         if (!alreadyPressed)
         {
             if (pressedArrows())
@@ -136,6 +138,7 @@ public class Player : MonoBehaviour
         { direction.x = -1; }
         if (Input.GetAxis("Horizontal") > 0) 
         { direction.x = 1; }
+
     }
 
     private void Move()
