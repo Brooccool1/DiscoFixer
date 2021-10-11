@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     public bool isBroken = false;
     public bool previousIsBreaking = false;
     public bool hasWaterPickup = false;
+    public int _waterStayTime = 0;
     public int waterPickupEffect = 30;
     [SerializeField] private VisualEffect vfxBurst;
     [SerializeField] private VisualEffect vfxBuildUp;
@@ -46,6 +47,24 @@ public class Tile : MonoBehaviour
         if (state == 0)
         {
             isBroken = true;
+        }
+        
+        _waterPickup();
+    }
+
+    private void _waterPickup()
+    {
+        if (hasWaterPickup)
+        {
+            if (isBroken)
+            {
+                hasWaterPickup = false;
+            }
+            if (_waterStayTime <= 0)
+            {
+                hasWaterPickup = false;
+            }
+            _waterStayTime--;
         }
     }
 
