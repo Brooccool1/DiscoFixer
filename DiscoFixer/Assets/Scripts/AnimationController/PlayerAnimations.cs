@@ -16,6 +16,6 @@ public class PlayerAnimations : MonoBehaviour
     void Update()
     {
         
-        Player.direction
+        //Player.direction
     }
 }

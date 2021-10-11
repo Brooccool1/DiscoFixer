@@ -80,7 +80,16 @@ public class Player : MonoBehaviour
 
     private void fallOffGrid()
     {
+        // var prelPosition = new Vector3(direction.x, direction.y, 0);
+        // transform.position += prelPosition;
         
+        
+        var targetPosition = new Vector3(direction.x, direction.y, 0) + transform.position;
+        //var currentVelocity = 0f;
+        var intermediatePos = Vector3.zero;
+        intermediatePos.x = Mathf.Lerp(transform.position.x, targetPosition.x, 0.1f);
+        intermediatePos.y = Mathf.Lerp(transform.position.y, targetPosition.y, 0.1f);
+        transform.position = intermediatePos;
     }
 
     public static bool pressedArrows()
@@ -117,12 +126,14 @@ public class Player : MonoBehaviour
 
         if (targetTile.x < 0 || targetTile.x > Grid.grid.GetLength(0)-1)
         {
-            direction.x = -direction.x;
+            alive = false;
+            //direction.x = -direction.x;
         }
 
         if (targetTile.y < 0 || targetTile.y > Grid.grid.GetLength(1)-1)
         {
-            direction.y = -direction.y;
+            alive = false;
+            //direction.y = -direction.y;
         }
 
 
@@ -136,11 +147,7 @@ public class Player : MonoBehaviour
         SetDirectionToNormal();
 
     }
-
-    private void Dead()
-    {
-        
-    }
+    
 
     private void CheckTileStatus()
     {
@@ -150,6 +157,10 @@ public class Player : MonoBehaviour
         if (hitTile)
         {
             tile = hitTile.collider.GetComponent<Tile>();
+            if (tile.isBroken)
+            {
+                alive = false;
+            }
             if (tile.isBreaking && !tile.isBroken)
             {
                 Debug.Log("Hit a breaking tile");
