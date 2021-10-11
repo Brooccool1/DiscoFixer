@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         _lateStart = true;
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
         _worldPosition = transform.position;
         
@@ -65,8 +65,8 @@ public class Player : MonoBehaviour
         // lerp = smooth
         // Slerp = nice bounce but buggy
         Vector3 _currentPosition = Vector3.zero;
-        _currentPosition.x = Mathf.Lerp(transform.position.x, _goalPos.x, 0.03f);
-        _currentPosition.y = Mathf.Lerp(transform.position.y, _goalPos.y, 0.03f);
+        _currentPosition.x = Mathf.Lerp(transform.position.x, _goalPos.x, 0.1f);
+        _currentPosition.y = Mathf.Lerp(transform.position.y, _goalPos.y, 0.1f);
 
         transform.position = _currentPosition;
         // transform.position = Vector3.Slerp(transform.position, _goalPos, 0.03f);
@@ -74,8 +74,8 @@ public class Player : MonoBehaviour
 
     public static bool pressedArrows()
     {
-        return Input.GetAxisRaw("Horizontal") > 0.2 || Input.GetAxisRaw("Horizontal") < -0.2 ||
-               (Input.GetAxisRaw("Vertical") > 0.2 || Input.GetAxisRaw("Vertical") < -0.2);
+        return Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0 ||
+               Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Vertical") < 0;
     }
 
     private void _controls()
