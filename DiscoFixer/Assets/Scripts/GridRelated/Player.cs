@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     }
 
     public bool alive = true;
+    public bool falling = false;
     public TextMeshProUGUI scoreBox;
     public static Vector2 direction = new Vector2(0, 0);
     public State state = State.Walking;
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
         if (alive == false)
         {
             GameEvents.beat.onBeat -= Move;
-            fallOffGrid();
+            GoToNonTile();
         }
         _worldPosition = transform.position;
         
@@ -76,20 +77,38 @@ public class Player : MonoBehaviour
 
         transform.position = _currentPosition;
         // transform.position = Vector3.Slerp(transform.position, _goalPos, 0.03f);
+        
+        if (falling)
+        {
+            FallDown();  
+        }
     }
 
-    private void fallOffGrid()
+    private void GoToNonTile()
     {
         // var prelPosition = new Vector3(direction.x, direction.y, 0);
         // transform.position += prelPosition;
         
-        
         var targetPosition = new Vector3(direction.x, direction.y, 0) + transform.position;
-        //var currentVelocity = 0f;
         var intermediatePos = Vector3.zero;
         intermediatePos.x = Mathf.Lerp(transform.position.x, targetPosition.x, 0.1f);
         intermediatePos.y = Mathf.Lerp(transform.position.y, targetPosition.y, 0.1f);
         transform.position = intermediatePos;
+        
+        falling = true;
+        Debug.Log("Falling");
+    }
+
+    private void FallDown()
+    { 
+        var targetScale = transform.localScale * 0.1f;
+        var intermediateScale = Vector3.zero;
+        intermediateScale.x = Mathf.Lerp(transform.localScale.x, targetScale.x, 0.3f * Time.deltaTime);
+        intermediateScale.y = Mathf.Lerp(transform.localScale.y, targetScale.y, 0.3f * Time.deltaTime);
+        transform.localScale = intermediateScale;
+
+        transform.Rotate(0,0,10);
+
     }
 
     public static bool pressedArrows()
@@ -137,9 +156,13 @@ public class Player : MonoBehaviour
         }
 
 
+        if (alive)
+        {
+            position += direction;
+            _goalPos = Grid.grid[(int)position.x, (int)position.y].transform.position;
+        }
         
-        position += direction;
-        _goalPos = Grid.grid[(int)position.x, (int)position.y].transform.position;
+        
         
         alreadyPressed = false;
         CheckForPickup();
@@ -160,7 +183,8 @@ public class Player : MonoBehaviour
             if (tile.isBroken)
             {
                 alive = false;
-            }
+                return;
+            }  
             if (tile.isBreaking && !tile.isBroken)
             {
                 Debug.Log("Hit a breaking tile");

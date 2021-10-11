@@ -16,7 +16,7 @@ public class Grid : MonoBehaviour
     private int breakCountdown;
     public int pickupDelay = 10;
     private int pickupCountdown;
-    private int everyOther = 0;
+    //private int everyOther = 0;
     private Color color1;
     private Color color2;
     
