@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
         Fixing
     }
 
+    public bool alive = true;
+    public bool falling = false;
     public TextMeshProUGUI scoreBox;
     public static Vector2 direction = new Vector2(0, 0);
     public State state = State.Walking;
@@ -53,6 +55,11 @@ public class Player : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (alive == false)
+        {
+            GameEvents.beat.onBeat -= Move;
+            GoToNonTile();
+        }
         _worldPosition = transform.position;
         
         // Runs in the first time update runs
@@ -70,6 +77,38 @@ public class Player : MonoBehaviour
 
         transform.position = _currentPosition;
         // transform.position = Vector3.Slerp(transform.position, _goalPos, 0.03f);
+        
+        if (falling)
+        {
+            FallDown();  
+        }
+    }
+
+    private void GoToNonTile()
+    {
+        // var prelPosition = new Vector3(direction.x, direction.y, 0);
+        // transform.position += prelPosition;
+        
+        var targetPosition = new Vector3(direction.x, direction.y, 0) + transform.position;
+        var intermediatePos = Vector3.zero;
+        intermediatePos.x = Mathf.Lerp(transform.position.x, targetPosition.x, 0.1f);
+        intermediatePos.y = Mathf.Lerp(transform.position.y, targetPosition.y, 0.1f);
+        transform.position = intermediatePos;
+        
+        falling = true;
+        Debug.Log("Falling");
+    }
+
+    private void FallDown()
+    { 
+        var targetScale = transform.localScale * 0.1f;
+        var intermediateScale = Vector3.zero;
+        intermediateScale.x = Mathf.Lerp(transform.localScale.x, targetScale.x, 0.3f * Time.deltaTime);
+        intermediateScale.y = Mathf.Lerp(transform.localScale.y, targetScale.y, 0.3f * Time.deltaTime);
+        transform.localScale = intermediateScale;
+
+        transform.Rotate(0,0,10);
+
     }
 
     public static bool pressedArrows()
@@ -104,20 +143,26 @@ public class Player : MonoBehaviour
         var targetTile = position + direction;
         CheckTileStatus();
 
-        if (targetTile.x < 0|| targetTile.x > Grid.grid.GetLength(0)-1)
+        if (targetTile.x < 0 || targetTile.x > Grid.grid.GetLength(0)-1)
         {
-            direction.x = -direction.x;
+            alive = false;
+            //direction.x = -direction.x;
         }
 
         if (targetTile.y < 0 || targetTile.y > Grid.grid.GetLength(1)-1)
         {
-            direction.y = -direction.y;
+            alive = false;
+            //direction.y = -direction.y;
         }
 
 
+        if (alive)
+        {
+            position += direction;
+            _goalPos = Grid.grid[(int)position.x, (int)position.y].transform.position;
+        }
         
-        position += direction;
-        _goalPos = Grid.grid[(int)position.x, (int)position.y].transform.position;
+        
         
         alreadyPressed = false;
         CheckForPickup();
@@ -125,6 +170,7 @@ public class Player : MonoBehaviour
         SetDirectionToNormal();
 
     }
+    
 
     private void CheckTileStatus()
     {
@@ -134,6 +180,11 @@ public class Player : MonoBehaviour
         if (hitTile)
         {
             tile = hitTile.collider.GetComponent<Tile>();
+            if (tile.isBroken)
+            {
+                alive = false;
+                return;
+            }  
             if (tile.isBreaking && !tile.isBroken)
             {
                 Debug.Log("Hit a breaking tile");
@@ -183,11 +234,9 @@ public class Player : MonoBehaviour
         if (tileScript.hasWaterPickup)
         {
             Debug.Log($"heat before: {heat}");
-            heat -= tileScript.waterPickupEffect;
-            if (heat < 0)
-            {
-                heat = 0;
-            }
+            
+            var preliminaryHeat = heat - tileScript.waterPickupEffect;
+            heat = preliminaryHeat < 0 ? 0 : preliminaryHeat;
                
             Debug.Log($"heat after: {heat}");
             tileScript.hasWaterPickup = false;
