@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd143ebd640c54840a5be6396cb7edfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCanvas: {fileID: 1424724164879620347}
+  _canvas: {fileID: 1424724164879620347}
 --- !u!1 &4103626304816548140
 GameObject:
   m_ObjectHideFlags: 0
