@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     }
 
     public TextMeshProUGUI scoreBox;
-    private static Vector2 direction;
+    public static Vector2 direction = new Vector2(0, 0);
     public State state = State.Walking;
     private static Vector2 position = new Vector2(0, 0);
     private GameObject[,] gridSize;
