@@ -52,7 +52,6 @@ public class BeatTracker : MonoBehaviour
             {
                 if (!_audioPlayer.isPlaying)
                 {
-                    _dspTimeSong = (float)AudioSettings.dspTime - _lastBeat;
                     _audioPlayer.Play();
                 }
             }

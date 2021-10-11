@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 954588475}
   - component: {fileID: 954588474}
   - component: {fileID: 954588473}
+  - component: {fileID: 954588477}
   - component: {fileID: 954588476}
   m_Layer: 0
   m_Name: Main Camera
@@ -889,6 +890,18 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &954588477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954588472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ac952306e80c543972f247a7ce296b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1116511933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1222,6 +1235,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2132064253734936384, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: beatThingSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2132064253734936385, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_RootOrder
       value: 2
