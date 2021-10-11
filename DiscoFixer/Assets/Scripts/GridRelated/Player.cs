@@ -77,7 +77,10 @@ public class Player : MonoBehaviour
 
         transform.position = _currentPosition;
         // transform.position = Vector3.Slerp(transform.position, _goalPos, 0.03f);
-        
+        if (heat >= 100)
+        {
+            alive = false;
+        }
         if (falling)
         {
             FallDown();  
