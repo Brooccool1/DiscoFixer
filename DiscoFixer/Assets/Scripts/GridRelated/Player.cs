@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
         if (alive == false)
         {
             GameEvents.beat.onBeat -= Move;
+            fallOffGrid();
         }
         _worldPosition = transform.position;
         
@@ -75,6 +76,11 @@ public class Player : MonoBehaviour
 
         transform.position = _currentPosition;
         // transform.position = Vector3.Slerp(transform.position, _goalPos, 0.03f);
+    }
+
+    private void fallOffGrid()
+    {
+        
     }
 
     public static bool pressedArrows()
