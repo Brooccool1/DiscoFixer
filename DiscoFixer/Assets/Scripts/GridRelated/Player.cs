@@ -119,6 +119,8 @@ public class Player : MonoBehaviour
 
     private void _controls()
     {
+        if (!alive) return;
+        
         if (!alreadyPressed)
         {
             if (pressedArrows())
@@ -136,6 +138,7 @@ public class Player : MonoBehaviour
         { direction.x = -1; }
         if (Input.GetAxis("Horizontal") > 0) 
         { direction.x = 1; }
+
     }
 
     private void Move()
