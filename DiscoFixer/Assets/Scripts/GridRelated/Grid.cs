@@ -48,7 +48,6 @@ public class Grid : MonoBehaviour
 
     private void PickupSpawner()
     {
-        Debug.Log($"pickupCountdown: {pickupCountdown}");
         if (pickupCountdown == 0)
         {
             var tile = grid[Random.Range(0, width), Random.Range(0, height)];
@@ -104,7 +103,7 @@ public class Grid : MonoBehaviour
         else
         {
             breakCountdown = breakFrequency;
-            BreakATile();
+            // BreakATile();
             
         }
     }
