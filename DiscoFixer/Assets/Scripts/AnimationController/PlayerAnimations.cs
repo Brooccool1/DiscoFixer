@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
+    [Header("Order of sprite is important! First is up then changes clockwise")]
     [SerializeField] private List<Sprite> _sprites;
     private SpriteRenderer _sprite;
     private Vector2 _direction = Vector2.zero;
 
     private int _currentSprite = 0;
     
+    //          0,1
+    //     -1,1  |  1,1
+    // -1,0  <---|--->  1,0
+    //    -1,-1  |  1,-1
+    //         0,-1
     private Vector2[] _directionToAnimation = new Vector2[8]
     {
         new (0, 1),
