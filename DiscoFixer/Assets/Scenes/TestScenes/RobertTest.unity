@@ -554,23 +554,6 @@ Canvas:
   m_SortingLayerID: -189492673
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &137007547 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1424724164879620347, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
-  m_PrefabInstance: {fileID: 8129689465693254938}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &137007552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137007547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd143ebd640c54840a5be6396cb7edfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &213435122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3880,17 +3863,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1424724164879620347, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3732364754092149038, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
       propertyPath: m_Name
       value: Pause menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3732364754092149038, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90819539e8c409b49be61f4a6512254b, type: 3}

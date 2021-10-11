@@ -985,7 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2132064253734936385, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2132064253734936385, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1038,6 +1038,14 @@ PrefabInstance:
     - target: {fileID: 2132064253821129005, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064254591970059, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 22.266033
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064254591970059, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0056
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
@@ -1214,6 +1222,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7230499440311224751, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
 --- !u!1 &1154558580
@@ -1723,6 +1735,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7230499440311224751, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
 --- !u!1 &1421493379
@@ -2019,29 +2035,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2172875287390532911, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172875287390532911, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172875287733033404, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172875287733033405, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 2172875287973474769, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_Name
       value: Pre_HeatBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172875287973474769, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2172875287973474774, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_RootOrder
@@ -2049,11 +2045,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2172875287973474774, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.89
+      value: -6.13
       objectReference: {fileID: 0}
     - target: {fileID: 2172875287973474774, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.83
+      value: -4.31
       objectReference: {fileID: 0}
     - target: {fileID: 2172875287973474774, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_LocalPosition.z
