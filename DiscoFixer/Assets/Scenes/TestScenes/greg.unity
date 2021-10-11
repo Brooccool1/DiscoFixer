@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40de10eca2384129941a2e4df1c7c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alive: 1
+  falling: 0
   scoreBox: {fileID: 1423083789}
   state: 0
   score: 0
