@@ -24,7 +24,7 @@ public class BeatBar : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         MoveBeatThings();
         if (ballTF.localScale.x > 1.2 * minBallSizeModifier)
@@ -62,7 +62,7 @@ public class BeatBar : MonoBehaviour
             }
             else
             {
-                var newPos = new Vector2((beatThingsL[i].transform.position.x - 0.03f) * beatThingSpeed, beatThingsL[i].transform.position.y);
+                var newPos = new Vector2((beatThingsL[i].transform.position.x - 0.04f) * beatThingSpeed, beatThingsL[i].transform.position.y);
                 beatThingsL[i].transform.position = newPos;
             }
         }
@@ -76,7 +76,7 @@ public class BeatBar : MonoBehaviour
             }
             else
             {
-                var newPos = new Vector2((beatThingsR[i].transform.position.x + 0.03f) * beatThingSpeed, beatThingsR[i].transform.position.y);
+                var newPos = new Vector2((beatThingsR[i].transform.position.x + 0.04f) * beatThingSpeed, beatThingsR[i].transform.position.y);
                 beatThingsR[i].transform.position = newPos;
             }
         }
