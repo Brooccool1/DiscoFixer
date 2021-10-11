@@ -1669,7 +1669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2132064253734936385, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.96
+      value: 4.02
       objectReference: {fileID: 0}
     - target: {fileID: 2132064253734936385, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1706,6 +1706,38 @@ PrefabInstance:
     - target: {fileID: 2132064253734936386, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_Name
       value: Pre_BeatBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064253821129003, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064254591970058, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f973d246c922e7741b00b581ea6fdc7b, type: 3}
+    - target: {fileID: 2132064254591970058, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064254591970058, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064254591970058, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064254591970059, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 17.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064254591970059, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132064254591970059, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}

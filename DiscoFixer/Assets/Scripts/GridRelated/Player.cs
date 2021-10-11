@@ -184,6 +184,7 @@ public class Player : MonoBehaviour
         RaycastHit2D hitTile = Physics2D.Raycast(WorldPos + new Vector3(direction.x, direction.y, 0), direction);
         Tile tile = null;
 
+
         if (hitTile)
         {
             tile = hitTile.collider.GetComponent<Tile>();

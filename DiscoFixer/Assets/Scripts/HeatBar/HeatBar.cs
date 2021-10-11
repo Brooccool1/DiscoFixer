@@ -44,7 +44,6 @@ public class HeatBar : MonoBehaviour
             
             
             _line.SetPosition(_oldHeat, _line.GetPosition(_oldHeat - 1) + newPos * 0.02f);
-            print(radius);
         }
         else if (_oldHeat > Player.heat)
         {

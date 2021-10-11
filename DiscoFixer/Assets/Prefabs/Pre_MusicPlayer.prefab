@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 393731347739636578}
   - component: {fileID: 393731347739636580}
   - component: {fileID: 393731347739636583}
+  - component: {fileID: 928224042}
   m_Layer: 0
   m_Name: Pre_MusicPlayer
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _song: {fileID: 8300000, guid: be9d021f160a2ed4d96268728c4659e2, type: 3}
   _skippedBeats: 2
+  _songOffset: 0
 --- !u!82 &393731347739636580
 AudioSource:
   m_ObjectHideFlags: 0
@@ -156,3 +158,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38b1370dc9c1df448068981ddc77c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &928224042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393731347739636579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a6995d06522554db674195892ba4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 393731347739636580}
