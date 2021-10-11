@@ -27,7 +27,7 @@ public class HeatBar : MonoBehaviour
     
     void Update()
     {
-        if (_oldHeat != Player.heat)
+        if (_oldHeat < Player.heat)
         {
             if (curve)
             {
@@ -46,10 +46,10 @@ public class HeatBar : MonoBehaviour
             _line.SetPosition(_oldHeat, _line.GetPosition(_oldHeat - 1) + newPos * 0.02f);
             print(radius);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if (_oldHeat > Player.heat)
         {
-            Player.heat+=100;
+            _line.positionCount--;
+            _oldHeat--;
         }
     }
 }

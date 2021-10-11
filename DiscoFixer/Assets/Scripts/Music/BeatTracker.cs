@@ -39,7 +39,26 @@ public class BeatTracker : MonoBehaviour
         _audioPlayer.Play();
 
     }
-    
+
+    private void Update()
+    {
+        if (_audioPlayer)
+        {
+            if (Time.timeScale < 1)
+            {
+                _audioPlayer.Pause();
+            }
+            else
+            {
+                if (!_audioPlayer.isPlaying)
+                {
+                    _dspTimeSong = (float)AudioSettings.dspTime - _lastBeat;
+                    _audioPlayer.Play();
+                }
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         if (!_started)
