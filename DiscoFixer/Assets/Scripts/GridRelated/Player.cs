@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private static bool alreadyPressed = false;
     public int score = 0;
     public int repairPoints = 10;
+    public int autoHeatIncrease = 2;
     
     private Vector3 _goalPos = new Vector3(0, 0);
 
@@ -43,7 +44,13 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameEvents.beat.onBeat += Move;
+        GameEvents.beat.onBeat += AddHeatEveryBeat;
         heat = 0;
+    }
+
+    private void AddHeatEveryBeat()
+    {
+        heat += autoHeatIncrease;
     }
 
     private void _setGrid()
