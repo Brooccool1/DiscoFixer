@@ -342,6 +342,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+--- !u!1001 &152819292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.735052
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3759974
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.432498
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732364754092149038, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_Name
+      value: Pause menu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
 --- !u!1 &205356570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2132064254591970059, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 22.266033
+      value: 22.24
       objectReference: {fileID: 0}
     - target: {fileID: 2132064254591970059, guid: 17e8f09ac6b86664f9290ed8899885e5, type: 3}
       propertyPath: m_LocalPosition.x
