@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour
 
     public void VolumeChange(float volume)
     {
-        currentVolume.text = (volume * 100).ToString("0.00");
+        currentVolume.text = (volume * 100).ToString("0.0");
         audioPlayer.volume = volume;
         PlayerPrefs.SetFloat("AudioVolume", volume);
     }
