@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
         Fixing
     }
 
+    public bool alive = true;
     public TextMeshProUGUI scoreBox;
     private static Vector2 direction;
     public State state = State.Walking;
@@ -53,6 +54,10 @@ public class Player : MonoBehaviour
     
     private void Update()
     {
+        if (alive == false)
+        {
+            GameEvents.beat.onBeat -= Move;
+        }
         _worldPosition = transform.position;
         
         // Runs in the first time update runs
@@ -104,7 +109,7 @@ public class Player : MonoBehaviour
         var targetTile = position + direction;
         CheckTileStatus();
 
-        if (targetTile.x < 0|| targetTile.x > Grid.grid.GetLength(0)-1)
+        if (targetTile.x < 0 || targetTile.x > Grid.grid.GetLength(0)-1)
         {
             direction.x = -direction.x;
         }
@@ -124,6 +129,11 @@ public class Player : MonoBehaviour
         CheckAndFixTile();
         SetDirectionToNormal();
 
+    }
+
+    private void Dead()
+    {
+        
     }
 
     private void CheckTileStatus()
@@ -183,11 +193,9 @@ public class Player : MonoBehaviour
         if (tileScript.hasWaterPickup)
         {
             Debug.Log($"heat before: {heat}");
-            heat -= tileScript.waterPickupEffect;
-            if (heat < 0)
-            {
-                heat = 0;
-            }
+            
+            var preliminaryHeat = heat - tileScript.waterPickupEffect;
+            heat = preliminaryHeat < 0 ? 0 : preliminaryHeat;
                
             Debug.Log($"heat after: {heat}");
             tileScript.hasWaterPickup = false;

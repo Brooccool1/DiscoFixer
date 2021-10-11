@@ -42,8 +42,10 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
     
-    
+
+
     private void PickupSpawner()
     {
         Debug.Log($"pickupCountdown: {pickupCountdown}");
