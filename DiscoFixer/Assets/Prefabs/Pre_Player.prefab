@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3882790300619290853}
   - component: {fileID: 3882790300619290854}
+  - component: {fileID: 246862629}
   m_Layer: 0
   m_Name: Pre_Player
   m_TagString: Untagged
@@ -133,3 +134,24 @@ MonoBehaviour:
   state: 0
   score: 0
   repairPoints: 10
+--- !u!114 &246862629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882790300619290852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736abc24b5d60e340a1876ede466f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: 21300000, guid: 5e41a0f199ac6b843a641aa926173aa3, type: 3}
+  - {fileID: 21300000, guid: 87edb7fb8d925fa4aa675d92e38360d1, type: 3}
+  - {fileID: 21300000, guid: f73542b7712f32f48b5fcf3f4981ab90, type: 3}
+  - {fileID: 21300000, guid: 3e5b719c27528e945bba7155213dd2ac, type: 3}
+  - {fileID: 21300000, guid: 3066ac95131e2c94797ff04814687e7d, type: 3}
+  - {fileID: 21300000, guid: 69b4371105f030443ad6a852a86cd425, type: 3}
+  - {fileID: 21300000, guid: 77b90525b5055e94aa1b7b1270e84ae5, type: 3}
+  - {fileID: 21300000, guid: d0ac79cb281b3c943a6c19b9149618eb, type: 3}
