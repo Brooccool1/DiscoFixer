@@ -251,6 +251,10 @@ PrefabInstance:
       propertyPath: _yAxis
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7230499440311224748, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
+      propertyPath: heatBar
+      value: 
+      objectReference: {fileID: 967995604}
     - target: {fileID: 7230499440311224749, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
       propertyPath: m_Name
       value: Pre_Lamp
@@ -902,6 +906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ac952306e80c543972f247a7ce296b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &967995604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2172875287973474769, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+  m_PrefabInstance: {fileID: 455611218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1116511933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -909,6 +918,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7230499440311224748, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
+      propertyPath: heatBar
+      value: 
+      objectReference: {fileID: 967995604}
     - target: {fileID: 7230499440311224749, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
       propertyPath: m_Name
       value: Lamp
@@ -966,10 +979,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 246862629, guid: 7552629c332aaa540b5986e1f26ed30d, type: 3}
-      propertyPath: _danceSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7cdc6b28c9549a0499150a2022794e23, type: 3}
     - target: {fileID: 3882790300619290852, guid: 7552629c332aaa540b5986e1f26ed30d, type: 3}
       propertyPath: m_Name
       value: Pre_Player
@@ -1312,7 +1321,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5572394558617170602, guid: f31c948234ee72e4fb7fb4d575011436, type: 3}
       propertyPath: _percentageOfBreaking
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572394558617170603, guid: f31c948234ee72e4fb7fb4d575011436, type: 3}
       propertyPath: m_Name
