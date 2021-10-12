@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b86eee64d1b034288303f5bfe67647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _song: {fileID: 8300000, guid: be9d021f160a2ed4d96268728c4659e2, type: 3}
+  _song: {fileID: 8300000, guid: 0ad4efff385b40d4eaab3782ad8a502d, type: 3}
   _skippedBeats: 2
+  _mainMenu: 0
   _songOffset: 0
 --- !u!82 &393731347739636580
 AudioSource:
@@ -60,7 +61,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 90b07a1c724144544939136356e02ad3, type: 2}
-  m_audioClip: {fileID: 8300000, guid: be9d021f160a2ed4d96268728c4659e2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0ad4efff385b40d4eaab3782ad8a502d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.127
   m_Pitch: 1
