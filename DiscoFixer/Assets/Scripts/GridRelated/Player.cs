@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
         {
             GameEvents.beat.onBeat -= Move;
             GoToNonTile();
+            Invoke("_dead", 1);
         }
         _worldPosition = transform.position;
         
@@ -263,8 +264,12 @@ public class Player : MonoBehaviour
         var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
         // commented out tile.state/2 as for the moment at least it is not conveyed good enough for the player to understand how it works.
         score += repairPoints * (5 - heat / 20); //* tile.state/2; 
-        if(scoreBox != null)
-        scoreBox.text = score.ToString();
+        if (scoreBox != null)
+        {
+            scoreBox.text = score.ToString();
+        }
+
+        ScoreKeeper.score = score;
         Debug.Log(score);
     }
 
@@ -278,5 +283,9 @@ public class Player : MonoBehaviour
         GetPoints();
     }
 
+    private void _dead()
+    {
+        SceneManager.LoadScene("DeathScreen");
+    }
 }
 
