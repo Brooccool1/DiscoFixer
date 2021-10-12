@@ -7,6 +7,7 @@ public class PlayerAnimations : MonoBehaviour
     [Header("Order of sprite is important! First is up then changes clockwise")]
     [SerializeField] private List<Sprite> _sprites;
     [SerializeField] private Sprite _danceSprite;
+    [SerializeField] private Sprite _faintSprite;
     
     private SpriteRenderer _sprite;
     private Vector2 _direction = Vector2.zero;
@@ -44,6 +45,10 @@ public class PlayerAnimations : MonoBehaviour
             _direction = Player.direction;
             _directionConverter();
             _sprite.sprite = _sprites[_currentSprite];
+        }
+        else if (!Player.alive && !Player.falling)
+        {
+            _sprite.sprite = _faintSprite;
         }
         else
         {

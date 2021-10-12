@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
         Fixing
     }
 
-    public bool alive = true;
-    public bool falling = false;
+    public static bool alive = true;
+    public static bool falling = false;
     public TextMeshProUGUI scoreBox;
     public static Vector2 direction = new Vector2(0, 0);
     public static State state = State.Walking;
@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
         intermediatePos.y = Mathf.Lerp(transform.position.y, targetPosition.y, 0.1f);
         transform.position = intermediatePos;
         
-        falling = true;
+        
     }
 
     private void FallDown()
@@ -180,6 +180,7 @@ public class Player : MonoBehaviour
 
         if (targetTile.x < 0 || targetTile.x > Grid.grid.GetLength(0)-1)
         {
+            falling = true;
             alive = false;
             //direction.x = -direction.x;
         }
@@ -187,6 +188,7 @@ public class Player : MonoBehaviour
         if (targetTile.y < 0 || targetTile.y > Grid.grid.GetLength(1)-1)
         {
             alive = false;
+            falling = true;
             //direction.y = -direction.y;
         }
 
