@@ -172,7 +172,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -216,9 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca8512c6e53b49b6adfcb8f99be6500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yAxis: 0
+  _yAxis: 1
   vfxBeam: {fileID: 8696027706394896527}
-  _durationFx: 0.01
+  heatBar: {fileID: 0}
 --- !u!120 &7171587076739931678
 LineRenderer:
   m_ObjectHideFlags: 0

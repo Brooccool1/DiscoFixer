@@ -115,4 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _percentageOfBreaking: 40
-  _beatsToSkip: 6
+  _beatsToSkip: 4
