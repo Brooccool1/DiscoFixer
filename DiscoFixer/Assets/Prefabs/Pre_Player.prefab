@@ -245,7 +245,6 @@ MonoBehaviour:
   alive: 1
   falling: 0
   scoreBox: {fileID: 0}
-  state: 0
   score: 0
   repairPoints: 10
   autoHeatIncrease: 2
@@ -270,6 +269,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 69b4371105f030443ad6a852a86cd425, type: 3}
   - {fileID: 21300000, guid: 77b90525b5055e94aa1b7b1270e84ae5, type: 3}
   - {fileID: 21300000, guid: d0ac79cb281b3c943a6c19b9149618eb, type: 3}
+  _danceSprite: {fileID: 21300000, guid: 7cdc6b28c9549a0499150a2022794e23, type: 3}
 --- !u!1 &4512086789823196752
 GameObject:
   m_ObjectHideFlags: 0

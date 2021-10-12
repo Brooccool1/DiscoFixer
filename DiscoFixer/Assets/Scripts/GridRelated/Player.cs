@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public int score = 0;
     public int repairPoints = 10;
     public int autoHeatIncrease = 2;
+
+    private Vector3 _goalPosition;
     
     private Vector3 _goalPos = new Vector3(0, 0);
 
@@ -174,7 +176,7 @@ public class Player : MonoBehaviour
 
         if (alive)
         {
-            position += direction;
+            position = _goalPosition;
             _goalPos = Grid.grid[(int)position.x, (int)position.y].transform.position;
         }
         
@@ -192,9 +194,12 @@ public class Player : MonoBehaviour
     {
         Vector2 currDir = direction;
         Vector2 addDir = direction;
+        
+        _goalPosition = Vector3.zero;
+        
         while (true)
         {
-            RaycastHit2D hitTile = Physics2D.Raycast(WorldPos + new Vector3(currDir.x, currDir.y, 0), currDir);
+            RaycastHit2D hitTile = Physics2D.Raycast(WorldPos + new Vector3(currDir.x, currDir.y, 0), addDir);
             Tile tile = null;
 
 
@@ -203,73 +208,70 @@ public class Player : MonoBehaviour
                 tile = hitTile.collider.GetComponent<Tile>();
                 if (tile.isBroken)
                 {
+                    if (_avoidHoles())
+                    {
+                        break;
+                    }
                     alive = false;
-                    return;
+                    break;
                 }
 
                 if (tile.isBreaking && !tile.isBroken)
                 {
-                    state = State.Walking;
+                    state = State.Fixing;
                     tile.isBreaking = false;
                     tile.state = tile.stages;
                     GetPoints();
-                    tile = null;
-                    hitTile = Physics2D.Raycast(
-                        WorldPos + new Vector3(currDir.x + currDir.x, currDir.y + currDir.y, 0), currDir);
-                    if (hitTile)
-                        tile = hitTile.collider.GetComponent<Tile>();
-
-                    if (tile != null && !tile.isBroken)
+                    
+                    for (int i = 0; i < Grid.grid.GetLength(0); i++)
                     {
-                        if (direction.x > 0)
+                        for (int j = 0; j < Grid.grid.GetLength(1); j++)
                         {
-                            if (position.x + 1 > gridSize.GetLength(0))
+                            if (Grid.grid[i, j].transform.position == tile.transform.position)
                             {
-                                direction.x = 1;
-                            }
-                            else
-                            {
-                                direction.x += 1;
-                            }
-                        }
-                        else if (direction.x < 0)
-                        {
-                            if (position.x - 1 < 0)
-                            {
-                                position.x = -1;
-                            }
-                            else
-                            {
-                                direction.x += -1;
-                            }
-                        }
-
-                        if (direction.y > 0)
-                        {
-                            if (position.y + 1 > gridSize.GetLength(1))
-                            {
-                                direction.y = 1;
-                            }
-                            else
-                            {
-                                direction.y += 1;
-                            }
-                        }
-                        else if (direction.y < 0)
-                        {
-                            if (position.y - 1 < 0)
-                            {
-                                direction.y = -1;
-                            }
-                            else
-                            {
-                                direction.y += -1;
+                                _goalPosition = new Vector3(i, j);
+                                break;
                             }
                         }
                     }
                 }
                 else
                 {
+                    if (_goalPosition == Vector3.zero)
+                    {
+                        _goalPosition = position + direction;
+                        break;
+                    }
+
+                    if (direction.x > 0)
+                    {
+                        if (_goalPosition.x < Grid.grid.GetLength(0) - 1 && !Grid.grid[(int)_goalPosition.x + 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
+                        {
+                            _goalPosition.x++;
+                        }
+                    }
+                    else if (direction.x < 0)
+                    {
+                        if (_goalPosition.x > 1 && !Grid.grid[(int)_goalPosition.x - 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
+                        {
+                            _goalPosition.x--;
+                        }
+                    }
+                    if (direction.y > 0)
+                    {
+                        if (_goalPosition.y < Grid.grid.GetLength(1) - 1 && !Grid.grid[(int)_goalPosition.x, (int)_goalPosition.y + 1].GetComponent<Tile>().isBroken)
+                        {
+                            _goalPosition.y++;
+                        }
+                    }
+                    else if (direction.y < 0)
+                    {
+                        if (_goalPosition.y > 1 && !Grid.grid[(int)_goalPosition.x, (int)_goalPosition.y - 1].GetComponent<Tile>().isBroken)
+                        {
+                            _goalPosition.y--;
+                        }
+                    }
+
                     break;
                 }
 
@@ -281,6 +283,28 @@ public class Player : MonoBehaviour
             }
 
             currDir += addDir;
+        }
+        
+        bool _avoidHoles()
+        {
+            if (currDir.x > 1)
+            {
+                return true;
+            }
+            if (currDir.y > 1)
+            {
+                return true;
+            }
+            if (currDir.x < -1)
+            {
+                return true;
+            }
+            if (currDir.y < -1)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 
