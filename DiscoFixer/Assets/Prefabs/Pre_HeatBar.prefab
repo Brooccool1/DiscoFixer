@@ -524,6 +524,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curve: 1
   curveDegrees: 0.9
+  flames:
+  - {fileID: 21300000, guid: 635a58879da7ec54db46302273edc053, type: 3}
+  - {fileID: 21300000, guid: 2d657bb651b1a654d9355e9fa03c4dc3, type: 3}
+  - {fileID: 21300000, guid: 1ef3356ce11ec41438c6b7d20dc5e837, type: 3}
+  flame: {fileID: 1444067858}
 --- !u!120 &2172875287390532908
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -686,7 +691,7 @@ GameObject:
   - component: {fileID: 2172875287733033394}
   - component: {fileID: 2172875287733033405}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Disco Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
