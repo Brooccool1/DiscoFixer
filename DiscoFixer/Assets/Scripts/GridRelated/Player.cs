@@ -189,79 +189,97 @@ public class Player : MonoBehaviour
 
     private void CheckTileStatus()
     {
-        RaycastHit2D hitTile = Physics2D.Raycast(WorldPos + new Vector3(direction.x, direction.y, 0), direction);
-        Tile tile = null;
-
-
-        if (hitTile)
+        Vector2 currDir = direction;
+        Vector2 addDir = direction;
+        while (true)
         {
-            tile = hitTile.collider.GetComponent<Tile>();
-            if (tile.isBroken)
-            {
-                alive = false;
-                return;
-            }  
-            if (tile.isBreaking && !tile.isBroken)
-            {
-                Debug.Log("Hit a breaking tile");
-                tile.isBreaking = false;
-                tile.state = tile.stages;
-                GetPoints();
-                tile = null;
-                hitTile = Physics2D.Raycast(WorldPos + new Vector3(direction.x + direction.x, direction.y + direction.y, 0), direction);
-                if (hitTile)
-                    tile = hitTile.collider.GetComponent<Tile>();
+            RaycastHit2D hitTile = Physics2D.Raycast(WorldPos + new Vector3(currDir.x, currDir.y, 0), currDir);
+            Tile tile = null;
 
-                if (tile != null && !tile.isBroken)
+
+            if (hitTile)
+            {
+                tile = hitTile.collider.GetComponent<Tile>();
+                if (tile.isBroken)
                 {
-                    if (direction.x > 0)
-                    {
-                        if (position.x+2 > gridSize.GetLength(0))
-                        {
-                            direction.x = 1;
-                        }
-                        else
-                        {
-                            direction.x = 2;
-                        }
-                    }
-                    else if (direction.x < 0)
-                    {
-                        if (position.x-2 < 0)
-                        {
-                            position.x = -1;
-                        }
-                        else
-                        {
-                            direction.x = -2;
-                        }
-                    }
+                    alive = false;
+                    return;
+                }
 
-                    if (direction.y > 0)
+                if (tile.isBreaking && !tile.isBroken)
+                {
+                    Debug.Log("Hit a breaking tile");
+                    tile.isBreaking = false;
+                    tile.state = tile.stages;
+                    GetPoints();
+                    tile = null;
+                    hitTile = Physics2D.Raycast(
+                        WorldPos + new Vector3(currDir.x + currDir.x, currDir.y + currDir.y, 0), currDir);
+                    if (hitTile)
+                        tile = hitTile.collider.GetComponent<Tile>();
+
+                    if (tile != null && !tile.isBroken)
                     {
-                        if (position.y+2 > gridSize.GetLength(1))
+                        if (direction.x > 0)
                         {
-                            direction.y = 1;
+                            if (position.x + 1 > gridSize.GetLength(0))
+                            {
+                                direction.x = 1;
+                            }
+                            else
+                            {
+                                direction.x += 1;
+                            }
                         }
-                        else
+                        else if (direction.x < 0)
                         {
-                            direction.y = 2;
+                            if (position.x - 1 < 0)
+                            {
+                                position.x = -1;
+                            }
+                            else
+                            {
+                                direction.x += -1;
+                            }
                         }
-                    }
-                    else if (direction.y < 0)
-                    {
-                        if (position.y-2 < 0)
+
+                        if (direction.y > 0)
                         {
-                            direction.y = -1;
+                            if (position.y + 1 > gridSize.GetLength(1))
+                            {
+                                direction.y = 1;
+                            }
+                            else
+                            {
+                                direction.y += 1;
+                            }
                         }
-                        else
+                        else if (direction.y < 0)
                         {
-                            direction.y = -2;
+                            if (position.y - 1 < 0)
+                            {
+                                direction.y = -1;
+                            }
+                            else
+                            {
+                                direction.y += -1;
+                            }
                         }
                     }
                 }
+                else
+                {
+                    break;
+                }
+
+                tile = null;
             }
-            tile = null;
+            else
+            {
+                break;
+            }
+
+            currDir += addDir;
         }
     }
 
