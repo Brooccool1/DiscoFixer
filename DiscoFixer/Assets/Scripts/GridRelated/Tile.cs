@@ -70,8 +70,18 @@ public class Tile : MonoBehaviour
         }
     }
 
+    private void _changeSprite()
+    {
+        if (state > 0)
+        {
+            int sprite = state / 3;
+            GetComponent<SpriteRenderer>().sprite = _breakStages[sprite];
+        }
+    }
+
     private void Update()
     {
+        _changeSprite();
         if (isBreaking && !isBroken)
         {
             GetComponent<SpriteRenderer>().material.color = Color.red;
