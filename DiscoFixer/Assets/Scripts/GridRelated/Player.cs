@@ -243,30 +243,31 @@ public class Player : MonoBehaviour
                         break;
                     }
 
+                    GameObject[,] grid = Grid.grid;
                     if (direction.x > 0)
                     {
-                        if (_goalPosition.x < Grid.grid.GetLength(0) - 1 && !Grid.grid[(int)_goalPosition.x + 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
+                        if (_goalPosition.x < grid.GetLength(0) - 1 && !grid[(int)_goalPosition.x + 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
                         {
                             _goalPosition.x++;
                         }
                     }
                     else if (direction.x < 0)
                     {
-                        if (_goalPosition.x > 1 && !Grid.grid[(int)_goalPosition.x - 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
+                        if (_goalPosition.x > 0 && !grid[(int)_goalPosition.x - 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
                         {
                             _goalPosition.x--;
                         }
                     }
                     if (direction.y > 0)
                     {
-                        if (_goalPosition.y < Grid.grid.GetLength(1) - 1 && !Grid.grid[(int)_goalPosition.x, (int)_goalPosition.y + 1].GetComponent<Tile>().isBroken)
+                        if (_goalPosition.y < grid.GetLength(1) - 1 && !grid[(int)_goalPosition.x, (int)_goalPosition.y + 1].GetComponent<Tile>().isBroken)
                         {
                             _goalPosition.y++;
                         }
                     }
                     else if (direction.y < 0)
                     {
-                        if (_goalPosition.y > 1 && !Grid.grid[(int)_goalPosition.x, (int)_goalPosition.y - 1].GetComponent<Tile>().isBroken)
+                        if (_goalPosition.y > 0 && !grid[(int)_goalPosition.x, (int)_goalPosition.y - 1].GetComponent<Tile>().isBroken)
                         {
                             _goalPosition.y--;
                         }
@@ -287,19 +288,11 @@ public class Player : MonoBehaviour
         
         bool _avoidHoles()
         {
-            if (currDir.x > 1)
+            if (currDir.x > 1 || currDir.y > 1)
             {
                 return true;
             }
-            if (currDir.y > 1)
-            {
-                return true;
-            }
-            if (currDir.x < -1)
-            {
-                return true;
-            }
-            if (currDir.y < -1)
+            if (currDir.x < -1 || currDir.y < -1)
             {
                 return true;
             }
