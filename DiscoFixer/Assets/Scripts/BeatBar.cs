@@ -50,7 +50,7 @@ public class BeatBar : MonoBehaviour
 
     private void SpawnBeatThings()
     {
-        var centerOffset = new Vector3(0.7f, 0, 0);
+        var centerOffset = new Vector3(1.2f, 0, 0);
         var beatSpawnPosL = background.transform.position - centerOffset;
         var beatSpawnPosR = background.transform.position + centerOffset;
         var beatThingL = Instantiate(beatPrefab, beatSpawnPosL, transform.rotation);
