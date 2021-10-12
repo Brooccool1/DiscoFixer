@@ -18,7 +18,6 @@ public class PostEffect : MonoBehaviour
     ChromaticAberration chromatic;
     Bloom bloom;
     LensDistortion distortion;
-    private bool allowUpdate = false;
     
     // Skips beats
     private int _offBeat = 2;

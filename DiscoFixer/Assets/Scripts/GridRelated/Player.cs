@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class Player : MonoBehaviour
 {
@@ -13,8 +14,8 @@ public class Player : MonoBehaviour
         Fixing
     }
 
-    public bool alive = true;
-    public bool falling = false;
+    public static bool alive = true;
+    public static bool falling = false;
     public TextMeshProUGUI scoreBox;
     public static Vector2 direction = new Vector2(0, 0);
     public static State state = State.Walking;
@@ -27,10 +28,11 @@ public class Player : MonoBehaviour
 
     private Vector3 _goalPosition;
     
-    private Vector3 _goalPos = new Vector3(0, 0);
+    private Vector3 _goalPos;
 
-    // heat
+    // heat and Fire effect
     public static int heat = 0;
+    private VisualEffect _fire;
 
     // Couldn't always set grid in Start
     private bool _lateStart = false;
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
     {
         GameEvents.beat.onBeat += Move;
         GameEvents.beat.onBeat += AddHeatEveryBeat;
+        _fire = GetComponentInChildren<VisualEffect>();
         heat = 0;
     }
 
@@ -61,6 +64,18 @@ public class Player : MonoBehaviour
         position = new Vector2(gridSize.GetLength(0) / 2, gridSize.GetLength(1) / 2);
         _lateStart = true;
     }
+
+    private void _burning()
+    {
+        if (heat > 60)
+        {
+            _fire.enabled = true;
+        }
+        else
+        {
+            _fire.enabled = false;
+        }
+    }
     
     private void FixedUpdate()
     {
@@ -70,6 +85,8 @@ public class Player : MonoBehaviour
             GoToNonTile();
             Invoke("_dead", 1);
         }
+        _burning();
+        
         _worldPosition = transform.position;
         
         // Runs in the first time update runs
@@ -108,7 +125,7 @@ public class Player : MonoBehaviour
         intermediatePos.y = Mathf.Lerp(transform.position.y, targetPosition.y, 0.1f);
         transform.position = intermediatePos;
         
-        falling = true;
+        
     }
 
     private void FallDown()
@@ -163,6 +180,7 @@ public class Player : MonoBehaviour
 
         if (targetTile.x < 0 || targetTile.x > Grid.grid.GetLength(0)-1)
         {
+            falling = true;
             alive = false;
             //direction.x = -direction.x;
         }
@@ -170,6 +188,7 @@ public class Player : MonoBehaviour
         if (targetTile.y < 0 || targetTile.y > Grid.grid.GetLength(1)-1)
         {
             alive = false;
+            falling = true;
             //direction.y = -direction.y;
         }
 
@@ -243,30 +262,31 @@ public class Player : MonoBehaviour
                         break;
                     }
 
+                    GameObject[,] grid = Grid.grid;
                     if (direction.x > 0)
                     {
-                        if (_goalPosition.x < Grid.grid.GetLength(0) - 1 && !Grid.grid[(int)_goalPosition.x + 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
+                        if (_goalPosition.x < grid.GetLength(0) - 1 && !grid[(int)_goalPosition.x + 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
                         {
                             _goalPosition.x++;
                         }
                     }
                     else if (direction.x < 0)
                     {
-                        if (_goalPosition.x > 1 && !Grid.grid[(int)_goalPosition.x - 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
+                        if (_goalPosition.x > 0 && !grid[(int)_goalPosition.x - 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
                         {
                             _goalPosition.x--;
                         }
                     }
                     if (direction.y > 0)
                     {
-                        if (_goalPosition.y < Grid.grid.GetLength(1) - 1 && !Grid.grid[(int)_goalPosition.x, (int)_goalPosition.y + 1].GetComponent<Tile>().isBroken)
+                        if (_goalPosition.y < grid.GetLength(1) - 1 && !grid[(int)_goalPosition.x, (int)_goalPosition.y + 1].GetComponent<Tile>().isBroken)
                         {
                             _goalPosition.y++;
                         }
                     }
                     else if (direction.y < 0)
                     {
-                        if (_goalPosition.y > 1 && !Grid.grid[(int)_goalPosition.x, (int)_goalPosition.y - 1].GetComponent<Tile>().isBroken)
+                        if (_goalPosition.y > 0 && !grid[(int)_goalPosition.x, (int)_goalPosition.y - 1].GetComponent<Tile>().isBroken)
                         {
                             _goalPosition.y--;
                         }
@@ -287,19 +307,11 @@ public class Player : MonoBehaviour
         
         bool _avoidHoles()
         {
-            if (currDir.x > 1)
+            if (currDir.x > 1 || currDir.y > 1)
             {
                 return true;
             }
-            if (currDir.y > 1)
-            {
-                return true;
-            }
-            if (currDir.x < -1)
-            {
-                return true;
-            }
-            if (currDir.y < -1)
+            if (currDir.x < -1 || currDir.y < -1)
             {
                 return true;
             }
