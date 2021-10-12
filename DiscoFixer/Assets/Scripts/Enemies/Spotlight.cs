@@ -20,10 +20,14 @@ public class Spotlight : MonoBehaviour
     // Visual effect
     [SerializeField] private VisualEffect vfxBeam;
 
+    [SerializeField] private GameObject heatBar;
+
+    private Transform heatBarTransform;
 
     private void Start()
     {
         GameEvents.beat.onBeat += _onBeat;
+        heatBarTransform = heatBar.GetComponent<Transform>();
     }
 
     private void _onBeat()
@@ -78,6 +82,7 @@ public class Spotlight : MonoBehaviour
 
     private void _warmingPlayer()
     {
+
         // Show Light
         GetComponent<LineRenderer>().startColor += new Color(0, 0, 0, 160);
         
@@ -91,6 +96,7 @@ public class Spotlight : MonoBehaviour
             if (difference.x == 0 && Player.heat < 100)
             {
                 Player.heat += 10;
+                heatBarTransform.localScale *= 3;
             }
         }
         else
@@ -98,6 +104,7 @@ public class Spotlight : MonoBehaviour
             if (difference.y == 0 && Player.heat < 100)
             {
                 Player.heat += 10;
+                heatBarTransform.localScale *= 4;
             }
         }
 
@@ -115,7 +122,6 @@ public class Spotlight : MonoBehaviour
             _setPosition();
         }
         
-    
         Vector3 _currentPos = Vector3.zero;
         if (_yAxis)
         {
@@ -131,13 +137,10 @@ public class Spotlight : MonoBehaviour
         }
 
         transform.position = _currentPos;
-
-        
-
-        
-
-       
-
+        if (heatBarTransform.localScale.x > 0.4)
+        {
+            heatBarTransform.localScale *= 0.99f;
+        }
 
     }
 }
