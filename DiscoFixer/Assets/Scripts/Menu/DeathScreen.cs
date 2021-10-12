@@ -19,10 +19,12 @@ public class DeathScreen : MonoBehaviour
             if (ScoreKeeper._dead)
             {
                 _text.text = "You Died";
+                _text.outlineColor = Color.red;
             }
             else
             {
                 _text.text = "You Won";
+                _text.outlineColor = Color.green;
             }
         }
 
