@@ -213,22 +213,30 @@ public class Player : MonoBehaviour
 
                 if (tile != null && !tile.isBroken)
                 {
-                    if (direction.x > 0)
+                    if (direction.x > 0 && position.x+2 !> gridSize.GetLength(0))
+                    {
                         direction.x = 2;
-                    else if (direction.x < 0)
+                    }
+                    else if (direction.x < 0 && position.x-2 !< 0)
+                    {
                         direction.x = -2;
-                    if (direction.y > 0)
+                    }
+
+                    if (direction.y > 0 && position.y+2 !> gridSize.GetLength(1))
+                    {
                         direction.y = 2;
-                    else if (direction.y < 0)
+                    }
+                    else if (direction.y < 0 && position.y-2 !< 0)
+                    {
                         direction.y = -2;
+                    }
                 }
-
-
             }
             tile = null;
-
         }
     }
+
+    
 
     private static void SetDirectionToNormal()
     {
