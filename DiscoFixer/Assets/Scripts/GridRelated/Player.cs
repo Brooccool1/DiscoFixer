@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public bool falling = false;
     public TextMeshProUGUI scoreBox;
     public static Vector2 direction = new Vector2(0, 0);
-    public State state = State.Walking;
+    public static State state = State.Walking;
     private static Vector2 position = new Vector2(0, 0);
     private GameObject[,] gridSize;
     private static bool alreadyPressed = false;
@@ -155,6 +155,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
+        state = State.Walking;
         var targetTile = position + direction;
         CheckTileStatus();
 
@@ -208,7 +209,7 @@ public class Player : MonoBehaviour
 
                 if (tile.isBreaking && !tile.isBroken)
                 {
-                    Debug.Log("Hit a breaking tile");
+                    state = State.Walking;
                     tile.isBreaking = false;
                     tile.state = tile.stages;
                     GetPoints();
