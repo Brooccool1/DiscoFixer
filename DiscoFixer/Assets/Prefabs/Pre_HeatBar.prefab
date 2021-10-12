@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 2172875287733033394}
   - component: {fileID: 2172875287733033405}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Disco Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
