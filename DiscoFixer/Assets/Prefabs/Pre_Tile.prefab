@@ -220,10 +220,16 @@ MonoBehaviour:
   isBroken: 0
   previousIsBreaking: 0
   hasWaterPickup: 0
+  _waterStayTime: 0
   waterPickupEffect: 30
   vfxBurst: {fileID: 8202086115660613011}
   vfxBuildUp: {fileID: 4866658880172442623}
   MaxSpawnRate: 60
+  _breakStages:
+  - {fileID: 21300000, guid: 7ead7d0d99294224c8a223e406282da0, type: 3}
+  - {fileID: 21300000, guid: b0b0ef43a1a83a44886d65b6e4350fe4, type: 3}
+  - {fileID: 21300000, guid: 7a540d1cacabc624d8dd44bbeb1679b1, type: 3}
+  - {fileID: 21300000, guid: 2878c839dbaef2e4ab716abfecfddfe6, type: 3}
 --- !u!61 &-1772930055982861923
 BoxCollider2D:
   m_ObjectHideFlags: 0
