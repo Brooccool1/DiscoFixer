@@ -966,6 +966,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 246862629, guid: 7552629c332aaa540b5986e1f26ed30d, type: 3}
+      propertyPath: _danceSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7cdc6b28c9549a0499150a2022794e23, type: 3}
     - target: {fileID: 3882790300619290852, guid: 7552629c332aaa540b5986e1f26ed30d, type: 3}
       propertyPath: m_Name
       value: Pre_Player
@@ -1306,6 +1310,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5572394558617170602, guid: f31c948234ee72e4fb7fb4d575011436, type: 3}
+      propertyPath: _percentageOfBreaking
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 5572394558617170603, guid: f31c948234ee72e4fb7fb4d575011436, type: 3}
       propertyPath: m_Name
       value: Pre_TileBreaker
