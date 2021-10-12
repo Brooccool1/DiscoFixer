@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -17,6 +18,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private VisualEffect vfxBurst;
     [SerializeField] private VisualEffect vfxBuildUp;
     [SerializeField] private float MaxSpawnRate;
+    [SerializeField] private List<Sprite> _breakStages;
 
     private float spawnrate = 0f;
 
