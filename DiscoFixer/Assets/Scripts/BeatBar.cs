@@ -19,7 +19,7 @@ public class BeatBar : MonoBehaviour
     private void Start()
     {
         ballTF = discoBall.transform;
-        GameEvents.beat.onBeat += CreateBeatThings;
+        GameEvents.beat.onBeat += SpawnBeatThings;
         GameEvents.beat.onBeat += PulseDiscoBall;
 
     }
@@ -48,12 +48,14 @@ public class BeatBar : MonoBehaviour
         ballTF.localScale = new Vector3(2, 2, 0) * maxBallSizeModifier;
     }
 
-    private void CreateBeatThings()
+    private void SpawnBeatThings()
     {
-        var beatSpawnPos = background.transform.position;
-        var beatThingL = Instantiate(beatPrefab, beatSpawnPos, transform.rotation);
+        var centerOffset = new Vector3(1.2f, 0, 0);
+        var beatSpawnPosL = background.transform.position - centerOffset;
+        var beatSpawnPosR = background.transform.position + centerOffset;
+        var beatThingL = Instantiate(beatPrefab, beatSpawnPosL, transform.rotation);
         beatThingL.transform.Rotate(0,0,180);
-        var beatThingR = Instantiate(beatPrefab, beatSpawnPos, transform.rotation);
+        var beatThingR = Instantiate(beatPrefab, beatSpawnPosR, transform.rotation);
         beatThingsL.Add(beatThingL);
         beatThingsR.Add(beatThingR);
     }
