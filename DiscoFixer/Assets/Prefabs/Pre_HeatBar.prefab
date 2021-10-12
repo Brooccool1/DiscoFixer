@@ -389,14 +389,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123730540}
-  m_LocalRotation: {x: -0, y: -0, z: -0.019309184, w: 0.99981356}
-  m_LocalPosition: {x: -0.61, y: 0.2, z: 0}
+  m_LocalRotation: {x: 0.014681139, y: -0.010521174, z: 0.81269264, w: 0.58241266}
+  m_LocalPosition: {x: -0.05, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2172875287973474774}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.96, y: 0.665, z: 108.757}
 --- !u!114 &2123730542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,9 +461,9 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
+  m_PointLightInnerAngle: 133.41
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
+  m_PointLightInnerRadius: 0.32853177
   m_PointLightOuterRadius: 2.3612804
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
@@ -529,6 +529,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2d657bb651b1a654d9355e9fa03c4dc3, type: 3}
   - {fileID: 21300000, guid: 1ef3356ce11ec41438c6b7d20dc5e837, type: 3}
   flame: {fileID: 1444067858}
+  multipliers:
+  - {fileID: 21300000, guid: ea3685f7be9118241b99a4e6e9184826, type: 3}
+  - {fileID: 21300000, guid: 8cbc99367416b644a918bdf89975459c, type: 3}
+  - {fileID: 21300000, guid: 80d576a87a535f44bab4e0c69d307d53, type: 3}
+  multiplier: {fileID: 250129799}
 --- !u!120 &2172875287390532908
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -732,7 +737,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
