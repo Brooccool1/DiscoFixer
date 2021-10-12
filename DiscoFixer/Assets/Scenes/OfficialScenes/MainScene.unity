@@ -245,6 +245,10 @@ PrefabInstance:
       value: Pre_GridController
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: pickupDelay
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: tileColors.Array.size
       value: 4
       objectReference: {fileID: 0}
