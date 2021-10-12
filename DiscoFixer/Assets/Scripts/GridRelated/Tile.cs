@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -18,6 +19,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private VisualEffect impact;
     [SerializeField] private VisualEffect vfxBuildUp;
     [SerializeField] private float MaxSpawnRate;
+    [SerializeField] private List<Sprite> _breakStages;
 
     private float spawnrate = 0f;
 
@@ -74,8 +76,18 @@ public class Tile : MonoBehaviour
         }
     }
 
+    private void _changeSprite()
+    {
+        if (state > 0)
+        {
+            int sprite = state / 3;
+            GetComponent<SpriteRenderer>().sprite = _breakStages[sprite];
+        }
+    }
+
     private void Update()
     {
+        _changeSprite();
         if (isBreaking && !isBroken)
         {
             GetComponent<SpriteRenderer>().material.color = Color.red;

@@ -18,7 +18,7 @@ public class TileDestroyer : MonoBehaviour
 
     private CircleCollider2D _collider;
     
-    private Vector3 _goalPosition;
+    private Vector3 _goalPosition = new Vector3(100, 100);
     private Vector3 _startPosition;
     
     void Start()

@@ -49,9 +49,9 @@ MonoBehaviour:
   beatPrefab: {fileID: 7356193228685453271, guid: 2b125d635e9434cf4abf271b8bdab727, type: 3}
   background: {fileID: 2132064254591970060}
   discoBall: {fileID: 2132064253821129005}
-  minBallSizeModifier: 1
-  maxBallSizeModifier: 1
-  ballShrinkSpeed: 1
+  minBallSizeModifier: 0.25
+  maxBallSizeModifier: 0.3
+  ballShrinkSpeed: 0.8
   beatThingSpeed: 1
 --- !u!1 &2132064253821129005
 GameObject:
@@ -78,8 +78,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132064253821129005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.17, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 4.38, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2132064253734936385}
@@ -126,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: -654446829
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0992440b81f51e418d0ac41202bc480, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -162,8 +162,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132064254591970060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0056, y: 4.3435, z: 0}
-  m_LocalScale: {x: 17.74, y: 0.55, z: 1}
+  m_LocalPosition: {x: -0.0056, y: 4.42, z: 0}
+  m_LocalScale: {x: 17.8, y: 55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2132064253734936385}
@@ -210,8 +210,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.048949808, g: 0.9433962, b: 0.6671479, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f973d246c922e7741b00b581ea6fdc7b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

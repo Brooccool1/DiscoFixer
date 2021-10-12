@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private static bool alreadyPressed = false;
     public int score = 0;
     public int repairPoints = 10;
+    public int autoHeatIncrease = 2;
     
     private Vector3 _goalPos = new Vector3(0, 0);
 
@@ -43,7 +44,13 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameEvents.beat.onBeat += Move;
+        GameEvents.beat.onBeat += AddHeatEveryBeat;
         heat = 0;
+    }
+
+    private void AddHeatEveryBeat()
+    {
+        heat += autoHeatIncrease;
     }
 
     private void _setGrid()
@@ -59,6 +66,7 @@ public class Player : MonoBehaviour
         {
             GameEvents.beat.onBeat -= Move;
             GoToNonTile();
+            Invoke("_dead", 1);
         }
         _worldPosition = transform.position;
         
@@ -207,21 +215,57 @@ public class Player : MonoBehaviour
                 if (tile != null && !tile.isBroken)
                 {
                     if (direction.x > 0)
-                        direction.x = 2;
+                    {
+                        if (position.x+2 > gridSize.GetLength(0))
+                        {
+                            direction.x = 1;
+                        }
+                        else
+                        {
+                            direction.x = 2;
+                        }
+                    }
                     else if (direction.x < 0)
-                        direction.x = -2;
+                    {
+                        if (position.x-2 < 0)
+                        {
+                            position.x = -1;
+                        }
+                        else
+                        {
+                            direction.x = -2;
+                        }
+                    }
+
                     if (direction.y > 0)
-                        direction.y = 2;
+                    {
+                        if (position.y+2 > gridSize.GetLength(1))
+                        {
+                            direction.y = 1;
+                        }
+                        else
+                        {
+                            direction.y = 2;
+                        }
+                    }
                     else if (direction.y < 0)
-                        direction.y = -2;
+                    {
+                        if (position.y-2 < 0)
+                        {
+                            direction.y = -1;
+                        }
+                        else
+                        {
+                            direction.y = -2;
+                        }
+                    }
                 }
-
-
             }
             tile = null;
-
         }
     }
+
+    
 
     private static void SetDirectionToNormal()
     {
@@ -256,8 +300,12 @@ public class Player : MonoBehaviour
         var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
         // commented out tile.state/2 as for the moment at least it is not conveyed good enough for the player to understand how it works.
         score += repairPoints * (5 - heat / 20); //* tile.state/2; 
-        if(scoreBox != null)
-        scoreBox.text = score.ToString();
+        if (scoreBox != null)
+        {
+            scoreBox.text = score.ToString();
+        }
+
+        ScoreKeeper.score = score;
         Debug.Log(score);
     }
 
@@ -271,5 +319,9 @@ public class Player : MonoBehaviour
         GetPoints();
     }
 
+    private void _dead()
+    {
+        SceneManager.LoadScene("DeathScreen");
+    }
 }
 

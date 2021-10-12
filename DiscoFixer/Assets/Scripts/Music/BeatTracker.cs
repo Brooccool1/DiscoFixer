@@ -1,17 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Packages.Rider.Editor.UnitTesting;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BeatTracker : MonoBehaviour
 {
     [SerializeField] private AudioClip _song;
     [SerializeField, Range(1, 10)] private int _skippedBeats = 1;
+
+    [Header("Main menu or not")] 
+    [SerializeField] private bool _mainMenu = false;
     
     // Started song
     private bool _started = false;
+    
+    // Timer for lenght of song
+    private float _timer = 0;
     
     // boots and pants, bpm = 144
     private int _bpm = 130;
@@ -58,8 +63,22 @@ public class BeatTracker : MonoBehaviour
         }
     }
 
+    private void _nextScene()
+    {
+        ScoreKeeper._dead = false;
+        SceneManager.LoadScene("DeathScreen");
+    }
+
     void FixedUpdate()
     {
+        if (!_mainMenu)
+        {
+            if (_timer >= _song.length)
+            {
+                Invoke("_nextScene", 1);
+            }
+        }
+
         if (!_started)
         {
             if (Player.pressedArrows())
@@ -78,6 +97,8 @@ public class BeatTracker : MonoBehaviour
                 GameEvents.beat.OnBeat();
                 _lastBeat += _beat * _skippedBeats;
             }
+
+            _timer += Time.deltaTime;
         }
     }
 }
