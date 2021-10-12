@@ -15,11 +15,11 @@ public class Tile : MonoBehaviour
     public int _waterStayTime = 0;
     public int waterPickupEffect = 30;
     [SerializeField] private VisualEffect vfxBurst;
+    [SerializeField] private VisualEffect impact;
     [SerializeField] private VisualEffect vfxBuildUp;
     [SerializeField] private float MaxSpawnRate;
 
     private float spawnrate = 0f;
-
 
     private void Start()
     {
@@ -48,7 +48,13 @@ public class Tile : MonoBehaviour
         {
             isBroken = true;
         }
-        
+
+        if (state == 8)
+        {
+            impact.Play();
+
+        }
+
         _waterPickup();
     }
 
@@ -100,5 +106,7 @@ public class Tile : MonoBehaviour
             spawnrate = 0;
         }
         gameObject.GetComponentInChildren<Transform>().Find("Water").GetComponent<SpriteRenderer>().enabled = hasWaterPickup;
+
+        
     }
 }
