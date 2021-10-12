@@ -7,12 +7,10 @@ public class PlayerAnimations : MonoBehaviour
     [Header("Order of sprite is important! First is up then changes clockwise")]
     [SerializeField] private List<Sprite> _sprites;
     [SerializeField] private Sprite _danceSprite;
-    [SerializeField] private Sprite _faintSprite;
+    [SerializeField] private Sprite[] _faintSprites;
     
     private SpriteRenderer _sprite;
     private Vector2 _direction = Vector2.zero;
-
-    private Player playerState = new ();
     
     private int _currentSprite = 0;
     
@@ -40,15 +38,25 @@ public class PlayerAnimations : MonoBehaviour
     
     void Update()
     {
-        if (Player.state == Player.State.Walking)
+        if(!Player.alive && !Player.falling)
+        {
+            int index;
+            if (_direction.x > 0)
+            {
+                index = 0;
+            }
+            else
+            {
+                index = 1;
+            }
+            
+            _sprite.sprite = _faintSprites[index];
+        }
+        else if (Player.state == Player.State.Walking)
         {
             _direction = Player.direction;
             _directionConverter();
             _sprite.sprite = _sprites[_currentSprite];
-        }
-        else if (!Player.alive && !Player.falling)
-        {
-            _sprite.sprite = _faintSprite;
         }
         else
         {

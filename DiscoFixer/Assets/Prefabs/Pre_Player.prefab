@@ -353,8 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40de10eca2384129941a2e4df1c7c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alive: 1
-  falling: 0
   scoreBox: {fileID: 0}
   score: 0
   repairPoints: 10
@@ -381,6 +379,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 77b90525b5055e94aa1b7b1270e84ae5, type: 3}
   - {fileID: 21300000, guid: d0ac79cb281b3c943a6c19b9149618eb, type: 3}
   _danceSprite: {fileID: 21300000, guid: 7cdc6b28c9549a0499150a2022794e23, type: 3}
+  _faintSprites:
+  - {fileID: 21300000, guid: 196376899b2bf5e4bb236618ea74b967, type: 3}
+  - {fileID: 21300000, guid: 9376599a686c23148829a899e3dc2c16, type: 3}
 --- !u!1 &4512086789823196752
 GameObject:
   m_ObjectHideFlags: 0
