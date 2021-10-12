@@ -30,6 +30,16 @@ public class BeatBar : MonoBehaviour
         if (ballTF.localScale.x > 1.2 * minBallSizeModifier)
         {
             ballTF.localScale = Vector3.Lerp(ballTF.localScale, ballTF.localScale * -0.1f, ballShrinkSpeed * Time.deltaTime);
+            
+        }
+
+        foreach (var thing in beatThingsL)
+        {
+            thing.transform.Rotate(0,0,10);
+        }
+        foreach (var thing in beatThingsR)
+        {
+            thing.transform.Rotate(0,0,-10);
         }
     }
 
@@ -42,6 +52,7 @@ public class BeatBar : MonoBehaviour
     {
         var beatSpawnPos = background.transform.position;
         var beatThingL = Instantiate(beatPrefab, beatSpawnPos, transform.rotation);
+        beatThingL.transform.Rotate(0,0,180);
         var beatThingR = Instantiate(beatPrefab, beatSpawnPos, transform.rotation);
         beatThingsL.Add(beatThingL);
         beatThingsR.Add(beatThingR);
