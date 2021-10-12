@@ -799,6 +799,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533338341}
   m_CullTransparentMesh: 1
+--- !u!1 &653697729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2172875287733033404, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+  m_PrefabInstance: {fileID: 1622881148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &796162912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,8 +1039,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865090976}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.11, y: -3.84, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.108159766, w: 0.99413353}
+  m_LocalPosition: {x: -3.68, y: -2.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1108,8 +1113,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 3.96
+  m_PointLightInnerRadius: 0.11203894
+  m_PointLightOuterRadius: 2.3198416
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -1291,6 +1296,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7230499440311224748, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
+      propertyPath: heatBar
+      value: 
+      objectReference: {fileID: 653697729}
     - target: {fileID: 7230499440311224749, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
       propertyPath: m_Name
       value: Pre_Lamp(1)
@@ -1927,6 +1936,10 @@ PrefabInstance:
       propertyPath: _yAxis
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7230499440311224748, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
+      propertyPath: heatBar
+      value: 
+      objectReference: {fileID: 653697729}
     - target: {fileID: 7230499440311224749, guid: f4f4bb1c1e3eda1438e705184396bce5, type: 3}
       propertyPath: m_Name
       value: Pre_Lamp
@@ -2500,6 +2513,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1072495940}
     m_Modifications:
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.58241266
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.014681139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.010521174
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.81269264
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.665
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730541, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 108.757
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730542, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_PointLightInnerAngle
+      value: 133.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123730542, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.32853177
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172875287733033405, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 2172875287973474769, guid: 8c3033b060e2ff443b95340beb743fad, type: 3}
       propertyPath: m_Name
       value: Pre_HeatBar
