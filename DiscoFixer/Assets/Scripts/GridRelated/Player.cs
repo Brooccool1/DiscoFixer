@@ -230,6 +230,7 @@ public class Player : MonoBehaviour
                             if (Grid.grid[i, j].transform.position == tile.transform.position)
                             {
                                 _goalPosition = new Vector3(i, j);
+                                break;
                             }
                         }
                     }
@@ -239,6 +240,36 @@ public class Player : MonoBehaviour
                     if (_goalPosition == Vector3.zero)
                     {
                         _goalPosition = position + direction;
+                        break;
+                    }
+
+                    if (direction.x > 0)
+                    {
+                        if (_goalPosition.x < Grid.grid.GetLength(0) - 1 && !Grid.grid[(int)_goalPosition.x + 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
+                        {
+                            _goalPosition.x++;
+                        }
+                    }
+                    else if (direction.x < 0)
+                    {
+                        if (_goalPosition.x > 1 && !Grid.grid[(int)_goalPosition.x - 1, (int)_goalPosition.y].GetComponent<Tile>().isBroken)
+                        {
+                            _goalPosition.x--;
+                        }
+                    }
+                    if (direction.y > 0)
+                    {
+                        if (_goalPosition.y < Grid.grid.GetLength(1) - 1 && !Grid.grid[(int)_goalPosition.x, (int)_goalPosition.y + 1].GetComponent<Tile>().isBroken)
+                        {
+                            _goalPosition.y++;
+                        }
+                    }
+                    else if (direction.y < 0)
+                    {
+                        if (_goalPosition.y > 1 && !Grid.grid[(int)_goalPosition.x, (int)_goalPosition.y - 1].GetComponent<Tile>().isBroken)
+                        {
+                            _goalPosition.y--;
+                        }
                     }
 
                     break;
