@@ -75,7 +75,7 @@ public class BeatTracker : MonoBehaviour
         {
             if (_timer >= _song.length)
             {
-                Invoke("_nextScene", 1);
+                Invoke("_nextScene", 0.5f);
             }
         }
 
