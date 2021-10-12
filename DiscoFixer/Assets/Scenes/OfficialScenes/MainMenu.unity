@@ -228,9 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd69ce044f3362849b80c566c5bcd562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioPlayer: {fileID: 928224039}
   mainMenu: {fileID: 614500760}
   optionsMenu: {fileID: 388135429}
+  audioPlayer: {fileID: 928224039}
   volumeSlider: {fileID: 1384685913}
   currentVolume: {fileID: 1212968531}
 --- !u!4 &370549968
@@ -1538,6 +1538,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 393731347739636578, guid: 9e7ea0d9703fb9544a6783aa83db2b87, type: 3}
+      propertyPath: _mainMenu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 393731347739636579, guid: 9e7ea0d9703fb9544a6783aa83db2b87, type: 3}
       propertyPath: m_Name
       value: Pre_MusicPlayer

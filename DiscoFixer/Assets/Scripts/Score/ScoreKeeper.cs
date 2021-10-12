@@ -6,6 +6,8 @@ public class ScoreKeeper : MonoBehaviour
 {
     private static int _score = 0;
 
+    public static bool _dead = true;
+    
     public static int score
     {
         get { return _score; }
