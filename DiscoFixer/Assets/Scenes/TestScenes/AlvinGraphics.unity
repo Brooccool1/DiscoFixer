@@ -1310,6 +1310,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5572394558617170602, guid: f31c948234ee72e4fb7fb4d575011436, type: 3}
+      propertyPath: _percentageOfBreaking
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 5572394558617170603, guid: f31c948234ee72e4fb7fb4d575011436, type: 3}
       propertyPath: m_Name
       value: Pre_TileBreaker
