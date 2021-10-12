@@ -215,21 +215,57 @@ public class Player : MonoBehaviour
                 if (tile != null && !tile.isBroken)
                 {
                     if (direction.x > 0)
-                        direction.x = 2;
+                    {
+                        if (position.x+2 > gridSize.GetLength(0))
+                        {
+                            direction.x = 1;
+                        }
+                        else
+                        {
+                            direction.x = 2;
+                        }
+                    }
                     else if (direction.x < 0)
-                        direction.x = -2;
+                    {
+                        if (position.x-2 < 0)
+                        {
+                            position.x = -1;
+                        }
+                        else
+                        {
+                            direction.x = -2;
+                        }
+                    }
+
                     if (direction.y > 0)
-                        direction.y = 2;
+                    {
+                        if (position.y+2 > gridSize.GetLength(1))
+                        {
+                            direction.y = 1;
+                        }
+                        else
+                        {
+                            direction.y = 2;
+                        }
+                    }
                     else if (direction.y < 0)
-                        direction.y = -2;
+                    {
+                        if (position.y-2 < 0)
+                        {
+                            direction.y = -1;
+                        }
+                        else
+                        {
+                            direction.y = -2;
+                        }
+                    }
                 }
-
-
             }
             tile = null;
-
         }
     }
+
+    
 
     private static void SetDirectionToNormal()
     {
