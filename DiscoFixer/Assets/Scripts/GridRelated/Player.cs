@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
     
     private void Start()
     {
+        direction = new Vector2(0, -1);
+        
         GameEvents.beat.onBeat += Move;
         GameEvents.beat.onBeat += AddHeatEveryBeat;
         _fire = GetComponentInChildren<VisualEffect>();
