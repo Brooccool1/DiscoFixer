@@ -12,6 +12,10 @@ public class HeatBar : MonoBehaviour
     private LineRenderer _line;
     private Vector3 _startPos = new Vector3();
     private int _oldHeat = 0;
+    public List<Sprite> flames;
+    public GameObject flame;
+    public List<Sprite> multipliers;
+    public GameObject multiplier;
 
     void Start()
     {
@@ -51,5 +55,19 @@ public class HeatBar : MonoBehaviour
             _line.positionCount--;
             _oldHeat--;
         }
+
+        flame.GetComponent<SpriteRenderer>().sprite = Player.heat switch
+        {
+            < 33 => flames[0],
+            > 67 => flames[2],
+            _ => flames[1]
+        };
+
+        multiplier.GetComponent<SpriteRenderer>().sprite = Player.heat switch
+        {
+            < 33 => multipliers[2],
+            > 67 => multipliers[0],
+            _ => multipliers[1]
+        };
     }
 }
