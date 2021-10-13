@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,9 +9,23 @@ public class TileDestroyer : MonoBehaviour
 {
     [SerializeField] private int _percentageOfBreaking = 2;
     [SerializeField] private int _beatsToSkip = 5;
+
+    [Header("Normal sprites")] 
+    [SerializeField] private List<Sprite> _normalSprites;
+    
+    [Header("Broken sprites")] 
+    [SerializeField] private List<Sprite> _brokenSprites;
+
+    // Index in List
+    private int _currentSprite;
     
     // Start of update
     private bool _started = false;
+    
+    // Have hit the floor
+    private bool _hitFloor;
+
+    private SpriteRenderer _renderer;
     
     private GameObject[,] _grid;
     private int[] _gridSize = new int[2];
@@ -25,6 +40,7 @@ public class TileDestroyer : MonoBehaviour
     {
         _collider = GetComponent<CircleCollider2D>();
         GameEvents.beat.onBeat += _drop;
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     // Starts in update to give the grid time to be created 
@@ -37,9 +53,17 @@ public class TileDestroyer : MonoBehaviour
 
     private void _drop()
     {
+        _renderer = GetComponent<SpriteRenderer>();
+        
         _beatSkip--;
         if (_beatSkip <= 0)
         {
+            // Effects
+            _currentSprite = Random.Range(0, _normalSprites.Count);
+            _hitFloor = false;
+            _renderer.color = new Color(_renderer.color.r, _renderer.color.g, _renderer.color.b, 255);
+            _renderer.sprite = _normalSprites[_currentSprite];
+            
             _collider.enabled = false;
             _beatSkip = _beatsToSkip;
 
@@ -59,29 +83,40 @@ public class TileDestroyer : MonoBehaviour
             _started = true;
         }
 
+        // Falling
         if (Vector3Int.FloorToInt(transform.position) != Vector3Int.FloorToInt(_goalPosition))
         {
             transform.position = Vector3.MoveTowards(transform.position, _goalPosition, 0.5f);
         }
+        
+        // Hit floor
         else
         {
-            _collider.enabled = true;
-            for (int i = 0; i < _gridSize[0]; i++)
+            if (!_hitFloor)
             {
-                for (int j = 0; j < _gridSize[1]; j++)
+                _collider.enabled = true;
+                for (int i = 0; i < _gridSize[0]; i++)
                 {
-                    if (_collider.OverlapPoint(_grid[i, j].transform.position))
+                    for (int j = 0; j < _gridSize[1]; j++)
                     {
-                        if (Random.Range(0, 101) < _percentageOfBreaking)
+                        if (_collider.OverlapPoint(_grid[i, j].transform.position))
                         {
-                            Grid.grid[i, j].GetComponent<Tile>().isBreaking = true;
+                            // Finding tiles in area
+                            if (Random.Range(0, 101) < _percentageOfBreaking)
+                            {
+                                Grid.grid[i, j].GetComponent<Tile>().isBreaking = true;
+                            }
                         }
                     }
                 }
             }
+            _renderer = GetComponent<SpriteRenderer>();
 
-            transform.position = new Vector3(100, 100);
-            _goalPosition = new Vector3(100, 100);
+            // Fadeing
+            _renderer.sprite = _brokenSprites[_currentSprite];
+            _renderer.color = new Color(_renderer.color.r, _renderer.color.g, _renderer.color.b, _renderer.color.a * 0.9f);
+            _hitFloor = true;
+
         }
     }
 }
