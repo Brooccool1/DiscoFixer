@@ -109,8 +109,8 @@ public class Player : MonoBehaviour
         // lerp = smooth
         // Slerp = nice bounce but buggy
         Vector3 _currentPosition = Vector3.zero;
-        _currentPosition.x = Mathf.Lerp(transform.position.x, _goalPos.x, 0.1f);
-        _currentPosition.y = Mathf.Lerp(transform.position.y, _goalPos.y, 0.1f);
+        _currentPosition.x = Mathf.Lerp(transform.position.x, _goalPos.x, 0.2f);
+        _currentPosition.y = Mathf.Lerp(transform.position.y, _goalPos.y, 0.2f);
 
         transform.position = _currentPosition;
         // transform.position = Vector3.Slerp(transform.position, _goalPos, 0.03f);

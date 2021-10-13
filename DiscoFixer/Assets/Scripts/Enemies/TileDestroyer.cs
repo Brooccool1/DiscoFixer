@@ -58,6 +58,8 @@ public class TileDestroyer : MonoBehaviour
         _beatSkip--;
         if (_beatSkip <= 0)
         {
+            _grid = Grid.grid;
+            
             // Effects
             _currentSprite = Random.Range(0, _normalSprites.Count);
             _hitFloor = false;
@@ -67,10 +69,22 @@ public class TileDestroyer : MonoBehaviour
             _collider.enabled = false;
             _beatSkip = _beatsToSkip;
 
-            int x = Random.Range(0, _gridSize[0]);
-            int y = Random.Range(0, _gridSize[1]);
-            _goalPosition = _grid[x, y].transform.position;
-            transform.position = _grid[x, y].transform.position + new Vector3(0, 20);
+            // Get all non destroyed tiles
+            List<Vector3> tiles = new List<Vector3>();
+            for (int i = 0; i < _grid.GetLength(0); i++)
+            {
+                for (int j = 0; j < _grid.GetLength(1); j++)
+                {
+                    if (!_grid[i, j].GetComponent<Tile>().isBroken)
+                    {
+                        tiles.Add(_grid[i, j].transform.position);
+                    }
+                }
+            }
+
+            int index = Random.Range(0, tiles.Count);
+            _goalPosition = tiles[index];
+            transform.position = tiles[index] + new Vector3(0, 20);
             _startPosition = transform.position;
         }
     }
