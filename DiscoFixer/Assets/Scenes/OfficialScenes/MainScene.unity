@@ -353,6 +353,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1849250645, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: audioPlayer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -397,9 +401,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3540839507258861858, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3732364754092149038, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
       propertyPath: m_Name
       value: Pause menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679543865929641095, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: audioPlayer
+      value: 
+      objectReference: {fileID: 1203564450}
+    - target: {fileID: 5841492551215119647, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467367095100057438, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
+      propertyPath: m_Text
+      value: 'Volume:      '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
@@ -1825,6 +1845,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e7ea0d9703fb9544a6783aa83db2b87, type: 3}
+--- !u!82 &1203564450 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 393731347739636580, guid: 9e7ea0d9703fb9544a6783aa83db2b87, type: 3}
+  m_PrefabInstance: {fileID: 1203564449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255456258
 GameObject:
   m_ObjectHideFlags: 0
