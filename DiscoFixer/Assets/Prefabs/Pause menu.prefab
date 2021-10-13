@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 3039043255799258297}
   - component: {fileID: 6053708597929743382}
   - component: {fileID: 1583384365407963746}
+  - component: {fileID: 2023837178}
   m_Layer: 0
   m_Name: Continue
   m_TagString: Untagged
@@ -298,7 +299,35 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6053708597929743382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2023837178}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ContinueButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2023837178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405773960782765607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd143ebd640c54840a5be6396cb7edfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 1424724164879620347}
+  audioPlayer: {fileID: 0}
+  currentVolume: {fileID: 0}
+  _notParent: 1
 --- !u!1 &2491730007499962149
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +536,7 @@ MonoBehaviour:
   _canvas: {fileID: 1424724164879620347}
   audioPlayer: {fileID: 0}
   currentVolume: {fileID: 0}
-  _slider: 0
+  _notParent: 0
 --- !u!1 &4574557545539420164
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,10 +733,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd143ebd640c54840a5be6396cb7edfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
+  _canvas: {fileID: 1424724164879620347}
   audioPlayer: {fileID: 0}
   currentVolume: {fileID: 7467367095100057438}
-  _slider: 1
+  _notParent: 1
 --- !u!1 &5207414437521456566
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +749,7 @@ GameObject:
   - component: {fileID: 1904102930962754608}
   - component: {fileID: 8857057318727998820}
   - component: {fileID: 1855881792902067340}
+  - component: {fileID: 994267856}
   m_Layer: 0
   m_Name: StartMenu
   m_TagString: Untagged
@@ -829,7 +859,35 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8857057318727998820}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 994267856}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: LoadMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &994267856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207414437521456566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd143ebd640c54840a5be6396cb7edfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 1424724164879620347}
+  audioPlayer: {fileID: 0}
+  currentVolume: {fileID: 0}
+  _notParent: 1
 --- !u!1 &5583216070485475545
 GameObject:
   m_ObjectHideFlags: 0
