@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     // heat and Fire effect
     public static int heat = 0;
     private VisualEffect _fire;
+    
+    // Number of inputs, resets after 2 inputs
+    private int _numOfInputs = 0;
 
     // Couldn't always set grid in Start
     private bool _lateStart = false;
@@ -53,6 +56,9 @@ public class Player : MonoBehaviour
         heat = 0;
         alive = true;
         falling = false;
+        
+        ScoreKeeper._dead = true;
+        ScoreKeeper.score = 0;
     }
 
     private void AddHeatEveryBeat()
@@ -154,23 +160,45 @@ public class Player : MonoBehaviour
     {
         if (!alive) return;
         
-        if (!alreadyPressed)
+        if (pressedArrows())
         {
-            if (pressedArrows())
+            if (!alreadyPressed)
             {
                 alreadyPressed = true;
+                direction = Vector2.zero;
+                _numOfInputs = 0;
+            }
+
+            if (_numOfInputs > 3)
+            {
+                _numOfInputs = 0;
                 direction = Vector2.zero;
             }
         }
         
         if (Input.GetAxis("Vertical") > 0) 
-        { direction.y = 1; }
-        if (Input.GetAxis("Vertical") < 0) 
-        { direction.y = -1; }
-        if (Input.GetAxis("Horizontal") < 0) 
-        { direction.x = -1; }
-        if (Input.GetAxis("Horizontal") > 0) 
-        { direction.x = 1; }
+        {
+            direction.y = 1;
+            _numOfInputs++;
+        }
+
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            direction.y = -1; 
+            _numOfInputs++;
+        }
+
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            direction.x = -1; 
+            _numOfInputs++;
+        }
+
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            direction.x = 1;
+            _numOfInputs++;
+        }
 
     }
 
@@ -204,7 +232,7 @@ public class Player : MonoBehaviour
         
         
         alreadyPressed = false;
-        CheckForPickup();
+        CheckForPickup(position);
         CheckAndFixTile();
         SetDirectionToNormal();
 
@@ -234,7 +262,15 @@ public class Player : MonoBehaviour
                         break;
                     }
                     alive = false;
+                    falling = true;
                     break;
+                }
+
+                if (tile.hasWaterPickup)
+                {
+                    var preliminaryHeat = heat - tile.waterPickupEffect;
+                    heat = preliminaryHeat < 0 ? 0 : preliminaryHeat;
+                    tile.hasWaterPickup = false;
                 }
 
                 if (tile.isBreaking && !tile.isBroken)
@@ -336,9 +372,9 @@ public class Player : MonoBehaviour
             direction.y = -1;
     }
 
-    private void CheckForPickup()
+    private void CheckForPickup(Vector2 pos)
     {
-        var gameObject = Grid.grid[Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)];
+        var gameObject = Grid.grid[Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y)];
         var tileScript = gameObject.GetComponent<Tile>();
         if (tileScript.hasWaterPickup)
         {
