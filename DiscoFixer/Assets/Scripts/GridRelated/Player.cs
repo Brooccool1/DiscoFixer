@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
         GameEvents.beat.onBeat += AddHeatEveryBeat;
         _fire = GetComponentInChildren<VisualEffect>();
         heat = 0;
+        ScoreKeeper._dead = true;
         alive = true;
         falling = false;
     }
