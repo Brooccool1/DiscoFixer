@@ -13,7 +13,9 @@ public class Tile : MonoBehaviour
     public bool isBroken = false;
     public bool previousIsBreaking = false;
     public bool hasWaterPickup = false;
-    public int _waterStayTime = 0;
+    public bool hasWiperPickup = false;
+    public int _waterStayTime = 10;
+    public int _wiperStayTime = 20;
     public int waterPickupEffect = 30;
     [SerializeField] private VisualEffect vfxBurst;
     [SerializeField] private VisualEffect impact;
@@ -25,22 +27,29 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        GameEvents.beat.onBeat += Break;
+        GameEvents.beat.onBeat += OnEveryBeat;
         //vfx = GetComponentInChildren<VisualEffect>();
         state = stages;
     }
 
-    private void Break()
+    private void OnEveryBeat()
+    {
+        Breaker();
+        _waterPickup();
+        _wiperPickup();
+    }
+
+    private void Breaker()
     {
         if (isBreaking)
         {
             state--;
-            
-            spawnrate = (1f - (float)state / 9f) * MaxSpawnRate;
+
+            spawnrate = (1f - (float) state / 9f) * MaxSpawnRate;
 
             vfxBuildUp.SetFloat("SpawnRate", spawnrate);
 
-            if(!isBroken)
+            if (!isBroken)
             {
                 previousIsBreaking = true;
             }
@@ -49,15 +58,13 @@ public class Tile : MonoBehaviour
         if (state == 0)
         {
             isBroken = true;
+            isBreaking = false;
         }
 
         if (state == 8)
         {
             impact.Play();
-
         }
-
-        _waterPickup();
     }
 
     private void _waterPickup()
@@ -75,6 +82,22 @@ public class Tile : MonoBehaviour
             _waterStayTime--;
         }
     }
+    
+    private void _wiperPickup()
+    {
+        if (!hasWiperPickup) return;
+        if (isBroken)
+        {
+            hasWiperPickup = false;
+        }
+        if (_wiperStayTime <= 0)
+        {
+            hasWiperPickup = false;
+        }
+        _wiperStayTime--;
+    }
+    
+   
 
     private void _changeSprite()
     {
@@ -118,6 +141,7 @@ public class Tile : MonoBehaviour
             spawnrate = 0;
         }
         gameObject.GetComponentInChildren<Transform>().Find("Water").GetComponent<SpriteRenderer>().enabled = hasWaterPickup;
+        gameObject.GetComponentInChildren<Transform>().Find("Wiper").GetComponent<SpriteRenderer>().enabled = hasWiperPickup;
 
         
     }

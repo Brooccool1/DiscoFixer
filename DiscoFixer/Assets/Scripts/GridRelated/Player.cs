@@ -388,11 +388,22 @@ public class Player : MonoBehaviour
             Debug.Log($"heat after: {heat}");
             tileScript.hasWaterPickup = false;
         }
+
+        if (tileScript.hasWiperPickup)
+        {
+            var repairedTiles =Grid.UseWiper();
+            for (int i = 0; i < repairedTiles; i++)
+            {
+                GetPoints();
+            }
+
+            tileScript.hasWiperPickup = false;
+        }
     }
 
     private void GetPoints()
     {
-        var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
+        //var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
         // commented out tile.state/2 as for the moment at least it is not conveyed good enough for the player to understand how it works.
         score += repairPoints * (3 - heat / 33); //* tile.state/2; 
         if (scoreBox != null)
