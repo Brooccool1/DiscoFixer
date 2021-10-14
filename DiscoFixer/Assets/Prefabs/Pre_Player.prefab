@@ -398,6 +398,7 @@ MonoBehaviour:
   _water: {fileID: 8300000, guid: 69d40ae3a2e53764da0621c1e8e9ca00, type: 3}
   _wiper: {fileID: 8300000, guid: 8fc142535125da740b8c07bf21fede48, type: 3}
   _freeze: {fileID: 8300000, guid: f5ac5b4ae1160ba4daf03efa9fab6702, type: 3}
+  _fixCombo: {fileID: 8300000, guid: e8bbecc95da1c3e48b72419487143f8a, type: 3}
 --- !u!1 &4512086789823196752
 GameObject:
   m_ObjectHideFlags: 0
