@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: abf0cb270322e224480b64abcbbf7216, type: 2}
+  m_Texture: {fileID: 8400000, guid: e893b38fe005be148a2a2b9e249c0aed, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -139,7 +139,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 128
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: abf0cb270322e224480b64abcbbf7216, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: e893b38fe005be148a2a2b9e249c0aed, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7789576609149440298}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
