@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     [Header("Volume")]
     [SerializeField] private AudioSource audioPlayer;
     [SerializeField] private Text currentVolume;
+    [SerializeField] private Slider volumeSlider;
     [SerializeField] private bool _notParent = false;
 
     private void Start()
@@ -21,6 +22,12 @@ public class PauseMenu : MonoBehaviour
         {
             _canvas.SetActive(false);
         }
+        if(currentVolume != null)
+        {
+            currentVolume.text = "Volume: " + (PlayerPrefs.GetFloat("AudioVolume") * 100).ToString();
+            volumeSlider.value = audioPlayer.volume;
+        }
+
     }
 
     void Update()
