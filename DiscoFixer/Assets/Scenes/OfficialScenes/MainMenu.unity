@@ -401,7 +401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 614500760}
   optionsMenu: {fileID: 388135429}
-  controlsMenu: {fileID: 0}
+  controlsMenu: {fileID: 294740574}
   audioPlayer: {fileID: 928224039}
   volumeSlider: {fileID: 1384685913}
   currentVolume: {fileID: 1212968531}
