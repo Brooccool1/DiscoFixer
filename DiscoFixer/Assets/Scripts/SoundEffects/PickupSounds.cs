@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PickupSounds : MonoBehaviour
 {
     [SerializeField] private AudioClip _water;
     [SerializeField] private AudioClip _wiper;
     [SerializeField] private AudioClip _freeze;
 
-    private static AudioSource _player = new();
+    private static AudioSource _player;
     
     // Statics
     private static AudioClip _Swater;
@@ -21,6 +22,7 @@ public class PickupSounds : MonoBehaviour
         _Swater = _water;
         _Swiper = _wiper;
         _Sfreeze = _freeze;
+        _player = GetComponent<AudioSource>();
     }
 
     public static void Water()
