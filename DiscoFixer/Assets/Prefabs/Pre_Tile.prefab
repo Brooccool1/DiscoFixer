@@ -417,12 +417,12 @@ MonoBehaviour:
   isBroken: 0
   previousIsBreaking: 0
   hasWaterPickup: 0
-  _waterStayTime: 0
-  hasWiperPickup: 0
-  _wiperStayTime: 20
-  hasFreezePickup: 0
-  _freezeStayTime: 5
+  _waterStayTime: 10
   waterPickupEffect: 30
+  hasWiperPickup: 0
+  _wiperStayTime: 10
+  hasFreezePickup: 0
+  _freezeStayTime: 10
   vfxBurst: {fileID: 8202086115660613011}
   impact: {fileID: 4538974901010747243}
   vfxBuildUp: {fileID: 4866658880172442623}
