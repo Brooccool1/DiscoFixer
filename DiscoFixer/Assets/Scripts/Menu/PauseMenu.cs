@@ -33,17 +33,9 @@ public class PauseMenu : MonoBehaviour
 
                 Time.timeScale = _timeScale;
 
-                if (Time.timeScale < 1)
-                {
-                    _canvas.SetActive(true);
-                }
-                else
-                {
-                    _canvas.SetActive(false);
-                }
+                _canvas.SetActive(Time.timeScale < 1);
             }
         }
-        print("time: " + Time.timeScale);
     }
 
     public void ContinueButton()

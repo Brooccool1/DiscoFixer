@@ -18,6 +18,8 @@ public class Grid : MonoBehaviour
     private int waterPickupCountdown;
     public int wiperPickupDelay = 5;
     private int wiperPickupCountdown;
+    public int freezePickupDelay = 5;
+    private int freezePickupCountdown;
     //private int everyOther = 0;
     private Color color1;
     private Color color2;
@@ -29,9 +31,11 @@ public class Grid : MonoBehaviour
         GameEvents.beat.onBeat += TileBreaker;
         GameEvents.beat.onBeat += WaterPickupSpawner;
         GameEvents.beat.onBeat += WiperPickupSpawner;
+        GameEvents.beat.onBeat += FreezePickupSpawner;
         breakCountdown = breakFrequency;
         waterPickupCountdown = waterPickupDelay;
         wiperPickupCountdown = wiperPickupDelay;
+        freezePickupCountdown = freezePickupDelay;
         grid = new GameObject[width, height];
         
         var basePos = new Vector2(transform.position.x - width/2, transform.position.y - height/2);
@@ -46,9 +50,6 @@ public class Grid : MonoBehaviour
             }
         }
     }
-
-    
-
 
     private void WaterPickupSpawner()
     {
@@ -65,6 +66,29 @@ public class Grid : MonoBehaviour
             waterPickupCountdown--;
         }
     }
+
+
+    private void FreezePickupSpawner()
+    {
+        if (freezePickupCountdown == 0)
+        {
+            var tile = grid[Random.Range(0, width), Random.Range(0, height)];
+            var tileScript = tile.GetComponent<Tile>();
+            tileScript.hasFreezePickup = true;
+            tileScript._freezeStayTime = 10;
+            freezePickupCountdown = freezePickupDelay;
+        }
+        else
+        {
+            freezePickupCountdown--;
+        }
+    }
+
+    public static void ActivateFreeze()
+    {
+        StopTilesBreaking.active = true;
+    }
+    
     private void WiperPickupSpawner()
     {
         if (wiperPickupCountdown == 0)
@@ -148,28 +172,8 @@ public class Grid : MonoBehaviour
         else
         {
             breakCountdown = breakFrequency;
-            // BreakATile();
             
         }
-    }
-    
-    private void BreakATile()
-    {
-        var alreadyBroken = true;
-        while (alreadyBroken)
-        {
-            // Get a random tile
-            var tile = grid[Random.Range(0, width), Random.Range(0, height)];
-            var tileScript = tile.GetComponent<Tile>();
-            // Check if chosen tile is already breaking or broken
-            if (!tileScript.isBreaking && !tileScript.isBroken)
-            {
-                tileScript.isBreaking = true;
-                alreadyBroken = false;
-            }
-        }
-        
-        
     }
     
 }

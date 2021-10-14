@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3597722282410565367}
   - component: {fileID: 3597722282410565366}
+  - component: {fileID: 4702601557234568435}
   m_Layer: 0
   m_Name: Pre_GridController
   m_TagString: Untagged
@@ -49,4 +50,18 @@ MonoBehaviour:
   width: 11
   tileColors: []
   breakFrequency: 5
-  breakCountdown: 0
+  waterPickupDelay: 10
+  wiperPickupDelay: 5
+  freezePickupDelay: 5
+--- !u!114 &4702601557234568435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597722282410565321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c573557271ed48047a515c6e94fb96cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
