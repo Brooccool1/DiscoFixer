@@ -12,8 +12,15 @@ public class Tile : MonoBehaviour
     public bool isBreaking = false;
     public bool isBroken = false;
     public bool previousIsBreaking = false;
+    // Water
     public bool hasWaterPickup = false;
-    public int _waterStayTime = 0;
+    public int _waterStayTime = 10;
+    // Wiper
+    public bool hasWiperPickup = false;
+    public int _wiperStayTime = 5;
+    // Freeze
+    public bool hasFreezePickup = false;
+    public int _freezeStayTime = 5;
     public int waterPickupEffect = 30;
     [SerializeField] private VisualEffect vfxBurst;
     [SerializeField] private VisualEffect impact;
@@ -25,22 +32,30 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        GameEvents.beat.onBeat += Break;
+        GameEvents.beat.onBeat += OnEveryBeat;
         //vfx = GetComponentInChildren<VisualEffect>();
         state = stages;
     }
 
-    private void Break()
+    private void OnEveryBeat()
     {
-        if (isBreaking)
+        Breaker();
+        _waterPickup();
+        _wiperPickup();
+        _freezePickup();
+    }
+
+    private void Breaker()
+    {
+        if (isBreaking && !StopTilesBreaking.active)
         {
             state--;
-            
-            spawnrate = (1f - (float)state / 9f) * MaxSpawnRate;
+
+            spawnrate = (1f - (float) state / 9f) * MaxSpawnRate;
 
             vfxBuildUp.SetFloat("SpawnRate", spawnrate);
 
-            if(!isBroken)
+            if (!isBroken)
             {
                 previousIsBreaking = true;
             }
@@ -49,32 +64,58 @@ public class Tile : MonoBehaviour
         if (state == 0)
         {
             isBroken = true;
+            isBreaking = false;
         }
 
         if (state == 8)
         {
             impact.Play();
-
         }
-
-        _waterPickup();
     }
 
     private void _waterPickup()
     {
-        if (hasWaterPickup)
+        if (!hasWaterPickup) return;
+        if (isBroken)
         {
-            if (isBroken)
-            {
-                hasWaterPickup = false;
-            }
-            if (_waterStayTime <= 0)
-            {
-                hasWaterPickup = false;
-            }
-            _waterStayTime--;
+            hasWaterPickup = false;
         }
+        if (_waterStayTime <= 0)
+        {
+            hasWaterPickup = false;
+        }
+        _waterStayTime--;
     }
+    
+    private void _wiperPickup()
+    {
+        if (!hasWiperPickup) return;
+        if (isBroken)
+        {
+            hasWiperPickup = false;
+        }
+        if (_wiperStayTime <= 0)
+        {
+            hasWiperPickup = false;
+        }
+        _wiperStayTime--;
+    }
+    
+    private void _freezePickup()
+    {
+        if (!hasFreezePickup) return;
+        if (isBroken)
+        {
+            hasFreezePickup = false;
+        }
+        if (_freezeStayTime <= 0)
+        {
+            hasFreezePickup = false;
+        }
+        _freezeStayTime--;
+    }
+    
+   
 
     private void _changeSprite()
     {
@@ -118,6 +159,8 @@ public class Tile : MonoBehaviour
             spawnrate = 0;
         }
         gameObject.GetComponentInChildren<Transform>().Find("Water").GetComponent<SpriteRenderer>().enabled = hasWaterPickup;
+        gameObject.GetComponentInChildren<Transform>().Find("Wiper").GetComponent<SpriteRenderer>().enabled = hasWiperPickup;
+        gameObject.GetComponentInChildren<Transform>().Find("Freeze").GetComponent<SpriteRenderer>().enabled = hasFreezePickup;
 
         
     }

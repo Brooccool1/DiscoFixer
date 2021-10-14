@@ -268,12 +268,7 @@ public class Player : MonoBehaviour
                     break;
                 }
 
-                if (tile.hasWaterPickup)
-                {
-                    var preliminaryHeat = heat - tile.waterPickupEffect;
-                    heat = preliminaryHeat < 0 ? 0 : preliminaryHeat;
-                    tile.hasWaterPickup = false;
-                }
+                CheckForPickup(position + currDir);
 
                 if (tile.isBreaking && !tile.isBroken)
                 {
@@ -380,6 +375,7 @@ public class Player : MonoBehaviour
         var tileScript = gameObject.GetComponent<Tile>();
         if (tileScript.hasWaterPickup)
         {
+            PickupSounds.Water();
             Debug.Log($"heat before: {heat}");
             
             var preliminaryHeat = heat - tileScript.waterPickupEffect;
@@ -388,11 +384,30 @@ public class Player : MonoBehaviour
             Debug.Log($"heat after: {heat}");
             tileScript.hasWaterPickup = false;
         }
+
+        if (tileScript.hasWiperPickup)
+        {
+            PickupSounds.Wiper();
+            var repairedTiles =Grid.UseWiper();
+            for (int i = 0; i < repairedTiles; i++)
+            {
+                GetPoints();
+            }
+
+            tileScript.hasWiperPickup = false;
+        }
+
+        if (tileScript.hasFreezePickup)
+        {
+            PickupSounds.Freeze();
+            Grid.ActivateFreeze();
+            tileScript.hasFreezePickup = false;
+        }
     }
 
     private void GetPoints()
     {
-        var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
+        //var tile = global::Grid.grid[(int)position.x, (int)position.y].GetComponent<Tile>();
         // commented out tile.state/2 as for the moment at least it is not conveyed good enough for the player to understand how it works.
         score += repairPoints * (3 - heat / 33); //* tile.state/2; 
         if (scoreBox != null)
