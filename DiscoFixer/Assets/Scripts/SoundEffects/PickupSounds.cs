@@ -9,6 +9,7 @@ public class PickupSounds : MonoBehaviour
     [SerializeField] private AudioClip _water;
     [SerializeField] private AudioClip _wiper;
     [SerializeField] private AudioClip _freeze;
+    [SerializeField] private AudioClip _fixCombo;
 
     private static AudioSource _player;
     
@@ -16,6 +17,7 @@ public class PickupSounds : MonoBehaviour
     private static AudioClip _Swater;
     private static AudioClip _Swiper;
     private static AudioClip _Sfreeze;
+    private static AudioClip _SfixCombo;
 
     private void Start()
     {
@@ -46,6 +48,14 @@ public class PickupSounds : MonoBehaviour
         if (!_Sfreeze) return;
         if (_player.isPlaying) return;
         _player.clip = _Sfreeze;
+        _player.Play();
+    }
+    
+    public static void Combo()
+    {
+        if (!_SfixCombo) return;
+        if (_player.isPlaying) return;
+        _player.clip = _SfixCombo;
         _player.Play();
     }
 }

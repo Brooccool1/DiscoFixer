@@ -368,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 1849250645, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
       propertyPath: audioPlayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1203564450}
     - target: {fileID: 196450789440724263, guid: 90819539e8c409b49be61f4a6512254b, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1842,18 +1842,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1912886130, guid: 7552629c332aaa540b5986e1f26ed30d, type: 3}
-      propertyPath: _water
-      value: 
-      objectReference: {fileID: 8300000, guid: 69d40ae3a2e53764da0621c1e8e9ca00, type: 3}
-    - target: {fileID: 1912886130, guid: 7552629c332aaa540b5986e1f26ed30d, type: 3}
-      propertyPath: _wiper
-      value: 
-      objectReference: {fileID: 8300000, guid: 8fc142535125da740b8c07bf21fede48, type: 3}
-    - target: {fileID: 1912886130, guid: 7552629c332aaa540b5986e1f26ed30d, type: 3}
-      propertyPath: _freeze
-      value: 
-      objectReference: {fileID: 8300000, guid: f5ac5b4ae1160ba4daf03efa9fab6702, type: 3}
     - target: {fileID: 3882790300619290852, guid: 7552629c332aaa540b5986e1f26ed30d, type: 3}
       propertyPath: m_Name
       value: Pre_Player

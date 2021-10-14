@@ -243,6 +243,7 @@ public class Player : MonoBehaviour
 
     private void CheckTileStatus()
     {
+        int fixedTiles = 0;
         Vector2 currDir = direction;
         Vector2 addDir = direction;
         
@@ -272,6 +273,8 @@ public class Player : MonoBehaviour
 
                 if (tile.isBreaking && !tile.isBroken)
                 {
+                    fixedTiles++;
+                    
                     state = State.Fixing;
                     tile.isBreaking = false;
                     tile.state = tile.stages;
@@ -338,6 +341,11 @@ public class Player : MonoBehaviour
             }
 
             currDir += addDir;
+        }
+
+        if (fixedTiles > 2)
+        {
+            PickupSounds.Combo();
         }
         
         bool _avoidHoles()
