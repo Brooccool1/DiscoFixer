@@ -28,6 +28,7 @@ public class PickupSounds : MonoBehaviour
     public static void Water()
     {
         if (!_Swater) return;
+        if (_player.isPlaying) return;
         _player.clip = _Swater;
         _player.Play();
     }
@@ -35,6 +36,7 @@ public class PickupSounds : MonoBehaviour
     public static void Wiper()
     {
         if (!_Swiper) return;
+        if (_player.isPlaying) return;
         _player.clip = _Swiper;
         _player.Play();
     }
@@ -42,6 +44,7 @@ public class PickupSounds : MonoBehaviour
     public static void Freeze()
     {
         if (!_Sfreeze) return;
+        if (_player.isPlaying) return;
         _player.clip = _Sfreeze;
         _player.Play();
     }
