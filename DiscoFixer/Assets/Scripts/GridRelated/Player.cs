@@ -268,12 +268,7 @@ public class Player : MonoBehaviour
                     break;
                 }
 
-                if (tile.hasWaterPickup)
-                {
-                    var preliminaryHeat = heat - tile.waterPickupEffect;
-                    heat = preliminaryHeat < 0 ? 0 : preliminaryHeat;
-                    tile.hasWaterPickup = false;
-                }
+                CheckForPickup(position + currDir);
 
                 if (tile.isBreaking && !tile.isBroken)
                 {
@@ -380,6 +375,7 @@ public class Player : MonoBehaviour
         var tileScript = gameObject.GetComponent<Tile>();
         if (tileScript.hasWaterPickup)
         {
+            PickupSounds.Water();
             Debug.Log($"heat before: {heat}");
             
             var preliminaryHeat = heat - tileScript.waterPickupEffect;
@@ -391,6 +387,7 @@ public class Player : MonoBehaviour
 
         if (tileScript.hasWiperPickup)
         {
+            PickupSounds.Wiper();
             var repairedTiles =Grid.UseWiper();
             for (int i = 0; i < repairedTiles; i++)
             {
@@ -402,6 +399,7 @@ public class Player : MonoBehaviour
 
         if (tileScript.hasFreezePickup)
         {
+            PickupSounds.Freeze();
             Grid.ActivateFreeze();
             tileScript.hasFreezePickup = false;
         }

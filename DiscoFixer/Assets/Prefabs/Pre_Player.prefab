@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 3882790300619290853}
   - component: {fileID: 3882790300619290854}
   - component: {fileID: 246862629}
+  - component: {fileID: 1912886130}
   m_Layer: 0
   m_Name: Pre_Player
   m_TagString: Untagged
@@ -382,6 +383,21 @@ MonoBehaviour:
   _faintSprites:
   - {fileID: 21300000, guid: 196376899b2bf5e4bb236618ea74b967, type: 3}
   - {fileID: 21300000, guid: 9376599a686c23148829a899e3dc2c16, type: 3}
+--- !u!114 &1912886130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882790300619290852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce2eeb392525c34eb5e13761fedbfe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _water: {fileID: 0}
+  _wiper: {fileID: 0}
+  _freeze: {fileID: 0}
 --- !u!1 &4512086789823196752
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,6 +35,7 @@ public class Grid : MonoBehaviour
         breakCountdown = breakFrequency;
         waterPickupCountdown = waterPickupDelay;
         wiperPickupCountdown = wiperPickupDelay;
+        freezePickupCountdown = freezePickupDelay;
         grid = new GameObject[width, height];
         
         var basePos = new Vector2(transform.position.x - width/2, transform.position.y - height/2);
@@ -79,7 +80,7 @@ public class Grid : MonoBehaviour
         }
         else
         {
-            waterPickupCountdown--;
+            freezePickupCountdown--;
         }
     }
 
