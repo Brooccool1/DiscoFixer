@@ -25,6 +25,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private VisualEffect vfxBurst;
     [SerializeField] private VisualEffect vfxFreeze;
     [SerializeField] private VisualEffect impact;
+    [SerializeField] private VisualEffect vfxRepair;
     [SerializeField] private VisualEffect vfxBuildUp;
     [SerializeField] private float MaxSpawnRate;
     [SerializeField] private List<Sprite> _breakStages;
@@ -54,8 +55,12 @@ public class Tile : MonoBehaviour
             state--;
             vfxBuildUp.Play();
 
-            spawnrate = (1f - (float) state / 9f) * MaxSpawnRate;
+            spawnrate = (1f - (float)state / 9f) * MaxSpawnRate;
             vfxBuildUp.SetFloat("SpawnRate", spawnrate);
+            if (state == 0)
+            {
+                vfxBuildUp.SetFloat("SpawnRate", 0f);
+            }
 
             if (!isBroken)
             {
@@ -68,7 +73,7 @@ public class Tile : MonoBehaviour
         {
             isBroken = true;
             isBreaking = false;
-            spawnrate = (1f - (float)state / 9f) * MaxSpawnRate;
+            spawnrate = 0f;
             vfxBuildUp.SetFloat("SpawnRate", spawnrate);
         }
 
@@ -91,7 +96,7 @@ public class Tile : MonoBehaviour
         }
         _waterStayTime--;
     }
-    
+
     private void _wiperPickup()
     {
         if (!hasWiperPickup) return;
@@ -105,7 +110,7 @@ public class Tile : MonoBehaviour
         }
         _wiperStayTime--;
     }
-    
+
     private void _freezePickup()
     {
         if (!hasFreezePickup) return;
@@ -119,10 +124,16 @@ public class Tile : MonoBehaviour
         }
         _freezeStayTime--;
     }
-    
-   public void _freezeFX()
+
+    public void _freezeFX()
     {
         vfxFreeze.Play();
+
+    }
+
+    public void _repairFX()
+    {
+        vfxRepair.Play();
 
     }
 

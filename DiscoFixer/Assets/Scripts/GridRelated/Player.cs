@@ -401,7 +401,7 @@ public class Player : MonoBehaviour
             {
                 GetPoints();
             }
-
+            tileScript._repairFX();
             tileScript.hasWiperPickup = false;
         }
 
