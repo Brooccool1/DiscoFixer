@@ -53,7 +53,7 @@ public class Tile : MonoBehaviour
         if (isBreaking && !StopTilesBreaking.active)
         {
             state--;
-            vfxBuildUp.Play();
+            
 
             spawnrate = (1f - (float)state / 9f) * MaxSpawnRate;
             vfxBuildUp.SetFloat("SpawnRate", spawnrate);
@@ -74,7 +74,7 @@ public class Tile : MonoBehaviour
             isBroken = true;
             isBreaking = false;
             spawnrate = 0f;
-            vfxBuildUp.SetFloat("SpawnRate", spawnrate);
+            vfxBuildUp.SetFloat("SpawnRate", 0f);
         }
 
         if (state == 8)
@@ -158,7 +158,7 @@ public class Tile : MonoBehaviour
 
         if (isBreaking && !isBroken && StopTilesBreaking.active)
         {
-            GetComponent<SpriteRenderer>().material.color = new Color(0.4f, 0.3f, 1.0f, 1.0f);
+            GetComponent<SpriteRenderer>().material.color = new Color(0.4f, 1f, 3.0f, 1.0f);
             vfxBuildUp.SetInt("Cold", 1);
 
         }
@@ -174,8 +174,9 @@ public class Tile : MonoBehaviour
             vfxBurst.SetVector3("Color", new Vector3(2,159,2));
             vfxBurst.Play();
             previousIsBreaking = false;
-            vfxBuildUp.Stop();
+            
             spawnrate = 0;
+            vfxBuildUp.SetFloat("SpawnRate", spawnrate);
         }
         
         if (isBroken && previousIsBreaking)
@@ -183,9 +184,9 @@ public class Tile : MonoBehaviour
             vfxBurst.SetVector3("Color", new Vector3(160, 20, 2));
             vfxBurst.Play();
             previousIsBreaking = false;
-            vfxBuildUp.Stop();
 
             spawnrate = 0;
+            vfxBuildUp.SetFloat("SpawnRate", spawnrate);
         }
         gameObject.GetComponentInChildren<Transform>().Find("Water").GetComponent<SpriteRenderer>().enabled = hasWaterPickup;
         gameObject.GetComponentInChildren<Transform>().Find("Wiper").GetComponent<SpriteRenderer>().enabled = hasWiperPickup;
