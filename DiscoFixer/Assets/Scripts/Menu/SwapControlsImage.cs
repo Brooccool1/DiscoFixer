@@ -8,8 +8,6 @@ public class SwapControlsImage : MonoBehaviour
 {
     public int swapTimer;
     public Image image;
-    public Sprite imageSprite1;
-    public Sprite imageSprite2;
     public Sprite[] sprites;
     private float timeUntilSwap;
     int currentSprite = 0;
