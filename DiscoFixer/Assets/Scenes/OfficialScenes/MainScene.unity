@@ -250,11 +250,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: waterPickupDelay
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: wiperPickupDelay
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: freezePickupDelay
@@ -2635,7 +2635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatSync: 15
-  _bloomMinMax: {x: 4, y: 10}
+  _bloomMinMax: {x: 2, y: 10}
   _chromaticMinMax: {x: 0, y: 1}
   _lenDistMinMax: {x: 0, y: 0.2}
   volume: {fileID: 1428571591}
