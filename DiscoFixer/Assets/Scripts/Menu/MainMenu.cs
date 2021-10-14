@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     [Header("Different Menus")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject controlsMenu;
 
     [Header("Volume")]
     [SerializeField] private AudioSource audioPlayer;
@@ -35,12 +36,21 @@ public class MainMenu : MonoBehaviour
     {
         optionsMenu.SetActive(true);
         mainMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
     public void OpenMainMenu()
     {
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
+        controlsMenu.SetActive(false);
+    }
+
+    public void OpenControlsMenu()
+    {
+        optionsMenu.SetActive(false);
+        mainMenu.SetActive(false);
+        controlsMenu.SetActive(true);
     }
 
     public void StartGame()
