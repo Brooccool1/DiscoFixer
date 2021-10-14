@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     
     private Vector3 _goalPos;
 
+    private int _combo;
+
     // heat and Fire effect
     public static int heat = 0;
     private VisualEffect _fire;
@@ -209,6 +211,12 @@ public class Player : MonoBehaviour
         state = State.Walking;
         var targetTile = position + direction;
         CheckTileStatus();
+        
+
+        if (_combo > 2)
+        {
+            PickupSounds.Combo();
+        }
 
         if (targetTile.x < 0 || targetTile.x > Grid.grid.GetLength(0)-1)
         {
@@ -243,7 +251,7 @@ public class Player : MonoBehaviour
 
     private void CheckTileStatus()
     {
-        int fixedTiles = 0;
+        _combo = 0;
         Vector2 currDir = direction;
         Vector2 addDir = direction;
         
@@ -273,7 +281,7 @@ public class Player : MonoBehaviour
 
                 if (tile.isBreaking && !tile.isBroken)
                 {
-                    fixedTiles++;
+                    _combo++;
                     
                     state = State.Fixing;
                     tile.isBreaking = false;
@@ -341,11 +349,6 @@ public class Player : MonoBehaviour
             }
 
             currDir += addDir;
-        }
-
-        if (fixedTiles > 2)
-        {
-            PickupSounds.Combo();
         }
         
         bool _avoidHoles()

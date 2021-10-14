@@ -24,6 +24,7 @@ public class PickupSounds : MonoBehaviour
         _Swater = _water;
         _Swiper = _wiper;
         _Sfreeze = _freeze;
+        _SfixCombo = _fixCombo;
         _player = GetComponent<AudioSource>();
     }
 
