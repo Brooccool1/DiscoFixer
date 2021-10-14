@@ -14,8 +14,10 @@ public class Grid : MonoBehaviour
     public List<Color> tileColors = new List<Color>();
     public int breakFrequency = 5;
     private int breakCountdown;
-    public int pickupDelay = 10;
-    private int pickupCountdown;
+    public int waterPickupDelay = 10;
+    private int waterPickupCountdown;
+    public int wiperPickupDelay = 5;
+    private int wiperPickupCountdown;
     //private int everyOther = 0;
     private Color color1;
     private Color color2;
@@ -25,9 +27,11 @@ public class Grid : MonoBehaviour
     {
         GameEvents.beat.onBeat += ChangeColors;
         GameEvents.beat.onBeat += TileBreaker;
-        GameEvents.beat.onBeat += PickupSpawner;
+        GameEvents.beat.onBeat += WaterPickupSpawner;
+        GameEvents.beat.onBeat += WiperPickupSpawner;
         breakCountdown = breakFrequency;
-        pickupCountdown = pickupDelay;
+        waterPickupCountdown = waterPickupDelay;
+        wiperPickupCountdown = wiperPickupDelay;
         grid = new GameObject[width, height];
         
         var basePos = new Vector2(transform.position.x - width/2, transform.position.y - height/2);
@@ -46,20 +50,61 @@ public class Grid : MonoBehaviour
     
 
 
-    private void PickupSpawner()
+    private void WaterPickupSpawner()
     {
-        if (pickupCountdown == 0)
+        if (waterPickupCountdown == 0)
         {
             var tile = grid[Random.Range(0, width), Random.Range(0, height)];
             var tileScript = tile.GetComponent<Tile>();
             tileScript.hasWaterPickup = true;
             tileScript._waterStayTime = 10;
-            pickupCountdown = pickupDelay;
+            waterPickupCountdown = waterPickupDelay;
         }
         else
         {
-            pickupCountdown--;
+            waterPickupCountdown--;
         }
+    }
+    private void WiperPickupSpawner()
+    {
+        if (wiperPickupCountdown == 0)
+        {
+            var tileScript = new Tile();
+            var available = false;
+            while (!available)
+            {
+                var tile = grid[Random.Range(0, width), Random.Range(0, height)];
+                tileScript = tile.GetComponent<Tile>();
+                if (tileScript.state == 9 && !tileScript.hasWaterPickup)
+                {
+                    available = true;
+                }
+            }
+            
+            tileScript.hasWiperPickup = true;
+            tileScript._wiperStayTime = 20;
+            wiperPickupCountdown = wiperPickupDelay;
+        }
+        else
+        {
+            wiperPickupCountdown--;
+        }
+    }
+
+    public static int UseWiper()
+    {
+        var repaired = 0;
+        foreach (var tile in grid)
+        {
+            var tileScript = tile.GetComponent<Tile>();
+            if (!tileScript.isBreaking) continue;
+            tileScript.state = tileScript.stages;
+            tileScript.isBreaking = false;
+            tileScript.hasWiperPickup = false;
+            repaired++;
+        }
+
+        return repaired;
     }
 
     private void ChangeColors()
