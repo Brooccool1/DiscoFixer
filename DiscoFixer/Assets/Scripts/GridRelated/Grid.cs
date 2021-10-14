@@ -12,15 +12,19 @@ public class Grid : MonoBehaviour
     [SerializeField, Range(1,13)] private int width = 11;
     public static GameObject[,] grid;
     public List<Color> tileColors = new List<Color>();
+    // Breaking
     public int breakFrequency = 5;
     private int breakCountdown;
+    // Water
     public int waterPickupDelay = 10;
     private int waterPickupCountdown;
-    public int wiperPickupDelay = 5;
+    //Wiper
+    public int wiperPickupDelay = 15;
     private int wiperPickupCountdown;
-    public int freezePickupDelay = 5;
+    // Freeze
+    public int freezePickupDelay = 15;
     private int freezePickupCountdown;
-    //private int everyOther = 0;
+    
     private Color color1;
     private Color color2;
     
@@ -106,7 +110,6 @@ public class Grid : MonoBehaviour
             }
             
             tileScript.hasWiperPickup = true;
-            tileScript._wiperStayTime = 20;
             wiperPickupCountdown = wiperPickupDelay;
         }
         else
