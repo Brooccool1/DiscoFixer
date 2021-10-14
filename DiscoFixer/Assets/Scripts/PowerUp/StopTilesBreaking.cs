@@ -24,9 +24,17 @@ public class StopTilesBreaking : MonoBehaviour
         _active = _activeTimer > 0;
     }
     
+    public
+    
     void Update()
     {
-
+        for (int i = 0; i < Grid.grid.GetLength(0); i++)
+        {
+            for (int j = 0; j < Grid.grid.GetLength(1); j++)
+            {
+                Grid.grid[i, j].GetComponent<Tile>().state = _tiles[i, j].state;
+            }
+        }
         
         
         // Get tiles
