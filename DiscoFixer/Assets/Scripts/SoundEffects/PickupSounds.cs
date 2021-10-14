@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PickupSounds : MonoBehaviour
 {
     [SerializeField] private AudioClip _water;
     [SerializeField] private AudioClip _wiper;
     [SerializeField] private AudioClip _freeze;
 
-    private static AudioSource _player = new();
+    private static AudioSource _player;
     
     // Statics
     private static AudioClip _Swater;
@@ -21,11 +22,13 @@ public class PickupSounds : MonoBehaviour
         _Swater = _water;
         _Swiper = _wiper;
         _Sfreeze = _freeze;
+        _player = GetComponent<AudioSource>();
     }
 
     public static void Water()
     {
         if (!_Swater) return;
+        if (_player.isPlaying) return;
         _player.clip = _Swater;
         _player.Play();
     }
@@ -33,6 +36,7 @@ public class PickupSounds : MonoBehaviour
     public static void Wiper()
     {
         if (!_Swiper) return;
+        if (_player.isPlaying) return;
         _player.clip = _Swiper;
         _player.Play();
     }
@@ -40,6 +44,7 @@ public class PickupSounds : MonoBehaviour
     public static void Freeze()
     {
         if (!_Sfreeze) return;
+        if (_player.isPlaying) return;
         _player.clip = _Sfreeze;
         _player.Play();
     }

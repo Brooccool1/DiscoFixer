@@ -51,8 +51,8 @@ MonoBehaviour:
   tileColors: []
   breakFrequency: 5
   waterPickupDelay: 10
-  wiperPickupDelay: 5
-  freezePickupDelay: 5
+  wiperPickupDelay: 15
+  freezePickupDelay: 15
 --- !u!114 &4702601557234568435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +65,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c573557271ed48047a515c6e94fb96cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lifeSpan: 4

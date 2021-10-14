@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
         // var prelPosition = new Vector3(direction.x, direction.y, 0);
         // transform.position += prelPosition;
         
-        var targetPosition = new Vector3(direction.x, direction.y, 0) + transform.position;
+        var targetPosition = new Vector3(direction.x, direction.y, 0)*3 + transform.position;
         var intermediatePos = Vector3.zero;
         intermediatePos.x = Mathf.Lerp(transform.position.x, targetPosition.x, 0.1f);
         intermediatePos.y = Mathf.Lerp(transform.position.y, targetPosition.y, 0.1f);
