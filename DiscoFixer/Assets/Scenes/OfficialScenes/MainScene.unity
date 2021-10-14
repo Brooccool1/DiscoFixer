@@ -249,12 +249,16 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
+      propertyPath: waterPickupDelay
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: wiperPickupDelay
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: freezePickupDelay
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3597722282410565366, guid: 4fb7d16e34bdcca4297a63ac08b54bbc, type: 3}
       propertyPath: tileColors.Array.size
