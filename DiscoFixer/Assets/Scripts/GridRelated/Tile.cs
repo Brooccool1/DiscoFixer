@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour
     public bool hasWaterPickup = false;
     public bool hasWiperPickup = false;
     public int _waterStayTime = 10;
-    public int _wiperStayTime = 20;
+    public int _wiperStayTime = 5;
     public int waterPickupEffect = 30;
     [SerializeField] private VisualEffect vfxBurst;
     [SerializeField] private VisualEffect impact;
