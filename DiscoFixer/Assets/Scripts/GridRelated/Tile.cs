@@ -23,6 +23,7 @@ public class Tile : MonoBehaviour
     public bool hasFreezePickup = false;
     public int _freezeStayTime = 5;
     [SerializeField] private VisualEffect vfxBurst;
+    [SerializeField] private VisualEffect vfxFreeze;
     [SerializeField] private VisualEffect impact;
     [SerializeField] private VisualEffect vfxBuildUp;
     [SerializeField] private float MaxSpawnRate;
@@ -35,6 +36,7 @@ public class Tile : MonoBehaviour
         GameEvents.beat.onBeat += OnEveryBeat;
         //vfx = GetComponentInChildren<VisualEffect>();
         state = stages;
+        vfxBuildUp.Play();
     }
 
     private void OnEveryBeat()
@@ -50,9 +52,9 @@ public class Tile : MonoBehaviour
         if (isBreaking && !StopTilesBreaking.active)
         {
             state--;
+            vfxBuildUp.Play();
 
             spawnrate = (1f - (float) state / 9f) * MaxSpawnRate;
-
             vfxBuildUp.SetFloat("SpawnRate", spawnrate);
 
             if (!isBroken)
@@ -61,10 +63,13 @@ public class Tile : MonoBehaviour
             }
         }
 
+
         if (state == 0)
         {
             isBroken = true;
             isBreaking = false;
+            spawnrate = (1f - (float)state / 9f) * MaxSpawnRate;
+            vfxBuildUp.SetFloat("SpawnRate", spawnrate);
         }
 
         if (state == 8)
@@ -115,7 +120,11 @@ public class Tile : MonoBehaviour
         _freezeStayTime--;
     }
     
-   
+   public void _freezeFX()
+    {
+        vfxFreeze.Play();
+
+    }
 
     private void _changeSprite()
     {
@@ -129,9 +138,18 @@ public class Tile : MonoBehaviour
     private void Update()
     {
         _changeSprite();
-        if (isBreaking && !isBroken)
+        if (isBreaking && !isBroken && !StopTilesBreaking.active)
         {
             GetComponent<SpriteRenderer>().material.color = Color.red;
+            vfxBuildUp.SetInt("Cold", 0);
+
+        }
+
+        if (isBreaking && !isBroken && StopTilesBreaking.active)
+        {
+            GetComponent<SpriteRenderer>().material.color = new Color(0.4f, 0.3f, 1.0f, 1.0f);
+            vfxBuildUp.SetInt("Cold", 1);
+
         }
 
         if (isBroken)
@@ -139,7 +157,7 @@ public class Tile : MonoBehaviour
             GetComponent<SpriteRenderer>().material.color = Color.black;
         }
 
-        if (!isBreaking && previousIsBreaking)
+        if (!isBreaking && previousIsBreaking && !isBroken)
         {
             
             vfxBurst.SetVector3("Color", new Vector3(2,159,2));
