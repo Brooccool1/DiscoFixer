@@ -23,6 +23,8 @@ public class MainMenu : MonoBehaviour
     {
         if(!PlayerPrefs.HasKey("AudioVolume"))
             PlayerPrefs.SetFloat("AudioVolume", audioPlayer.volume);
+        if(Time.timeScale < 1)
+            Time.timeScale = 1;
 
         OpenMainMenu();
         volumeSlider.value = audioPlayer.volume;
