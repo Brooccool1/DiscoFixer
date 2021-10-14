@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class StopTilesBreaking : MonoBehaviour
 {
-    private Tile[,] _tiles;
-    private bool _active;
+    public static bool active;
     private int _activeTimer = 0;
-    private int _lifeSpan = 4;
+    [SerializeField] private int _lifeSpan = 4;
 
     private void Start()
     {
@@ -18,33 +17,13 @@ public class StopTilesBreaking : MonoBehaviour
 
     private void _onBeat()
     {
-        if (!_active) return;
+        if (!active)
+        {
+            _activeTimer = _lifeSpan;
+            return;
+        } 
         
         _activeTimer--;
-        _active = _activeTimer > 0;
-    }
-    
-    public
-    
-    void Update()
-    {
-        for (int i = 0; i < Grid.grid.GetLength(0); i++)
-        {
-            for (int j = 0; j < Grid.grid.GetLength(1); j++)
-            {
-                Grid.grid[i, j].GetComponent<Tile>().state = _tiles[i, j].state;
-            }
-        }
-        
-        
-        // Get tiles
-        _tiles = new Tile[Grid.grid.GetLength(0), Grid.grid.GetLength(1)];
-        for (int i = 0; i < Grid.grid.GetLength(0); i++)
-        {
-            for (int j = 0; j < Grid.grid.GetLength(1); j++)
-            {
-                _tiles[i, j] = Grid.grid[i, j].GetComponent<Tile>();
-            }
-        }
+        active = _activeTimer > 0;
     }
 }

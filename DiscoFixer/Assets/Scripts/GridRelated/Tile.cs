@@ -12,10 +12,15 @@ public class Tile : MonoBehaviour
     public bool isBreaking = false;
     public bool isBroken = false;
     public bool previousIsBreaking = false;
+    // Water
     public bool hasWaterPickup = false;
-    public bool hasWiperPickup = false;
     public int _waterStayTime = 10;
+    // Wiper
+    public bool hasWiperPickup = false;
     public int _wiperStayTime = 5;
+    // Freeze
+    public bool hasFreezePickup = false;
+    public int _freezeStayTime = 5;
     public int waterPickupEffect = 30;
     [SerializeField] private VisualEffect vfxBurst;
     [SerializeField] private VisualEffect impact;
@@ -37,11 +42,12 @@ public class Tile : MonoBehaviour
         Breaker();
         _waterPickup();
         _wiperPickup();
+        _freezePickup();
     }
 
     private void Breaker()
     {
-        if (isBreaking)
+        if (isBreaking && !StopTilesBreaking.active)
         {
             state--;
 
@@ -69,18 +75,16 @@ public class Tile : MonoBehaviour
 
     private void _waterPickup()
     {
-        if (hasWaterPickup)
+        if (!hasWaterPickup) return;
+        if (isBroken)
         {
-            if (isBroken)
-            {
-                hasWaterPickup = false;
-            }
-            if (_waterStayTime <= 0)
-            {
-                hasWaterPickup = false;
-            }
-            _waterStayTime--;
+            hasWaterPickup = false;
         }
+        if (_waterStayTime <= 0)
+        {
+            hasWaterPickup = false;
+        }
+        _waterStayTime--;
     }
     
     private void _wiperPickup()
@@ -95,6 +99,20 @@ public class Tile : MonoBehaviour
             hasWiperPickup = false;
         }
         _wiperStayTime--;
+    }
+    
+    private void _freezePickup()
+    {
+        if (!hasFreezePickup) return;
+        if (isBroken)
+        {
+            hasFreezePickup = false;
+        }
+        if (_freezeStayTime <= 0)
+        {
+            hasFreezePickup = false;
+        }
+        _freezeStayTime--;
     }
     
    
@@ -142,6 +160,7 @@ public class Tile : MonoBehaviour
         }
         gameObject.GetComponentInChildren<Transform>().Find("Water").GetComponent<SpriteRenderer>().enabled = hasWaterPickup;
         gameObject.GetComponentInChildren<Transform>().Find("Wiper").GetComponent<SpriteRenderer>().enabled = hasWiperPickup;
+        gameObject.GetComponentInChildren<Transform>().Find("Freeze").GetComponent<SpriteRenderer>().enabled = hasFreezePickup;
 
         
     }

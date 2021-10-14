@@ -399,6 +399,12 @@ public class Player : MonoBehaviour
 
             tileScript.hasWiperPickup = false;
         }
+
+        if (tileScript.hasFreezePickup)
+        {
+            Grid.ActivateFreeze();
+            tileScript.hasFreezePickup = false;
+        }
     }
 
     private void GetPoints()
