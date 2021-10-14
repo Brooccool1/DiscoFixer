@@ -348,7 +348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &294740575
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1224,7 +1224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &614500761
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1399,9 +1399,17 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: e893b38fe005be148a2a2b9e249c0aed, type: 2}
+    - target: {fileID: 7789576609149440296, guid: c325894bb20382e42b892c43c8297a89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7789576609985089544, guid: c325894bb20382e42b892c43c8297a89, type: 3}
       propertyPath: m_Name
       value: Pixelation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7789576609985089544, guid: c325894bb20382e42b892c43c8297a89, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7789576609985089545, guid: c325894bb20382e42b892c43c8297a89, type: 3}
       propertyPath: m_RootOrder
@@ -3047,6 +3055,7 @@ GameObject:
   - component: {fileID: 1952063849}
   - component: {fileID: 1952063851}
   - component: {fileID: 1952063850}
+  - component: {fileID: 1952063852}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -3112,6 +3121,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952063848}
   m_CullTransparentMesh: 1
+--- !u!114 &1952063852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952063848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d916dde70acca40a6b2c736f5ee04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapTimer: 4
+  image: {fileID: 1952063850}
+  imageSprite1: {fileID: 21300000, guid: 984e36de16c38a4468ac69d24ba28894, type: 3}
+  imageSprite2: {fileID: 21300000, guid: 5dab21b3908fa594f8e6d4d2db4c4191, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 984e36de16c38a4468ac69d24ba28894, type: 3}
+  - {fileID: 21300000, guid: 5dab21b3908fa594f8e6d4d2db4c4191, type: 3}
 --- !u!1 &1958889146
 GameObject:
   m_ObjectHideFlags: 0
