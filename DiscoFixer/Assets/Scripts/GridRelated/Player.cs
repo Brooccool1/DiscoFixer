@@ -410,6 +410,7 @@ public class Player : MonoBehaviour
             PickupSounds.Freeze();
             Grid.ActivateFreeze();
             tileScript.hasFreezePickup = false;
+            tileScript._freezeFX();
         }
     }
 
